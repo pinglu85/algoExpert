@@ -11,3 +11,4 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
 ## Questions
 
 1. 🟢 [Two Number Sum](two-number-sum.md)
+2. 🟢 [Validate Subsequence](validate-subsequence.md)
