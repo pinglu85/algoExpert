@@ -1,6 +1,6 @@
 ### Understanding the problem
 
-Given an array of distinct integers and an integer `targetSum`, we need to implement a function that find out any two numbers in the array that add up to the `targetSum`. If this two numbers do not exist, return an empty array.
+Given an array of distinct integers and an integer `targetSum`, I need to implement a function that find out any two numbers in the array that add up to the `targetSum`. If this two numbers do not exist, return an empty array.
 
 ### Approach
 
