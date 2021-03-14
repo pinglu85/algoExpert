@@ -25,11 +25,11 @@ function twoNumberSum(array, targetSum) {
 }
 ```
 
-### Approach 2: O(n ^ 2) time, O(1) space
+### Approach 2: O(n^2) time, O(1) space
 
 Iterate through every number in the array. At each number, traverse through the rest of the array, if adding any number in the rest of the array to the number yields the target sum, return the pair. 
 
-### Solution
+### Solution 2
 
 ```js
 function twoNumberSum(array, targetSum) {
