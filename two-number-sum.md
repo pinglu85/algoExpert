@@ -1,6 +1,6 @@
 ### Understanding the problem
 
-Given an array of distinct integers and an integer `targetSum`, I need to implement a function that find out any two numbers in the array that add up to the `targetSum`. If this two numbers do not exist, return an empty array.
+Given an array of integers, no number in this array is repeated, and an integer `targetSum`, I need to implement a function that find whether there's a pair of numbers in the array that adds up to the `targetSum`. If such pair does not exist, return an empty array.
 
 ### Approach
 
