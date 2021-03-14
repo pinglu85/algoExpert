@@ -24,3 +24,25 @@ function twoNumberSum(array, targetSum) {
   return [];
 }
 ```
+
+### Approach 2: O(n ^ 2) time, O(1) space
+
+Iterate through every number in the array. At each number, traverse through the rest of the array, if adding any number in the rest of the array to the number yields the target sum, return the pair. 
+
+### Solution
+
+```js
+function twoNumberSum(array, targetSum) {
+  for (let i = 0; i < array.length; i++) {
+		const firstNum = array[i];
+		for (let j = i + 1; j < array.length; j++) {
+			const secondNum = array[j];
+			if (firstNum + secondNum === targetSum) {
+				return [firstNum, secondNum];
+			}
+		}
+	}
+	
+	return [];
+}
+```
