@@ -1,6 +1,6 @@
 ### Understanding the problem
 
-I need to implement a function that takes two arrays of integers as input and finds out whether all the numbers in the second array are in the first array. They don't need to be adjacent but have to be in the same order as they are in the first array.
+Implement a function that takes two arrays of integers as input and finds out whether all the numbers in the second array are in the first array. They don't need to be adjacent but have to be in the same order as they are in the first array.
 
 ### Approach
 
