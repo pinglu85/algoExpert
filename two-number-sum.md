@@ -4,7 +4,7 @@ Given an array of integers, no number in this array is repeated, and an integer 
 
 ### Approach 1 - O(n) time | O(n) space
 
-We can solve the problem by looping through each integer in the array and find if there is another integer in the rest of array that is equals to target sum - current integer. But that means we have to use a nested for loop, the outer for loop traverses the array and the inner loop traverses the rest of the array to find the complement. Instead of the nested for loop, we can use a hash table which has an near constant lookup time to store the difference between each integer and the target sum. At each iteration, look up the integer in the hash table, if it is already in the hash table, then the pair is found, otherwise, calculate the difference and add the difference as key and the integer as value into the hash table. If the loop finishes, it means no two numbers sum up to the target sum, return an empty array.
+I can solve the problem by looping through each integer in the array and find if there is another integer in the rest of array that is equals to target sum - current integer. But that means I have to use a nested for loop, the outer for loop traverses the array and the inner for loop traverses the rest of the array to find the complement. Instead of the nested for loop, I can use a hash table which has an near constant lookup time to store the difference between each integer and the target sum. At each iteration, look up the integer in the hash table, if it is already in the hash table, then the pair is found, return the pair, otherwise, calculate the difference and add the difference as key and the integer as value into the hash table. If I get out of the for loop without returning the pair, return an empty array.
 
 ### Solution 1
 
@@ -49,7 +49,7 @@ function twoNumberSum(array, targetSum) {
 
 ### Approach 3 - O(nlog(n)) time | O(1) space
 
-Use two pointers approach. First sort the array in ascending order. Then initialize two pointers, one pointing to the first element in the sorted array, and the other pointing to the last element in the sorted array. Sum up the values that the two pointers point to. If their sum is smaller than the `targetSum`, shift the left pointer to right, because the array is sorted in ascending order, if we move the right pointer to left, the new sum is even smaller than the current sum, which is already smaller than the `targetSum`. If their sum is greater than the `targetSum`, shift the right pointer to left. Keep moving the pointers until we get the sum as `targetSum` or the pointers get equal to each other, which means the pointers are pointing to the same number.
+Use two pointers approach. First sort the array in ascending order. Then initialize two pointers, one pointing to the first element in the sorted array, and the other pointing to the last element in the sorted array. Sum up the values that the two pointers point to. If their sum is smaller than the `targetSum`, shift the left pointer to right, because the array is sorted in ascending order, if I move the right pointer to left, the new sum is even smaller than the current sum, which is already smaller than the `targetSum`. If their sum is greater than the `targetSum`, shift the right pointer to left. Keep moving the pointers until I get the sum as `targetSum` or the pointers get equal to each other, which means the pointers are pointing to the same number.
 
 ### Solution 3
 
