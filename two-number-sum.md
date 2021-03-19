@@ -49,7 +49,7 @@ function twoNumberSum(array, targetSum) {
 
 ### Approach 3 - O(nlog(n)) time | O(1) space
 
-Use two pointers approach. First sort the array in ascending order. Then initialize two pointers, one pointing to the first element in the sorted array, and the other pointing to the last element in the sorted array. Sum up the values that the two pointers point to. If their sum is smaller than the `targetSum`, shift the left pointer to right, because the array is sorted in ascending order, if I move the right pointer to left, the new sum is even smaller than the current sum, which is already smaller than the `targetSum`. If their sum is greater than the `targetSum`, shift the right pointer to left. Keep moving the pointers until I get the sum as `targetSum` or the pointers get equal to each other, which means the pointers are pointing to the same number.
+Use two pointers approach. First sort the array in ascending order. Then initialize two pointers, one pointing to the first element in the sorted array, and the other pointing to the last element in the sorted array. Sum up the values that the two pointers point to. If their sum is smaller than the `targetSum`, shift the left pointer to right by one, because the array is sorted in ascending order, if I move the right pointer to left, the new sum is even smaller than the current sum, which is already smaller than the `targetSum`. If their sum is greater than the `targetSum`, shift the right pointer to left by one. Keep moving the pointers until I get the sum as `targetSum` or the pointers get equal to each other, which means the pointers are pointing to the same number.
 
 ### Solution 3
 
