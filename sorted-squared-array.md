@@ -1,8 +1,8 @@
 ### Understanding the problem
 
-Given an array of integers that are sorted in ascending order, write a function that squares all the integers in the array and returns them in a new array, the squares should be also sorted in ascending order.
+Given an array of integers that are sorted in ascending order, write a function that squares all the integers in the array and returns them in a new array, which should be also sorted in ascending order.
 
-### Approach - O(n) time | O(n) space
+### Approach 1 - O(n) time | O(n) space
 
 Create a new empty array to store the result. Iterate through each integer in the array, square it and push it to the result array. After the loop, return the result array. Or I can use the `.map()` function, which returns a new array populated with the results of calling a provided function on every element in the calling array. But this solution only works for positive numbers, because when we square negative numbers, we get a positive result, if we add them directly to the result array, the array is no longer sorted. Therefore I need to initialize two arrays, one storing the squares of non-negative integers, other storing the squares of negative numbers. At each iteration, if the integer is negative, push the square into the array for negative numbers. After squaring all the integers, I need to merge the two sorted arrays into a sorted array:
 
