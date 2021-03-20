@@ -6,7 +6,7 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
 🔵 Medium  
 🔴 Hard  
 ⚫️ Very Hard  
-⭐ Need to review
+⭐ Good to review
 
 ## Questions
 
