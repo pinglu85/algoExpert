@@ -10,7 +10,7 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
 
 ## Questions
 
-1. 🟢 [Two Number Sum](two-number-sum.md)
-2. 🟢 [Validate Subsequence](validate-subsequence.md)
-3. 🔵 [Three Number Sum](three-number-sum.md)
-4. 🟢 [Sorted Squared Array](sorted-squared-array.md)
+1. 🟢 [Two Number Sum](two-number-sum.md) (Hash Table, Two Pointers)
+2. 🟢 [Validate Subsequence](validate-subsequence.md) (Subsequence, Two Pointers)
+3. 🔵 [Three Number Sum](three-number-sum.md) (Two Pointers)
+4. 🟢 [Sorted Squared Array](sorted-squared-array.md) (Linear-time Merging, Two Pointers)
