@@ -4,34 +4,28 @@ Given two arrays, one called `competitions`, which is a 2-dimensional array cont
 
 ### Approach - O(n) time | O(k) space, where n is the number of competitions and k is the number of teams.
 
-I can use a hash table to keep track of each team's points. Iterate through the `competitions` array. At each iteration, get both teams' current points from the hash table, set the points to 0, if either of them is `undefined`, look up the winner of current competition in the `results` array, update both teams' points, store the team as key and its points as value in the hash table. After the loop, iterate through the hash table and find the team that has the most amount of points.
+I can use a hash table to store each team's score. Iterate through the `competitions` array. At each iteration, find the winning team of current competition by looking up the result in the `results` array, update the score of the winning team in the hash table. After we get all teams' scores, iterate through the hash table to find the team that has the best score.
 
 ### Solution
 
 ```js
 function tournamentWinner(competitions, results) {
-  const pointsMap = new Map();
+  const scores = new Map();
 
-  for (let i = 0; i < competitions.length; i++) {
-    const [homeTeam, awayTeam] = competitions[i];
-    let homeTeamPoints = pointsMap.get(homeTeam) || 0;
-    let awayTeamPoints = pointsMap.get(awayTeam) || 0;
-    if (results[i] === 1) {
-      homeTeamPoints += 3;
-    } else {
-      awayTeamPoints += 3;
-    }
-
-    pointsMap.set(homeTeam, homeTeamPoints);
-    pointsMap.set(awayTeam, awayTeamPoints);
+  for (let idx = 0; idx < competitions.length; idx++) {
+    const [homeTeam, awayTeam] = competitions[idx];
+    const result = results[idx];
+    const winningTeam = result === 1 ? homeTeam : awayTeam;
+    const currentScore = scores.get(winningTeam) || 0;
+    scores.set(winningTeam, currentScore + 3);
   }
 
   let maxPoints = 0;
   let winner = '';
-  pointsMap.forEach((value, key) => {
-    if (value > maxPoints) {
-      maxPoints = value;
-      winner = key;
+  scores.forEach((score, team) => {
+    if (score > maxPoints) {
+      maxPoints = score;
+      winner = team;
     }
   });
 
