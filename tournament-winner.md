@@ -38,3 +38,38 @@ function tournamentWinner(competitions, results) {
   return winner;
 }
 ```
+
+### Improved Approach - O(n) time | O(k) space, where n is the number of competitions and k is the number of teams.
+
+Instead of iterating through the hash table to find the winning team, we can keep track of the winning team when traversing the `competitions` array. Use a variable to keep track of the best score and another variable to keep track of the best team. At each iteration, find the winning team of the current competition and update its score, then compare it with current best score, if we get a better score, then update the best score and change the best team to the winning team.
+
+### Improved Solution
+
+```js
+function tournamentWinner(competitions, results) {
+  let currentBestTeam = '';
+  let currentBestScore = 0;
+  const scores = new Map();
+
+  for (let idx = 0; idx < competitions.length; idx++) {
+    const [homeTeam, awayTeam] = competitions[idx];
+    const result = results[idx];
+    const winningTeam = result === 1 ? homeTeam : awayTeam;
+    const updatedScore = updateScores(winningTeam, 3, scores);
+
+    if (updatedScore > currentBestScore) {
+      currentBestScore = updatedScore;
+      currentBestTeam = winningTeam;
+    }
+  }
+
+  return currentBestTeam;
+}
+
+function updateScores(team, points, scores) {
+  const prevScore = scores.get(team) || 0;
+  const newScore = prevScore + points;
+  scores.set(team, newScore);
+  return newScore;
+}
+```
