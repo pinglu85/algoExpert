@@ -75,10 +75,10 @@ Since we know where to find the largest squared value in the input array, we can
 
 1. initialize an empty array to store the squared values. The size of the array is going to be the same as the input array.
 2. initialize two pointers, one called `smallerValueIdx` and other called `largerValueIdx`, point `smallerValueIdx` to first number in the array and `largerValueIdx` to the last number in the array.
-3. initialize a variable that indexes the correct location in the resulting array that we should put the square into. Name the variable `i`. Initially, `i` equals the index of the last element in the array.
-4. Loop until `i` is less than 0, which means all numbers are squared and put into the resulting array.
-   - compare the absolute value of the integer that `smallerValueIdx` points to with the absolute value of the integer that `largerValueIdx` points to, if the value of the smaller number is greater than or equal to the larger number, square the smaller number and place the result into index `i` in the resulting array; increase `smallerValueIdx` by 1, otherwise, square the larger number and put the square into index `i` of the resulting array, decrease `largerValueIdx` by 1.
-   - decrease `i` by 1.
+3. initialize a variable that indexes the correct location in the resulting array that we should put the square into. Name the variable `idx`. Initially, `idx` equals the index of the last element in the array.
+4. Loop until `idx` is less than 0, which means all numbers are squared and put into the resulting array.
+   - compare the absolute value of the integer that `smallerValueIdx` points to with the absolute value of the integer that `largerValueIdx` points to, if the value of the smaller number is greater than or equal to the larger number, square the smaller number and place the result into index `idx` in the resulting array; increase `smallerValueIdx` by 1, otherwise, square the larger number and put the square into index `idx` of the resulting array, decrease `largerValueIdx` by 1.
+   - decrease `idx` by 1.
 
 ### Solution 2
 
@@ -88,14 +88,14 @@ function sortedSquaredArray(array) {
   let smallerValueIdx = 0;
   let largerValueIdx = array.length - 1;
 
-  for (let i = array.length - 1; i >= 0; i--) {
+  for (let idx = array.length - 1; idx >= 0; idx--) {
     const smallerValue = array[smallerValueIdx];
     const largerValue = array[largerValueIdx];
     if (Math.abs(smallerValue) >= Math.abs(largerValue)) {
-      sortedSquares[i] = smallerValue * smallerValue;
+      sortedSquares[idx] = smallerValue * smallerValue;
       smallerValueIdx++;
     } else {
-      sortedSquares[i] = largerValue * largerValue;
+      sortedSquares[idx] = largerValue * largerValue;
       largerValueIdx--;
     }
   }
