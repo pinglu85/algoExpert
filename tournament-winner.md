@@ -26,16 +26,16 @@ function tournamentWinner(competitions, results) {
     scores.set(winningTeam, currentScore + 3);
   }
 
-  let maxPoints = 0;
-  let winner = '';
+  let bestScore = 0;
+  let bestTeam = '';
   scores.forEach((score, team) => {
-    if (score > maxPoints) {
-      maxPoints = score;
-      winner = team;
+    if (score > bestScore) {
+      bestScore = score;
+      bestTeam = team;
     }
   });
 
-  return winner;
+  return bestTeam;
 }
 ```
 
