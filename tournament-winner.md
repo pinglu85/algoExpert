@@ -15,27 +15,32 @@ I can use a hash table to keep track of each team's points, because a hash table
 ### Solution
 
 ```js
+// Store 1 in a constant variable, so we can use the constant variable later
+// rather than having to write 1 in our program. This will make our code a
+// lot more readable.
+const HOME_TEAM_WON = 1;
+
 function tournamentWinner(competitions, results) {
   const scores = new Map();
 
   for (let idx = 0; idx < competitions.length; idx++) {
     const [homeTeam, awayTeam] = competitions[idx];
     const result = results[idx];
-    const winningTeam = result === 1 ? homeTeam : awayTeam;
+    const winningTeam = result === HOME_TEAM_WON ? homeTeam : awayTeam;
     const currentScore = scores.get(winningTeam) || 0;
     scores.set(winningTeam, currentScore + 3);
   }
 
-  let bestScore = 0;
-  let bestTeam = '';
+  let currentBestScore = 0;
+  let currentBestTeam = '';
   scores.forEach((score, team) => {
-    if (score > bestScore) {
-      bestScore = score;
-      bestTeam = team;
+    if (score > currentBestScore) {
+      currentBestScore = score;
+      currentBestTeam = team;
     }
   });
 
-  return bestTeam;
+  return currentBestTeam;
 }
 ```
 
@@ -46,6 +51,8 @@ Instead of iterating through the hash table to find the team that has the most n
 ### Improved Solution
 
 ```js
+const HOME_TEAM_WON = 1;
+
 function tournamentWinner(competitions, results) {
   let currentBestTeam = '';
   let currentBestScore = 0;
@@ -54,7 +61,7 @@ function tournamentWinner(competitions, results) {
   for (let idx = 0; idx < competitions.length; idx++) {
     const [homeTeam, awayTeam] = competitions[idx];
     const result = results[idx];
-    const winningTeam = result === 1 ? homeTeam : awayTeam;
+    const winningTeam = result === HOME_TEAM_WON ? homeTeam : awayTeam;
     const updatedScore = updateScores(winningTeam, 3, scores);
 
     if (updatedScore > currentBestScore) {
