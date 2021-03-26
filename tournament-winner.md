@@ -62,7 +62,7 @@ function tournamentWinner(competitions, results) {
     const [homeTeam, awayTeam] = competitions[idx];
     const result = results[idx];
     const winningTeam = result === HOME_TEAM_WON ? homeTeam : awayTeam;
-    const updatedScore = updateScores(winningTeam, 3, scores);
+    const updatedScore = updateScore(winningTeam, 3, scores);
 
     if (updatedScore > currentBestScore) {
       currentBestScore = updatedScore;
@@ -73,7 +73,7 @@ function tournamentWinner(competitions, results) {
   return currentBestTeam;
 }
 
-function updateScores(team, points, scores) {
+function updateScore(team, points, scores) {
   const prevScore = scores.get(team) || 0;
   const newScore = prevScore + points;
   scores.set(team, newScore);
