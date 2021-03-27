@@ -46,7 +46,7 @@ function tournamentWinner(competitions, results) {
 
 ### Improved Approach - O(n) time | O(k) space, where n is the number of competitions and k is the number of teams.
 
-Instead of iterating through the hash table to find the team that has the most number of points, I can keep track of the best team and the best score while traversing the `competitions` array.
+I can solve the problem in one loop. Instead of iterating through the hash table to find the team that has the most number of points, I can keep track of the best team and the best score while traversing the `competitions` array.
 
 ### Improved Solution
 
