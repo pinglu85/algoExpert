@@ -138,7 +138,15 @@ The change we can make are `1`, `2`, `4`, `5`. We cannot make `3`, because the n
 
 We can arrive at the following conclusion:
 
-Imagine we have a set of coin called `U`. In this set we have now one coin and its value is 1: `U = {1}`. Imagine we have another value called `C`, representing the change we can create with our coins: `C = 1`. We have also `V` which represents the new coin we add to our set. If `V > C + 1`, we cannot make `C + 1` change, if `V <= C + 1`, we can make from `C` to `C + V` change, and the minimum amount of change we cannot create is `C + V + 1`.
+Imagine we have a set of coin called `U`. In this set we have now one coin and its value is 1: `U = {1}`. Imagine we have another value called `C`, representing the change we can create with our coins: `C = 1`. We have also `V` which represents the new coin we add to our set. If `V > C + 1`, we cannot make `C + 1` change; if `V <= C + 1`, we can make from `C` to `C + V` change, and the minimum amount of change we cannot create is `C + V + 1`.
+
+So to solve the problem, what we need to do is:
+
+- Sort the input array in ascending order,
+- Use a variable to keep track of the current change we create. Initiate it to 0.
+- Iterate through every integer in the sorted array.
+  - For every integer, compare it to the current change, if it is greater than the current change, we found the minimum amount of change we cannot make, which is current change we make plus 1, return the result; otherwise, add the integer to the current change.
+- If we get out of the loop without returning the result, return current change we make plus 1.
 
 ### Optimal Solution
 
