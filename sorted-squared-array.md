@@ -2,7 +2,7 @@
 
 Given an array of integers that are sorted in increasing order, write a function that squares all the integers in the array and returns them in a new array, also sorted in increasing order.
 
-### Approach 1 - O(n) time | O(n) space
+### Approach - O(n) time | O(n) space
 
 At first glance, I think all I need to do is traverse the input array element by element, square each value and then return the resulting array, or I can use the `.map()` method, which returns a new array populated with the results of calling a provided function on every element in the calling array. But this approach only works for positive numbers, because when we square negative numbers, we get a positive result, if we add them directly to the resulting array, the array is no longer sorted. I can sort the resulting array, then the solution is gonna run an O(nlog(n)) time. Instead of sorting, I can initialize two arrays, one storing the squares of non-negative integers, other storing the squares of negative numbers. At each iteration, if the integer is negative, push the square into the negative array, otherwise push the square into the positive array. After squaring all the integers, I need to merge the two sorted arrays into one sorted array:
 
@@ -11,7 +11,7 @@ At first glance, I think all I need to do is traverse the input array element by
 3. Iterate until both pointers out of bound. At each iteration, compare the values the two pointers point to, push the smaller one into the resulting array, if it is from the non-negative array, increase the corresponding pointer, otherwise, decrease the corresponding pointer.
 4. After the loop, if the pointer for non-negative array is not equal to the length of the array, push the remaining integers into the resulting array; if the pointer for negative array is not less than 0, push the remaining integers into the resulting array.
 
-### Solution 1
+### Solution
 
 ```js
 function sortedSquaredArray(array) {
@@ -59,7 +59,7 @@ function sortedSquaredArray(array) {
 }
 ```
 
-### Approach 2 - O(n) time | O(n) space (based on the video explanation of AlgoExpert)
+### Improved Approach - O(n) time | O(n) space (based on the video explanation of AlgoExpert)
 
 Consider we have the input array `[-4, -2, 0, 1, 3]`, after being squared, we got `[16, 4, 0, 1, 9]`, we can realize the smallest possible squared value which could be end up in the output array is `0`. The farther the value is away from 0, regardless of whether it is positive or negative, the larger the squared value will become. And the closer the value is to 0, the smaller the squared value.
 The number line below illustrates this.
@@ -80,7 +80,7 @@ Since we know where to find the largest squared value in the input array, we can
    - compare the absolute value of the integer that `smallerValueIdx` points to with the absolute value of the integer that `largerValueIdx` points to, if the value of the smaller number is greater than or equal to the larger number, square the smaller number and place the result into index `idx` in the resulting array; increase `smallerValueIdx` by 1, otherwise, square the larger number and put the square into index `idx` of the resulting array, decrease `largerValueIdx` by 1.
    - decrease `idx` by 1.
 
-### Solution 2
+### Improved Solution
 
 ```js
 function sortedSquaredArray(array) {
