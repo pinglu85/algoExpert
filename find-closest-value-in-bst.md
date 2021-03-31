@@ -21,7 +21,7 @@ The closest value to the target value in the BST is 13. That means, we return th
 
 Use a variable to keep track of the current node; initialize it to be the root of the BST. I also need a variable to keep track of which node's value is the closest value so far; initialize it to 0, and another variable to keep track of the smallest difference I've currently seen, that is the absolute difference of the current closest value and the target value; initialize it to `Infinity`.
 
-Calculate the absolute difference of the current node's value and the target value, compare the result to the current smallest difference, if we get to a smaller difference, set the node's value as the current closest value. Compare the target value to the current node's value, if the target value is less than the current node's value, move on to the left child, if it is greater than or equal to the value, move on to the right child. Keep updating the current node until the bottom of the tree is reached. Then return the current closest value.
+Calculate the absolute difference of the current node's value and the target value, compare the result to the current smallest difference, if we get to a smaller difference, set the node's value as the current closest value. Compare the target value to the current node's value, if the target value is less than the current node's value, move on to the left child; if it is greater than the value, move on to the right child; otherwise return the closest value, since the current node's value and the target value are equal to each other, which means we cannot find any value that is closer to the target value than this value. Keep updating the current node until the bottom of the tree is reached. Then return the current closest value.
 
 ### Solution
 
@@ -41,8 +41,10 @@ function findClosestValueInBst(tree, target) {
 
     if (target < currentValue) {
       currentNode = currentNode.left;
-    } else {
+    } else if (target > currentValue) {
       currentNode = currentNode.right;
+    } else {
+      break;
     }
   }
 
