@@ -17,7 +17,7 @@ target = 12
 
 The closest value to the target value in the BST is 13. That means, we return the first value we found that is the closest value to the target value.
 
-### Approach - O(log(n)) time | O(1) space
+### Approach - Average: O(log(n)) time | O(1) space; Worse O(n) time | O(1) space
 
 Use a variable to keep track of the current node; initialize it to be the root of the BST. I also need a variable to keep track of which node's value is the closest value so far; initialize it to 0, and another variable to keep track of the smallest difference I've currently seen, that is the absolute difference of the current closest value and the target value; initialize it to `Infinity`.
 
