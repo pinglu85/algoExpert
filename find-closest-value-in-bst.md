@@ -60,3 +60,48 @@ class BST {
   }
 }
 ```
+
+### Recursive Solution - Average: O(log(n)) time | O(log(n)) space; Worst: O(n) time | O(n) space
+
+```js
+function findClosestValueInBst(tree, target) {
+  return findClosestValueInBstImpl(tree, target, 0, Infinity);
+}
+
+function findClosestValueInBstImpl(
+  tree,
+  target,
+  closestValue,
+  smallestDifference
+) {
+  if (tree === null) return closestValue;
+
+  const currentValue = tree.value;
+  const currentDifference = Math.abs(currentValue - target);
+  if (currentDifference < smallestDifference) {
+    closestValue = currentValue;
+    smallestDifference = currentDifference;
+  }
+
+  if (target === currentValue) {
+    return closestValue;
+  }
+
+  const nextNode = target < currentValue ? tree.left : tree.right;
+  return findClosestValueInBstImpl(
+    nextNode,
+    target,
+    closestValue,
+    smallestDifference
+  );
+}
+
+// This is the class of the input tree. Do not edit.
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+```
