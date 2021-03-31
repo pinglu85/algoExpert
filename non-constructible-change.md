@@ -36,7 +36,7 @@ function nonConstructibleChange(coins) {
 }
 ```
 
-### Optimal Approach - O(nlogn) time | O(1) space (based on the video explanation of AlgoExpert)
+### Optimal Approach - O(nlog(n)) time | O(1) space (based on the video explanation of AlgoExpert)
 
 If you don't know how to solve a array problem, the first thing you usually can do is sort the input array. The sample input is `[5, 7, 1, 1, 2, 3, 22]`. After sorting it, we get `[1, 1, 2, 3, 5, 7, 22]`. Let's walk through the sorted array and try to solve the problem.
 
