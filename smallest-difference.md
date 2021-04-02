@@ -24,13 +24,13 @@ function smallestDifference(arrayOne, arrayTwo) {
   let smallestDiff = Infinity;
   const smallestPair = [];
 
-  for (const numOne of arrayOne) {
-    for (const numTwo of arrayTwo) {
-      const currentDiff = Math.abs(numOne - numTwo);
+  for (const firstNum of arrayOne) {
+    for (const secondNum of arrayTwo) {
+      const currentDiff = Math.abs(firstNum - secondNum);
       if (currentDiff < smallestDiff) {
         smallestDiff = currentDiff;
-        smallestPair[0] = numOne;
-        smallestPair[1] = numTwo;
+        smallestPair[0] = firstNum;
+        smallestPair[1] = secondNum;
       }
     }
   }
@@ -66,19 +66,19 @@ function smallestDifference(arrayOne, arrayTwo) {
   let smallestDiff = Infinity;
   const smallestPair = [];
 
-  for (const num1 of arrayOne) {
-    const [numBefore, numAfter] = findNumBeforeAndAfter(arrayTwo, num1);
-    let currentDiff = Math.abs(num1 - numBefore);
+  for (const firstNum of arrayOne) {
+    const [numBefore, numAfter] = findNumBeforeAndAfter(arrayTwo, firstNum);
+    let currentDiff = Math.abs(firstNum - numBefore);
     if (currentDiff < smallestDiff) {
       smallestDiff = currentDiff;
-      smallestPair[0] = num1;
+      smallestPair[0] = firstNum;
       smallestPair[1] = numBefore;
     }
 
-    currentDiff = Math.abs(num1 - numAfter);
+    currentDiff = Math.abs(firstNum - numAfter);
     if (currentDiff < smallestDiff) {
       smallestDiff = currentDiff;
-      smallestPair[0] = num1;
+      smallestPair[0] = firstNum;
       smallestPair[1] = numAfter;
     }
 
