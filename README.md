@@ -29,3 +29,5 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
    **Category**: Arrays
 7. 🟢 [Find Closest Value In BST](find-closest-value-in-bst.md)  
    **Category**: Binary Search Trees
+8. 🟢 [Smallest Difference](smallest-difference.md)  
+   **Category**: Array
