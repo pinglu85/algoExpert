@@ -1,6 +1,6 @@
 ### Understanding the problem
 
-I am given two arrays of integers. I am asked to write a function that finds two numbers, one from each array, whose absolute difference is closest to zero, and returns them in an array where the number from the first array comes first.
+Given two arrays of integers, I am asked to write a function that finds two numbers, one from each array, whose absolute difference is closest to zero, and returns them in an array where the number from the first array comes first.
 
 For example,
 

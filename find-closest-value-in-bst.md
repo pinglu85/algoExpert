@@ -1,6 +1,6 @@
 ### Understanding the problem
 
-I will be given a Binary Search Tree and a target integer value. I am asked to write a function that returns the closest value to that target value that's contained in the BST. There will be only one closest value.
+Given a Binary Search Tree and a target integer value, I am asked to write a function that returns the closest value to that target value that's contained in the BST. There will be only one closest value.
 
 For example,
 
