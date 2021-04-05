@@ -1,6 +1,6 @@
 ### Understanding the problem
 
-Given two arrays of integers, I am asked to write a function that finds two numbers, one from each array, whose absolute difference is closest to zero, and returns them in an array where the number from the first array comes first.
+Given two arrays of integers, I am asked to write a function that finds two numbers, where one number comes from the first array and another number comes from the second array, with smallest absolute difference, and returns them in an array. In the resulting array, the number from the first array should come first.
 
 For example,
 
@@ -9,7 +9,7 @@ arrayOne = [-1, 5, 10, 20, 28, 3];
 arrayTwo = [26, 134, 135, 15, 17];
 ```
 
-The output should be `[28, 26]`.
+The output is `[28, 26]`.
 
 ### Approach 1 - O(n\*m) time | O(1) space, where n is the length of the first input array, and m is the length of the second input array.
 
@@ -46,14 +46,14 @@ function smallestDifference(arrayOne, arrayTwo) {
 - sort the second input array.
 - iterate through every number in the first array. For each number, use binary search to find the correct position in the sorted array that the number should be put into, compute the absolute difference between that number and the number in the sorted array that should be before it, and the absolute difference between that number and the number in the sorted array that should be after it.
 
-For instance,
+Suppose we have the following two arrays:
 
 ```js
 arrayOne = [20, -1, 5, 10, 28, 3];
 sortedArrayTwo = [15, 17, 26, 134, 135];
 ```
 
-I am now at index 0 in the `arrayOne`, that is `20`. `20` should be inserted between `17` and `26` in the `sortedArrayTwo`. The absolute difference between `20` and `17` is `3`, which means the difference between `20` and every number before `17` in the `sortedArrayTwo` is gonna larger than `3`, since every number before `17` is smaller than `17` and that means they are farther away from `20` than `17`, so for `20` there is no need to visit them. The absolute difference between `20` and `26` is `6`, which means every number after `26` is farther away from `20` than `26`, so for `20` we can eliminate them.
+We are now at index 0 in the `arrayOne`, that is `20`. `20` should be inserted between `17` and `26` in the `sortedArrayTwo`. The absolute difference between `20` and `17` is `3`, which means the difference between `20` and every number before `17` in the `sortedArrayTwo` is going to be larger than `3`, since every number before `17` is smaller than `17` and that means they are farther away from `20` than `17`, so for `20` there is no need to visit them. The absolute difference between `20` and `26` is `6`, which means every number after `26` is farther away from `20` than `26`, so for `20` we can eliminate them.
 
 Compare the two absolute differences to the current smallest difference; if one of the absolute differences is smaller than the current smallest difference, set it as the current smallest difference and replace the previous pair in the array with the current pair. In addition, if one of the absolute difference is equal to 0, return the current pair.
 
@@ -118,7 +118,7 @@ function findNumBeforeAndAfter(array, target) {
 
 ### Best Approach - O(nlog(n) + m(log(m))) time | O(1) space, where n is the length of the first input array, and m is the length of the second input array.
 
-Consider I am given the following two arrays:
+Suppose we want to find the pair of numbers from the following two arrays:
 
 ```js
 arrayOne = [-1, 5, 10, 20, 28, 3];
@@ -140,9 +140,9 @@ arrayOne:  -1   3   5   10          20      28
 arrayTwo:                  15  17      26     134  135
 ```
 
-It can be noticed that for each number in the range of `-1` to `10` in `arrayOne`, I only need to compute the absolute difference between the number and `15`, because they are all smaller than `15`, and every number in `arrayTwo` that is after `15` is larger than `15`, which means they are all farther away from `10` than `15`. For `15` and `17` in `arrayTwo`, I only need to compute the absolute difference between `15` and `20` and the absolute difference between `17` and `20`.
+It can be noticed that for each number in the range of `-1` to `10` in `arrayOne`, we only need to compute the absolute difference between the number and `15`, because they are all smaller than `15`, and every number in `arrayTwo` that is after `15` is larger than `15`, which means they are all farther away from `10` than `15`. For `15` and `17` in `arrayTwo`, we only need to compute the absolute difference between `15` and `20` and the absolute difference between `17` and `20`.
 
-Based on the above observation, I can come up with the following solution:
+Based on the above observation, we can come up with the following solution:
 
 - sort both arrays.
 - initialize a variable that is going to keep track of the smallest absolute difference so far and initialize an empty array to store the current pair.
