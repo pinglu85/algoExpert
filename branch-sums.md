@@ -1,6 +1,6 @@
 ### Understanding the problem
 
-Given a Binary Tree, I am asked to write a function that computes all of the branch sums of the tree and returns them in an array ordered from leftmost branch sum to rightmost branch sum. In a tree, a branch is a path between the root node of the tree and any leaf node. A branch sum means the sum of all values in a branch.
+Given a Binary Tree, I am asked to write a function that computes all of the branch sums of the tree and returns them in an array ordered from leftmost branch sum to rightmost branch sum. In a tree, a branch is a path that starts at the root node and ends at one of the leaf nodes. A branch sum means the sum of all values in a branch.
 
 Sample Input:
 
@@ -93,7 +93,7 @@ Instead of using a stack to keep track of the next node that need to be visited 
   - recursively call the helper function passing in the right child of the node, updated current branch sum and the array that stores the result.
 - when I get out of the helper function, return the resulting array.
 
-**Note**: Although each recursive call to the helper function adds a new frame on the call stack, we didn't create any new array in each recursive call to store the result. Therefore we will use O(d) space, where `d` is the height of the Binary Tree, or the number of nodes in the Binary Tree.
+**Note regarding the space complexity**: Each recursive call to the helper function adds a new frame on the call stack. On average we will never have more than log(n) recursive calls on the call stack, since we eliminate half the nodes in the remaining tree at each recursive call. In the worst case, when we are dealing with a very imbalanced binary tree, we would have O(n) space from the recursive calls, since we have n recursive calls on the call stack at once. Besides the space from the recursive calls, we also return an array of branch sums. The size of the array is same as the number of branches in the Binary Tree, which is the number of leaf nodes in the Binary Tree. There are roughly half of n leaf nodes in the Binary Tree and half of n is equal to O(n) in the space time complexity analysis.
 
 ### Recursive Solution
 
