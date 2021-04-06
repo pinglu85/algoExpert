@@ -32,3 +32,5 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
 8. 🔵 ⭐ [Smallest Difference](smallest-difference.md)  
    **Category**: Array
    **Approach**: Two Pointers
+9. 🟢 [Branch Sums](branch-sums.md)
+   **Category**: Binary Trees
