@@ -79,3 +79,50 @@ function branchSums(root) {
   return sums;
 }
 ```
+
+### Approach with recursive DFS - O(n) time | O(n) space, where n is the number of nodes in the Binary Tree.
+
+Instead of using a stack to keep track of the next node that need to be visited and the current branch sum, use the call stack to track these info.
+
+- initialize an empty array to store the branch sums.
+- write a helper function that will be recursively invoked. The function takes in three arguments. The first argument is the node needs to be visited; the second argument is the current branch sum; and the last argument is the array that stores the result. When it gets called for the first time, the node to be visited is the root node of the tree and the current branch sum is 0. In the helper function:
+  - check if the node to be visited is null. If it is, return.
+  - calculate the new current branch sum by adding the value of the node to the current branch sum.
+  - if the node doesn't have any children, push the sum into the array that stores the result.
+  - recursively call the helper function passing in the left child of the node, updated current branch sum and the array that stores the result.
+  - recursively call the helper function passing in the right child of the node, updated current branch sum and the array that stores the result.
+- when I get out of the helper function, return the resulting array.
+
+**Note**: Although each recursive call to the helper function adds a new frame on the call stack, we didn't create any new array in each recursive call to store the result. Therefore we will use O(d) space, where `d` is the height of the Binary Tree, or the number of nodes in the Binary Tree.
+
+### Recursive Solution
+
+```js
+// This is the class of the input root.
+// Do not edit it.
+class BinaryTree {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function branchSums(root) {
+  const sums = [];
+  calculateBranchSums(root, 0, sums);
+  return sums;
+}
+
+function calculateBranchSums(node, branchSum, sums) {
+  if (!node) return;
+
+  const newBranchSum = branchSum + node.value;
+  if (!node.left && !node.right) {
+    sums.push(newBranchSum);
+  }
+
+  calculateBranchSums(node.left, newBranchSum, sums);
+  calculateBranchSums(node.right, newBranchSum, sums);
+}
+```
