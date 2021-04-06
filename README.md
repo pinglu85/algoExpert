@@ -34,3 +34,4 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
    **Approach**: Two Pointers
 9. 🟢 [Branch Sums](branch-sums.md)
    **Category**: Binary Trees
+   **Approach**: Depth-First Search

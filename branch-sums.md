@@ -20,11 +20,11 @@ The output should be:
 [15, 16, 8, 10, 11]
 ```
 
-### Approach - O(n) time | O(n) space, where n is the number of nodes in the Binary Tree.
+### Approach with iterative DFS - O(n) time | O(n) space, where n is the number of nodes in the Binary Tree.
 
 Create an empty array to store the branch sums. Use Depth-First Search to traverse the binary tree. For each node, compute the sum of the values between the root node and the current node and store the result to the current node. If a node is a leaf node, compute the sum and add it to the resulting array.
 
-DFS can be implemented using iterative approach or recursive approach. I am going to favor the iterative version, because every recursive call to a function adds a new frame on the call stack, which means we are using extra memory. The iterative DFS use a stack to keep track of next nodes we need to explore. A stack is typically implemented with a dynamic array or a singly linked list. Since arrays in JavaScript are dynamic, that means ending or removing an element at the end of an array is amortized constant time, I can use an array as the stack.
+DFS can be implemented using iterative approach or recursive approach. Here I will implement it iteratively. The iterative DFS use a stack to keep track of next nodes we need to explore. A stack is typically implemented with a dynamic array or a singly linked list. Since arrays in JavaScript are dynamic, that means ending or removing an element at the end of an array is amortized constant time, I will use an array as the stack.
 
 - initialize an empty array to store the branch sums.
 - initialize an empty array as a stack to keep track of the next nodes I need to visit. Add an array to the stack, where the first element is the root node, and the second element is current branch sum, which is the value of the root node.
@@ -37,7 +37,7 @@ DFS can be implemented using iterative approach or recursive approach. I am goin
 
 - returns the resulting array.
 
-### Solution
+### Iterative Solution
 
 ```js
 // This is the class of the input root.
