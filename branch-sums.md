@@ -22,7 +22,7 @@ The output should be:
 
 ### Approach with iterative DFS - O(n) time | O(n) space, where n is the number of nodes in the Binary Tree.
 
-Create an empty array to store the branch sums. Use Depth-First Search to traverse the binary tree. For each node, add the node value to the sum of the values above the node and store the result and the current node in a data structure to keep track of the running sum, so that when I visit a new node, I can get the sum of the nodes above the new node. If a node is a leaf node, append the updated running sum to the branch sums array.
+Create an empty array to store the branch sums. Use Depth-First Search to traverse the binary tree. For each node, add its value to the sum of all nodes above it, store the result and the node in a data structure, so that I can keep track of the running sum, which means when I visit a new node, I can retrieve the sum of all nodes above the new node. If a node is a leaf node, append the updated running sum to the branch sums array.
 
 DFS can be implemented using iterative approach or recursive approach. Here I will implement it iteratively. The iterative DFS use a stack to keep track of next nodes we need to explore. A stack is typically implemented with a dynamic array or a singly linked list. Since arrays in JavaScript are dynamic, that means ending or removing an element at the end of an array is amortized constant time, I will use an array as the stack.
 
