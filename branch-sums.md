@@ -24,15 +24,15 @@ The output should be:
 
 Create an empty array to store the branch sums. Use Depth-First Search to traverse the binary tree. For each node, add its value to the sum of all nodes above it, store the result and the node in a data structure, so that I can keep track of the running sum, which means when I visit a new node, I can retrieve the sum of all nodes above the new node. If a node is a leaf node, append the updated running sum to the branch sums array.
 
-DFS can be implemented using iterative approach or recursive approach. Here I will implement it iteratively. The iterative DFS use a stack to keep track of next nodes we need to explore. A stack is typically implemented with a dynamic array or a singly linked list. Since arrays in JavaScript are dynamic, that means ending or removing an element at the end of an array is amortized constant time, I will use an array as the stack.
+DFS can be implemented using iterative approach or recursive approach. Here I will implement it iteratively. The iterative DFS use a stack to keep track of next nodes need to be visited. A stack is typically implemented with a dynamic array or a singly linked list. Since arrays in JavaScript are dynamic, that means ending or removing an element at the end of an array is amortized constant time, I will use an array as the stack.
 
 - initialize an empty array to store the branch sums.
-- initialize an empty array as a stack to keep track of the next nodes I need to visit and the running sum till that node. The stack is going to be a 2-d array; each sub-array contains the node to be visited and the running sum. Initially, the stack has only one sub-array, which contains the root node and the running sum till the root node that is the value of the root node.
+- initialize an empty array as a stack to keep track of the next nodes I need to visit and the running sum till that node. The stack is going to be an array of objects; each object stores the node to be visited and the running sum. Initially, the stack has only one object, which contains the root node and the running sum till the root node that is the value of the root node.
 - loop until the stack is empty
 
-  - pop an element from the stack. Use array destructuring to get the node and the running sum till that node.
+  - pop an element from the stack. Get the node and the running sum till that node.
   - If the node has zero child nodes, append the running sum to the branch sums array and continue the loop.
-  - If the node has child nodes. For each child node, adds its value to the running sum to get the new running sum, store the child node and the new running sum in an array and append the array to the stack. Because of how stack works, if I first append the left child node to the stack, then at next iteration, I will visit the right child node first. Since the branch sums should be ordered from leftmost branch sum to rightmost branch sum, I need to append the right child node first.
+  - Otherwise, for each child node, calculate the the new running sum by adding the value at that child node to the running sum, store the child node and the new running sum in an object and append the object to the stack. Because of how stack works, if I first append the left child node to the stack, then at next iteration, I will visit the right child node first. Since the branch sums should be ordered from leftmost branch sum to rightmost branch sum, I need to append the right child node first.
 
 - returns the branch sums array.
 
@@ -51,11 +51,10 @@ class BinaryTree {
 
 function branchSums(root) {
   const sums = [];
-  const stack = [];
-  stack.push([root, root.value]);
+  const stack = [{ node: root, runningSum: root.value }];
 
   while (stack.length > 0) {
-    const [node, runningSum] = stack.pop();
+    const { node, runningSum } = stack.pop();
 
     if (!node.left && !node.right) {
       sums.push(runningSum);
@@ -65,11 +64,11 @@ function branchSums(root) {
     let newRunningSum;
     if (node.right) {
       newRunningSum = runningSum + node.right.value;
-      stack.push([node.right, newRunningSum]);
+      stack.push({ node: node.right, runningSum: newRunningSum });
     }
     if (node.left) {
       newRunningSum = runningSum + node.left.value;
-      stack.push([node.left, newRunningSum]);
+      stack.push({ node: node.left, runningSum: newRunningSum });
     }
   }
 
