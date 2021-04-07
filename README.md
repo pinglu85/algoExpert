@@ -35,3 +35,5 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
 9. 🟢 [Branch Sums](branch-sums.md)
    **Category**: Binary Trees
    **Approach**: Depth-First Search
+10. 🟢 [Node Depths](node-depths.md)
+    **Category**: Binary Trees
