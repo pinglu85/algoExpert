@@ -63,7 +63,7 @@ class BST {
 
 ### Recursive Solution - Average: O(log(n)) time | O(log(n)) space; Worst: O(n) time | O(n) space
 
-**Note**: The space complexity is on average O(log(n)) and the worst O(n), because each recursive call to `findClosestValueInBst` adds a new frame on the call stack, which means we are using extra memory. In other words, we'll be using O(d) memory, where `d` is the depth of the tree or the height of the tree.
+**Note**: The space complexity is on average O(log(n)) and the worst O(n), because each recursive call to `findClosestValueInBst` adds a new frame on the call stack, which means we are using extra memory. In other words, we'll be using O(h) memory, where `h` is the height of the tree.
 
 ```js
 function findClosestValueInBst(tree, target) {
