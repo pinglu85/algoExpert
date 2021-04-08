@@ -97,3 +97,48 @@ class BinaryTree {
   }
 }
 ```
+
+### Iterative Approach - Average: O(n) time | O(h) space, Worst(imbalanced Binary Tree): O(n) time | O(n) space, where n is the number of nodes in the Binary Tree and h is the height of the Binary Tree.
+
+- Create a variable that is going to keep track of the sum of the depths. Initially, set it to 0.
+- Initialize an empty array that will be used as stack to keep track of the next node needs to be visited and its depth. Each node that needs to be visited and its depth is going to be stored in an object. So the stack is going to be an array of objects.
+- Create an object that contains the root node and its depth which is 0; append it to the stack.
+- Loop until the stack is empty.
+  - Pop a node from the stack.
+  - Add its depth to the sum of the depths.
+  - If it has child nodes, for each node, store the child node and its depth, which is the depth of the parent node plus 1, to an object; add the object to the stack.
+- return the sum of depths.
+
+### Iterative Solution
+
+```js
+function nodeDepths(root) {
+  let sumOfDepths = 0;
+  const stack = [{ node: root, depth: 0 }];
+
+  while (stack.length > 0) {
+    const { node, depth } = stack.pop();
+
+    sumOfDepths += depth;
+
+    if (node.left !== null) {
+      stack.push({ node: node.left, depth: depth + 1 });
+    }
+
+    if (node.right !== null) {
+      stack.push({ node: node.right, depth: depth + 1 });
+    }
+  }
+
+  return sumOfDepths;
+}
+
+// This is the class of the input binary tree.
+class BinaryTree {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+```
