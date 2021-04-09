@@ -37,3 +37,6 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
    **Approach**: Depth-First Search
 10. 🟢 [Node Depths](node-depths.md)
     **Category**: Binary Trees
+    **Approach**: Depth-First Search
+11. 🟢 [Depth-first Search](depth-first-search.md)
+    **Category**: Graph
