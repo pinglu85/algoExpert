@@ -40,3 +40,5 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
     **Approach**: Depth-First Search
 11. 🟢 [Depth-first Search](depth-first-search.md)
     **Category**: Graph
+12. 🟢 [Minimum Waiting Time](minimum-waiting-time.md)
+    **Category**: Array
