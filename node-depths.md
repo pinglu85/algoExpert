@@ -110,7 +110,7 @@ class BinaryTree {
 - Initialize an empty array that will be used as stack to keep track of the next node needs to be visited and its depth. Each node that needs to be visited and its depth is going to be stored in an object. So the stack is going to be an array of objects.
 - Create an object that contains the root node and its depth which is 0; append it to the stack.
 - Loop until the stack is empty.
-  - Pop a node from the stack.
+  - Pop a node off the stack.
   - Add its depth to the sum of the depths.
   - If it has child nodes, for each node, store the child node and its depth, which is the depth of the parent node plus 1, to an object; add the object to the stack.
 - return the sum of depths.

@@ -30,7 +30,7 @@ DFS can be implemented using iterative approach or recursive approach. Here I wi
 - Initialize an empty array as a stack to keep track of the next nodes I need to visit and the running sum till that node. The stack is going to be an array of objects; each object stores the node to be visited and the running sum. Initially, the stack has only one object, which contains the root node and the running sum till the root node that is the value of the root node.
 - Loop until the stack is empty
 
-  - Pop an element from the stack. Get the node and the running sum till that node.
+  - Pop an element off the stack. Get the node and the running sum till that node.
   - If the node has zero child nodes, append the running sum to the branch sums array and continue the loop.
   - Otherwise, for each child node, calculate the the new running sum by adding the value at that child node to the running sum, store the child node and the new running sum in an object and append the object to the stack. Because of how stack works, if I first append the left child node to the stack, then at next iteration, I will visit the right child node first. Since the branch sums should be ordered from leftmost branch sum to rightmost branch sum, I need to append the right child node first.
 
