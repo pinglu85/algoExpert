@@ -22,7 +22,7 @@ I can traverse the tree either iteratively or recursively. I will traverse the B
 
 I would define a new function that would be the actual recursive function. The recursive function is going to be called on each node starting from the root node. It would calculate the depth of each node and add the depth to the running sum of depths. Since the recursive function needs to update the running sum of depths, and the data type `Number` in JavaScript is not a reference type, meaning when I pass the running sum of depths to another function, it will create a copy of the variable und update that copy instead of the original one, I need to make the running sum of depths accessible to the recursive function without passing it around. So to do that, the recursive function will be defined within the main function.
 
-The recursive function is going to receive two parameters: the first parameter is the node to be visited and the second parameter is its depth. Initially, the node is the root node and the depth is 0, because the distance between the root node and itself is 0. At each node, add the depth of the current node to the running sum of depths and check if the node has any children. If the node does have children, add 1 to the depth and that would be the depth of the child nodes, then call the recursive function passing in the child node and the depth of the child node. If the node to be visited is `null`, return; this is going to be the base case of the recursive function. When I get out of the recursive function, return the sum of depths in the main function.
+The recursive function is going to receive two parameters: the first parameter is the node to be visited and the second parameter is its depth. Initially, the node is the root node and the depth is 0, because the distance between the root node and itself is 0. At each node, add the depth of the current node to the running sum of depths and check if the node has any children. If the node does have children, add 1 to the depth and that would be the depth of the children nodes, then call the recursive function passing in the child node and the depth of the child node. If the node to be visited is `null`, return; this is going to be the base case of the recursive function. When I get out of the recursive function, return the sum of depths in the main function.
 
 ### Recursive Solution 1
 
@@ -112,7 +112,7 @@ class BinaryTree {
 - Loop until the stack is empty.
   - Pop a node off the stack.
   - Add its depth to the running sum of the depths.
-  - If it has child nodes, for each node, store the child node and its depth, which is the depth of the parent node plus 1, to an object; add the object to the stack.
+  - If it has children nodes, for each node, store the child node and its depth, which is the depth of the parent node plus 1, to an object; add the object to the stack.
 - return the sum of depths.
 
 ### Iterative Solution

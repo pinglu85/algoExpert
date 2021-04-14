@@ -31,7 +31,7 @@ DFS can be implemented using iterative approach or recursive approach. Here I wi
 - Loop until the stack is empty
 
   - Pop an element off the stack. Get the node and the running sum till that node.
-  - If the node has zero child nodes, append the running sum to the branch sums array and continue the loop.
+  - If the node has zero children nodes, append the running sum to the branch sums array and continue the loop.
   - Otherwise, for each child node, calculate the the new running sum by adding the value at that child node to the running sum, store the child node and the new running sum in an object and append the object to the stack. Because of how stack works, if I first append the left child node to the stack, then at next iteration, I will visit the right child node first. Since the branch sums should be ordered from leftmost branch sum to rightmost branch sum, I need to append the right child node first.
 
 - Return the branch sums array.
