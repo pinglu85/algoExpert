@@ -1,6 +1,6 @@
 ### Understanding the problem
 
-I am given a `Node` class which has a `name` and an array of `children` nodes, which might be empty. Nodes are going to form an acyclic tree-like graph. I am asked to write a `depthFirstSearch` method on the `Node` class. The method accepts an empty array as argument, and it is going to traverse the graph with depth-first search, store all the names of the nodes in the input array in DFS traversed order and return the input array. The nodes should be visited from left to right.
+I am given an acyclic tree-like graph. Each node in this graph is going to be an instance of a `Node` class. Each node is going to have a name and optionally have some children nodes. I am asked to write a `depthFirstSearch` method on the `Node` class, that is going to performs a depth-first search on the graph. The method is going to accept an empty array as argument. As it traverses the graph, it is going to get the names of all nodes, put them in the input array and return that array. The nodes should be visited from left to right.
 
 ### Recursive Approach - O(v+e) time | O(v) space, where v is the number of nodes(vertices) in the input graph and e is the number of edges in the input graph.
 
