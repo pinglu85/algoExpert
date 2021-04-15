@@ -89,7 +89,9 @@ Instead of using a stack to keep track of the next node that needs to be visited
   - Recursively call the helper function passing in the right child of the node, the new running sum and the branch sums array.
 - When I get out of the helper function, return the branch sums array as part of the main function.
 
-**Note regarding the space complexity**: Each recursive call to the helper function adds a new frame on the call stack. On average we will never have more than log(n) recursive calls on the call stack, since we eliminate half the nodes in the remaining tree at each recursive call. In the worst case, when we are dealing with a very imbalanced binary tree, we would have O(n) space from the recursive calls, since we have n recursive calls on the call stack at once. Besides the space from the recursive calls, we also return an array of branch sums. The size of the array is same as the number of branches in the Binary Tree, which is the number of leaf nodes in the Binary Tree. There are roughly half of n leaf nodes in the Binary Tree and half of n is equal to O(n) in the space time complexity analysis.
+**Note regarding the space complexity**
+
+Each recursive call to the helper function adds a new frame on the call stack. On average we will never have more than log(n) recursive calls on the call stack, since we eliminate half the nodes in the remaining tree at each recursive call. In the worst case, when we are dealing with a very imbalanced binary tree, we would have O(n) space from the recursive calls, since we have n recursive calls on the call stack at once. Besides the space from the recursive calls, we also return an array of branch sums. The size of the array is same as the number of branches in the Binary Tree, which is the number of leaf nodes in the Binary Tree. There are roughly half of n leaf nodes in the Binary Tree and half of n is equal to O(n) in the space time complexity analysis.
 
 ### Recursive Solution
 
