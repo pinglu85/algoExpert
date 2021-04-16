@@ -8,7 +8,12 @@ Suppose the input array is going to be `[1, 3, 2]`. The first query can be execu
 
 Since I am asked to compute the minimum amount of total waiting time, I am going to sort the input array in ascending order at the very beginning. Suppose the input array is going to be `[2, 1]`, the total waiting time is going to be `(0) + (2) = 2`. However, if they are executed in the order of `[1, 2]`, then the waiting time is going to be `(0) + (1) = 1`.
 
-Initialize a variable to keep track of the time that current query needs to wait; initially, set it to 0. Initialize another variable to store the amount of total waiting time so far. Traverse the sorted array element by element. At each integer, add the time that current query have to wait to the amount of total waiting time; then update the time that current query needs to wait by adding the integer to it. When I get out of the loop, return the amount of total waiting time.
+- Initialize a variable to keep track of the time that each query needs to wait; initially, set it to 0.
+- Initialize another variable to store the total waiting time so far.
+- Traverse the sorted array element by element. At each query,
+  - add the time that current query have to wait to the total waiting time;
+  - update the waiting time that next query needs to wait by adding the duration of the current query to the waiting time.
+- Return the amount of total waiting time.
 
 ### Solution 1
 
@@ -18,9 +23,9 @@ function minimumWaitingTime(queries) {
 
   let waitingTime = 0;
   let totalWaitingTime = 0;
-  for (const query of queries) {
+  for (const duration of queries) {
     totalWaitingTime += waitingTime;
-    waitingTime += query;
+    waitingTime += duration;
   }
 
   return totalWaitingTime;
