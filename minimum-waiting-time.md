@@ -1,12 +1,14 @@
 ### Understanding the problem
 
-I am given an array of positive integers, where each integer represents the amount of time that a query needs to take to execute. The queries are going to be executed one by one, but the execution order of the queries can be changed. I am asked to write a function that returns the minimum amount of total waiting time for all of the queries. I am allowed to mutate the input array.
+I am given an array of positive integers, where each integer represents the duration of a query that needs to be executed. Only one query can be executed at a time, but the queries can be executed in any order. I am asked to write a function that returns the minimum amount of total waiting time for all of the queries, and I am allowed to mutate the input array.
 
-Suppose the input array is going to be `[1, 3, 2]`. The first query can be executed immediately, and it takes 1 second to execute. Since the second query have to wait until the first one finishes before it can execute, the waiting time of the second query is going to be 1 second. The second query takes 3 seconds to execute, so the third query have to wait for 1 + 3 seconds. So if the queries are executed in that order, than the total awaiting time for all of the queries is going to be `(0) + (1) + (1 + 3) = 5`
+Suppose the input array is going to be `[1, 3, 2]`. The first query can be executed immediately, therefore the waiting time of the first query is 0. The second query have to wait until the first one finishes before it can execute, so the waiting time of the second query is going to be 1 second, the duration of the first query. The third query has to wait for both the first query and the second query to finish executing before it can start. Since the second query takes 3 seconds to execute, the waiting time of the third query is going to be 1 + 3 seconds. So if the queries are executed in that order, then the total awaiting time for all of the queries is going to be `(0) + (1) + (1 + 3) = 5`.
 
 ### Approach 1 - O(nlog(n)) time | O(1) space
 
-Since I am asked to compute the minimum amount of total waiting time, I am going to sort the input array in ascending order at the very beginning. Suppose the input array is going to be `[2, 1]`, the total waiting time is going to be `(0) + (2) = 2`. However, if they are executed in the order of `[1, 2]`, then the waiting time is going to be `(0) + (1) = 1`.
+Since I am asked to compute the minimum amount of total waiting time, I am going to sort the input array in ascending order at the very beginning. Suppose the input array is going to be `[6, 1]`, the total waiting time is going to be `(0) + (6) = 6`. However, if they are executed in the order of `[1, 6]`, then the waiting time is going to be `(0) + (1) = 1`. Therefore, to get the minimum amount of the total waiting time, I need to figure out the optimal execution order. It can be also noticed, if the largest query is executed first, all of the queries after it will have to wait at least the duration of the largest query; if the shortest query is executed first, then all queries after it are for sure waiting the minimum amount of time, and since the largest query is going to be executed at the very end, that means no queries need to wait for the largest query to finish executing.
+
+Then I would calculate the waiting time of each individual query and sum all of the waiting time up.:
 
 - Initialize a variable to keep track of the time that each query needs to wait; initially, set it to 0.
 - Initialize another variable to store the total waiting time so far.
@@ -42,7 +44,7 @@ query time:  [8, 9,  10,      11]
 waiting time: 0, 8, (8 + 9), (8 + 9 + 10)
 ```
 
-`0 + 8 + (8 + 9) + (8 + 9 + 10)` can also be written as `0 + 8 * 3 + 9 * 2 + 10 * 1`. It can be noticed that `3` is equal to the number of the remaining queries in the array that come after `8`, so are `2` and `3`. Therefore, if there is `n` queries in the input array `queries`, total waiting time is going to be
+`0 + 8 + (8 + 9) + (8 + 9 + 10)` can also be written as `0 + 8 * 3 + 9 * 2 + 10 * 1`. It can be noticed that `3` is equal to the number of the queries that are after `8` in the array, so are `2` and `3`. Therefore, if there are `n` queries in the input array `queries`, the total waiting time is going to be
 
 `duration of queries[0] * (n - 1) + duration of queries[1] * (n - 2) ... + duration of queries[n - 3] * 2 + duration of queries[n - 2] * 1`
 
@@ -50,7 +52,7 @@ Or
 
 `duration of queries[0] * (n - 1) + duration of queries[1] * (n - 2) ... + duration of queries[n - 2] * 1 + duration of queries[n - 1] * 0`.
 
-Therefore, to compute the total waiting time, I would initialize a variable that is going to keep track of the running sum of the waiting time, then iterate through every query in the input array, keeping track of the index each query is at, since I need to know how many queries are remaining in the array; at each query, multiply the duration of the query by the number of queries that are left, and add the result to the running sum of the waiting time.
+The reason is that all queries after a query need to wait the duration of that query. So to compute the total waiting time, I would initialize a variable that is going to keep track of the total waiting time so far, then iterate through every query in the input array, keeping track of the index each query is at, since I need to know how many queries are remaining in the array; at each query, multiply the duration of the query by the number of queries that are left, and add the result to the total waiting time.
 
 Since the function needs to return the minimum amount of total waiting time, it would sort the input array at the very beginning.
 
