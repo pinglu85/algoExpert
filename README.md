@@ -42,3 +42,4 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
     **Category**: Graph
 12. 🟢 [Minimum Waiting Time](minimum-waiting-time.md)
     **Category**: Array
+    **Approach** Greedy Algorithm
