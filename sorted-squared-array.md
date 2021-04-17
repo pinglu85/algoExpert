@@ -1,3 +1,5 @@
+# Sorted Squared Array
+
 ### Understanding the problem
 
 Given an array of integers that are sorted in increasing order, write a function that squares all the integers in the array and returns them in a new array, also sorted in increasing order.

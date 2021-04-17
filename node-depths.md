@@ -1,3 +1,5 @@
+# Node Depths
+
 ### Understanding the problem
 
 Given a Binary Tree, I am asked to write a function that is going to find the depth of each node in the tree, sum up all of these depths and return the sum.

@@ -1,3 +1,5 @@
+# Minimum Waiting Time
+
 ### Understanding the problem
 
 I am given an array of positive integers, where each integer represents the duration of a query that needs to be executed. Only one query can be executed at a time, but the queries can be executed in any order. I am asked to write a function that returns the minimum amount of total waiting time for all of the queries, and I am allowed to mutate the input array.

@@ -1,3 +1,5 @@
+# Depth-first Search
+
 ### Understanding the problem
 
 I am given an acyclic tree-like graph. Each node in this graph is going to be an instance of a `Node` class. Each node is going to have a name and optionally have some children nodes. I am asked to write a `depthFirstSearch` method on the `Node` class, that is going to performs a depth-first search on the graph. The method is going to accept an empty array as argument. As it traverses the graph, it is going to get the names of all nodes, put them in the input array and return that array. The nodes should be visited from left to right.

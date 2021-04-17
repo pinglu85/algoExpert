@@ -1,3 +1,5 @@
+# Smallest Difference
+
 ### Understanding the problem
 
 Given two arrays of integers, I am asked to write a function that finds two numbers, where one number comes from the first array and another number comes from the second array, with smallest absolute difference, and returns them in an array. In the resulting array, the number from the first array should come first.

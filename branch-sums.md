@@ -1,3 +1,5 @@
+# Branch Sums
+
 ### Understanding the problem
 
 Given a Binary Tree, I am asked to write a function that computes all of the branch sums of the tree and returns them in an array ordered from leftmost branch sum to rightmost branch sum. In a tree, a branch is a path that starts at the root node and ends at one of the leaf nodes. A branch sum means the sum of all values in a branch.
