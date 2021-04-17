@@ -43,3 +43,5 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
 12. 🟢 [Minimum Waiting Time](minimum-waiting-time.md)
     **Category**: Array
     **Approach** Greedy Algorithm
+13. 🟢 [Class Photos](class-photos.md)
+    **Category**: Array
