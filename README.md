@@ -30,7 +30,7 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
 7. 🟢 [Find Closest Value In BST](find-closest-value-in-bst.md)  
    **Category**: Binary Search Trees
 8. 🔵 ⭐ [Smallest Difference](smallest-difference.md)  
-   **Category**: Array
+   **Category**: Arrays
    **Approach**: Two Pointers
 9. 🟢 [Branch Sums](branch-sums.md)
    **Category**: Binary Trees
@@ -39,11 +39,11 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
     **Category**: Binary Trees
     **Approach**: Depth-First Search
 11. 🟢 [Depth-first Search](depth-first-search.md)
-    **Category**: Graph
+    **Category**: Graphs
 12. 🟢 [Minimum Waiting Time](minimum-waiting-time.md)
-    **Category**: Array
+    **Category**: Arrays
     **Approach** Greedy Algorithm
 13. 🟢 [Class Photos](class-photos.md)
-    **Category**: Array
+    **Category**: Arrays
 14. 🟢 [Tandem Bicycle](tandem-bicycle.md)
-    **Category**: Array
+    **Category**: Arrays
