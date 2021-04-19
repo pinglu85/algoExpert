@@ -45,3 +45,5 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
     **Approach** Greedy Algorithm
 13. 🟢 [Class Photos](class-photos.md)
     **Category**: Array
+14. 🟢 [Tandem Bicycle](tandem-bicycle.md)
+    **Category**: Array
