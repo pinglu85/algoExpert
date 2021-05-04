@@ -40,7 +40,7 @@ function classPhotos(redShirtHeights, blueShirtHeights) {
 }
 ```
 
-### Better Approach
+### Better Approach - O(nlog(n)) time | O(1) space, where n is the number of integers(students).
 
 Suppose the two arrays are `[4, 6, 2, 7]` and `[8, 3, 5, 9]`. To arrange the students under the aforementioned constraints, first I am going to find out the tallest student in the two arrays, because all of the other students are shorter than that student and they can not stand behind him. The height of the tallest student is `9` from the second array, which means all students from the second array should be in the back row.
 
