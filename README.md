@@ -23,6 +23,6 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
 | [Node Depths](/Easy/node-depths.md)                                               | 🟢         | Binary Trees        | Depth-First Search       |                |
 | [Depth-first Search](/Easy/depth-first-search.md)                                 | 🟢         | Graphs              |                          |                |
 | [Minimum Waiting Time](/Easy/minimum-waiting-time.md)                             | 🟢         | Arrays              | Greedy Algorithm         |                |
-| [Class Photos](/Easy/class-photos.md)                                             | 🟢         | Arrays              |                          |                |
+| [Class Photos](/Easy/class-photos.md)                                             | 🟢         | Arrays              | Greedy Algorithm         |                |
 | [Tandem Bicycle](/Easy/tandem-bicycle.md)                                         | 🟢         | Arrays              |                          |                |
 | [Remove Duplicates From Linked List](/Easy/remove-duplicates-from-linked-list.md) | 🟢         | Linked Lists        |                          |                |
