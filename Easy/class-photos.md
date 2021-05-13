@@ -22,16 +22,16 @@ function classPhotos(redShirtHeights, blueShirtHeights) {
   redShirtHeights.sort((a, b) => a - b);
   blueShirtHeights.sort((a, b) => a - b);
 
-  let areRedShirtHeightsTaller = redShirtHeights[0] > blueShirtHeights[0];
+  const redShirtsAreTaller = redShirtHeights[0] > blueShirtHeights[0];
   for (let idx = 0; idx < redShirtHeights.length; idx++) {
     const redShirtHeight = redShirtHeights[idx];
     const blueShirtHeight = blueShirtHeights[idx];
 
-    if (areRedShirtHeightsTaller && blueShirtHeight >= redShirtHeight) {
+    if (redShirtsAreTaller && blueShirtHeight >= redShirtHeight) {
       return false;
     }
 
-    if (!areRedShirtHeightsTaller && redShirtHeight >= blueShirtHeight) {
+    if (!redShirtsAreTaller && redShirtHeight >= blueShirtHeight) {
       return false;
     }
   }
@@ -106,7 +106,7 @@ function classPhotos(redShirtHeights, blueShirtHeights) {
   redShirtHeights.sort((a, b) => b - a);
   blueShirtHeights.sort((a, b) => b - a);
 
-  let redShirtsAreInFrontRow = redShirtHeights[0] < blueShirtHeights[0];
+  const redShirtsAreInFrontRow = redShirtHeights[0] < blueShirtHeights[0];
   for (let idx = 0; idx < redShirtHeights.length; idx++) {
     const redShirtHeight = redShirtHeights[idx];
     const blueShirtHeight = blueShirtHeights[idx];
