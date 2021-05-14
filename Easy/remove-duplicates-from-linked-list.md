@@ -23,7 +23,7 @@ function removeDuplicatesFromLinkedList(linkedList) {
   let currentNode = linkedList;
   while (currentNode !== null) {
     let nextNode = currentNode.next;
-    if (nextNode?.value === currentNode.value) {
+    if (nextNode !== null && nextNode.value === currentNode.value) {
       currentNode.next = nextNode.next;
     } else {
       currentNode = nextNode;
