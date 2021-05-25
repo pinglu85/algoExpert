@@ -24,5 +24,5 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
 | [Depth-first Search](/Easy/depth-first-search.md)                                 | 🟢         | Graphs              |                          |                |
 | [Minimum Waiting Time](/Easy/minimum-waiting-time.md)                             | 🟢         | Arrays              | Greedy Algorithm         |                |
 | [Class Photos](/Easy/class-photos.md)                                             | 🟢         | Arrays              | Greedy Algorithm         |                |
-| [Tandem Bicycle](/Easy/tandem-bicycle.md)                                         | 🟢         | Arrays              |                          |                |
+| [Tandem Bicycle](/Easy/tandem-bicycle.md)                                         | 🟢         | Arrays              | Greedy Algorithm         |                |
 | [Remove Duplicates From Linked List](/Easy/remove-duplicates-from-linked-list.md) | 🟢         | Linked Lists        |                          |                |
