@@ -4,7 +4,7 @@
 
 We will be given an array of positive integers, which represent the values of coins that we have in our possession. The array could have duplicates. We are asked to write a function that returns the minimum amount of change that we cannot create with our coins. For instance, if the input array is `[1, 2, 5]`, the minimum amount of change that we cannot create is `4`, since we can create `1`, `2`, `3 (1 + 2)` and `5`.
 
-### Brute-force approach - O (m \* n) time | O(1) space, where n is the number of coins and m is the sum that all of the coins add up to.
+### Brute-force approach - O(m \* n) time | O(1) space, where n is the number of coins and m is the sum that all of the coins add up to.
 
 Iterate from 1 to the maximum amount of change that I can create, which is the value that all of the coins in the input array sum up to. At each iteration, find out if we can sum up to the current value using our coins; if we can't then the minimum amount of change is found. If we get out of the loop without returning the result, return maximum amount of change + 1.
 
