@@ -26,3 +26,4 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
 | [Class Photos](/Easy/class-photos.md)                                             | 🟢         | Arrays              | Greedy Algorithm         |                |
 | [Tandem Bicycle](/Easy/tandem-bicycle.md)                                         | 🟢         | Arrays              | Greedy Algorithm         |                |
 | [Remove Duplicates From Linked List](/Easy/remove-duplicates-from-linked-list.md) | 🟢         | Linked Lists        |                          |                |
+| [Nth Fibonacci](/Easy/nth-fibonacci.md)                                           | 🟢         |                     |                          |                |
