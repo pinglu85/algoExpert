@@ -38,7 +38,7 @@ The recursive part is going to be identical to the math equation. I am going to 
 🙋‍♀️🙋‍♂️ The time complexity of this approach is O(2^n) or exponential, because in each step we are going to call the recursive function twice, which leads us to approximately 2^n operations(additions) for nth Fibonacci number:
 
 ```
-                F(n)
+              F(n)
 	          /      \
 	     F(n-1)      F(n-2)       --------- maximum 2^1 additions
 	     /   \        /   \
