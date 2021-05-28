@@ -68,7 +68,7 @@ function getNthFib(n) {
 
 Since the naive recursive solution has repeated calls for same inputs, I can memoize the results of function calls to avoid repeated computations. So to do that, at every recursive call I am going to pass down an object which is going to keep track of the results that I have computed. In this object, each key is going to be a input number and the values are going to be the result for each input. Initially, the object is going to hold the value of `F0` and the value of `F1`. At each recursion, I am going to lookup the input number in the object; if it is already a key in the object, return the result for that input; otherwise, compute the result, and store the input and the corresponding result in that object.
 
-🙋‍♀️🙋‍♂️ The time complexity of this approach is going to be O(n), because we will calculate each Fibonacci number once:
+🙋‍♀️🙋‍♂️ The time complexity of this approach is going to be O(n), because we only calculate each Fibonacci number once:
 
 ```
               F(5)
