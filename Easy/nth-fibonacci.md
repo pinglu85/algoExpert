@@ -88,7 +88,7 @@ F(0)    F(1)
 function getNthFib(n, memoized = { 1: 0, 2: 1 }) {
   if (n in memoized) return memoized[n];
 
-  memoized[n] = getNthFib(n - 1) + getNthFib(n - 2);
+  memoized[n] = getNthFib(n - 1, memoized) + getNthFib(n - 2, memoized);
   return memoized[n];
 }
 ```
