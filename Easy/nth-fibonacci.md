@@ -41,10 +41,10 @@ The recursive part is going to be identical to the math equation. I am going to 
               F(n)
             /      \
        F(n-1)      F(n-2)       --------- maximum 2^1 additions
-       /   \        /   \
-	 F(n-2) F(n-3) F(n-3) F(n-4)  -------- maximum 2^2 additions
+       /    \      /    \
+   F(n-2) F(n-3) F(n-3) F(n-4)  -------- maximum 2^2 additions
    /    \
-F(n-3)  F(n-4)                  -------- maximum 2^3 additions
+F(n-3) F(n-4)                   -------- maximum 2^3 additions
                                           ........
                                 -------- maximum 2^(n-1) additions
 ```
