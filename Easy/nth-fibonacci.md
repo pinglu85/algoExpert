@@ -38,15 +38,15 @@ The recursive part is going to be identical to the math equation. I am going to 
 🙋‍♀️🙋‍♂️ The time complexity of this approach is O(2^n) or exponential, because in each step we are going to call the recursive function twice, which leads us to approximately 2^n operations(additions) for nth Fibonacci number:
 
 ```
-						  F(n)
+                F(n)
 	          /      \
-	     F(n-1)      F(n-2)        --------- maximum 2^1 additions
+	     F(n-1)      F(n-2)       --------- maximum 2^1 additions
 	     /   \        /   \
-		F(n-2) F(n-3) F(n-3) F(n-4)  -------- maximum 2^2 additions
-	  /    \
-F(n-3)  F(n-4)                   -------- maximum 2^3 additions
-			                           ........
-						                     -------- maximum 2^(n-1) additions
+	 F(n-2) F(n-3) F(n-3) F(n-4)  -------- maximum 2^2 additions
+	 /    \
+ F(n-3)  F(n-4)                   -------- maximum 2^3 additions
+			                               ........
+						          -------- maximum 2^(n-1) additions
 ```
 
 So the total complexity is going to be `2+2^2+2^3+2^4 + ... + 2^(n-1)`, which is equal to `2^n` as far as the time space complexity analysis is concerned.
@@ -78,7 +78,7 @@ Since the naive recursive solution has repeated calls for same inputs, I can mem
        F(3)   F(2)         -------- F(2)'s result is memoized.
       /    \
     F(2)   F(1)
-	 /    \
+   /    \
 F(0)    F(1)
 ```
 
