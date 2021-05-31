@@ -36,6 +36,7 @@ Temporary Items
 .vscode/*
 !.vscode/tasks.json
 !.vscode/launch.json
+!.vscode/*.code-snippets
 *.code-workspace
 
 ### VisualStudioCode Patch ###
