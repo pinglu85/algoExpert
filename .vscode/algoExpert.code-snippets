@@ -1,0 +1,17 @@
+{
+  "Coding Interview Questions Template": {
+    "scope": "markdown",
+    "prefix": "coding",
+    "body": [
+      "# ${1:title}\n",
+      "### Understanding the problem\n",
+      "${2:understanding the problem}\n",
+      "### Approach - ${3:time complexity} | ${4:space complexity}, ${5:notation}\n",
+      "${6:approach}\n",
+      "### Solution\n",
+      "```js",
+      "${7:solution}",
+      "```\n"
+    ]
+  }
+}
