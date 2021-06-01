@@ -8,9 +8,9 @@ Given a sorted array of integers and a target integer, I am asked to write a fun
 
 The overarching logic of Binary Search is:
 
-1. Compare the target integer to the middle element in the array. If the target integer is smaller than the middle integer, then it means the target is going to be located in the left half of the array; otherwise it is going to be located in the right half of the array;
+1. Compare the target integer to the middle number of the array. If they are equal to each other, then we find the target in the array. If the target is smaller than the middle number, then it means the target might be located in the left half of the array, because all the integers to the right of the middle number must be greater than the middle number. If the target is greater than the middle number, then the target might be located in the right half of the array, because all the numbers to the left of the middle number are going to be smaller than the middle number;
 2. Eliminate half of the array that for sure doesn't contain the target, which means we don't need to explore the integers in that half;
-3. Continue this process until we eventually find the target integer in the array or the target is not contained in the array.
+3. Continue this process until we eventually find the target in the array or the target is not contained in the array.
 
 I am going to create two pointers that are going to keep track of the start position and the end position of the search range in the array; initially, the start pointer is going to point to the start of the array and the end pointer to the end of the array. While the start pointer does not exceed the end pointer, keep getting the integer that is at the middle of the search range; if the target is equal to the integer, then it means I find the target, so break out of the while loop, return the index of the middle integer; otherwise figure out which half of the search range might contains the target, then eliminate the rest half and update the search range. Finally, if I get out of the while loop without returning the result, which means the target is not found in the array, return `-1`.
 
@@ -38,7 +38,7 @@ function binarySearch(array, target) {
 
 ### Recursive Approach - O(log(n)) time | O(log(n)) space, where the n is the length of the input array.
 
-Instead of using a while loop, I am going to define a recursive function that is going to be called on each search range. I am going to pass in the start position and the end position of the search range to the recursive function, and also pass in the array and the target integer. The base case of the recursive function is going to be a start position that exceeds the end position.
+Instead of using a while loop, I am going to define a recursive function that is going to be called on each search range. I am going to pass in two pointers that keep track of the start position and the end position of the search range to the recursive function, and also pass in the array and the target integer. The base case of the recursive function is going to be a start pointer that exceeds the end pointer.
 
 ### Recursive Solution
 
