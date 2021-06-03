@@ -13,7 +13,7 @@ I can kind of break this problem down into a smaller, easier to solve problem. T
 - Initialize two pointers, one called `left` and the other called `right`, set the `left` pointer to the beginning of the rest of the array, and the `right` pointer to the end of the rest of the array.
 - Add up the values that the two pointers point to, if the sum is smaller than the target, here it is the difference between current integer and the target sum, move the `left` pointer to the right by one; if the sum is bigger than the target, move the `right` pointer to the left by one; if it is equal to the target, then I found the pair, move the `left` pointer to right and the `right` pointer to left, if I move only one pointer, the next sum is definitely either smaller or larger than the target, since all integers in the array are distinct. Keep moving both pointers until they point to the same number.
 
-**Notes**
+**Note regarding time complexity**
 
 The time complexity of this approach is O(n^2). The O(nlog(n)) runtime of the sorting step is not reflected in the final time complexity, because the nested loops run in O(n^2) time; this dwarfs the O(nlog(n)) runtime of the sorting step and allows us to remove it from the overall time complexity.
 
