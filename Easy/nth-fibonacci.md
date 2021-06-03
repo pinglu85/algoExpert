@@ -4,6 +4,8 @@
 
 I am given an integer `n` and I am asked to write a function that is going to return the nth Fibonacci number in the Fibonacci sequence. Normally, the Fibonacci sequence uses zero based indexing, meaning the first two numbers are `F0 = 0` and `F1 = 1`. However, in this problem, one based indexing is used, for instance, `getNthFib(1)` should return `0`.
 
+#
+
 ### Iterative Approach - O(n) time | O(1) space, where n is the input number.
 
 I would initialize an array that is going to keep track of the last two Fibonacci numbers. Initially, the array contains the value of `F0`, which is `0`, and the value of `F1`, which is `1`. Then I would use a for loop that starts at `3`, because I already have `F0` and `F1`, and ends at `n`, to keep track of how many Fibonacci numbers I have calculated. At each iteration, I am going to add the last two Fibonacci numbers up and their sum will become my new last Fibonacci number; then I will update the array that stores the last two Fibonacci numbers. Lastly, use a ternary operator to take care of the edge case where `n` is equal to `1`, because when `n` is `1`, I should return the value of `F0`; otherwise return the last Fibonacci number.
@@ -23,6 +25,8 @@ function getNthFib(n) {
   return n <= 1 ? lastTwoFibs[0] : lastTwoFibs[1];
 }
 ```
+
+#
 
 ### Naive Recursive Approach - O(2^n) time | O(n) space, where n is the input number.
 
@@ -65,6 +69,8 @@ function getNthFib(n) {
   return getNthFib(n - 1) + getNthFib(n - 2);
 }
 ```
+
+#
 
 ### Recursive Approach with Dynamic Programming - O(n) time | O(n) space, where n is the input number.
 
