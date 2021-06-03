@@ -12,7 +12,7 @@ Iterate from 1 to the maximum amount of change that I can create, which is the v
 
 To find out if there is a subset in the input array that adds up to a target value, I can first sort the array in ascending order, then iterate through every integer in the sorted array, starting from the last one; for each integer, compare it with the target value, if the integer is equal to the target value, then the subset is found; if the integer is smaller than the target value, subtract it from the target value and update the target value to the result, move to the next integer. If the very beginning of the input array is reached and the target value is still larger than 0, then I find the value that no subset can add up to.
 
-### Solution
+### Brute-force Solution
 
 ```js
 function nonConstructibleChange(coins) {
