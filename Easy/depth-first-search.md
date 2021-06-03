@@ -4,6 +4,8 @@
 
 I am given an acyclic tree-like graph. Each node in this graph is going to be an instance of a `Node` class. Each node is going to have a name and optionally have some children nodes. I am asked to write a `depthFirstSearch` method on the `Node` class, that is going to performs a depth-first search on the graph. The method is going to accept an empty array as argument. As it traverses the graph, it is going to get the names of all nodes, put them in the input array and return that array. The nodes should be visited from left to right.
 
+#
+
 ### Approach - O(v+e) time | O(v) space, where v is the number of nodes(vertices) in the input graph and e is the number of edges in the input graph.
 
 Since the `depthFirstSearch()` is a method of the `Node` class, each `Node` instance is going to have the method and the method can access the calling node's name and its children nodes with `this`. In addition, since the graph is acyclic and tree-like, meaning it is directed and all the nodes except the root node has only one parent, there is no need to use a data structure to keep track of the nodes that have been visited. The `depthFirstSearch()` method is going to grab the calling node's name and append it to the input array; then it would loop through the calling node's children, at each child node, it is going to call the child node's `depthFirstSearch()` method passing in the input array; lastly it would return the input array.
