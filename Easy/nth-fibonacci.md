@@ -35,21 +35,23 @@ Since the question here uses one based indexing, the base case of the recursive 
 
 The recursive part is going to be identical to the math equation. I am going to return `F(n - 1) + F(n - 2)`, where `F` is the recursive function.
 
-🙋‍♀️🙋‍♂️ The time complexity of this approach is O(2^n) or exponential, because in each step we are going to call the recursive function twice, which leads us to approximately 2^n operations(additions) for nth Fibonacci number:
+🙋‍♀️🙋‍♂️ The time complexity of this approach is O(2^n) or exponential, because in each step we are going to call the recursive function twice, which leads us to approximately `2 * 2 * 2 .... 2 = 2^n` operations(additions) for nth Fibonacci number.
+
+The time complexity can also be estimated by drawing the recursion tree:
 
 ```
-              F(n)
-            /      \
-       F(n-1)      F(n-2)       -------- maximum 2^1 additions
-       /    \      /    \
-   F(n-2) F(n-3) F(n-3) F(n-4)  -------- maximum 2^2 additions
-   /    \
-F(n-3) F(n-4)                   -------- maximum 2^3 additions
-                                          ........
-                                -------- maximum 2^(n-1) additions
+                            F(n)
+                          /      \
+ ^                   F(n-1)      F(n-2)       -------- maximum 2^1 = 2 additions
+ |                   /    \      /    \
+ |               F(n-2) F(n-3) F(n-3) F(n-4)  -------- maximum 2^2 = 4 additions
+n-1 levels       /    \
+ |            F(n-3) F(n-4)                   -------- maximum 2^3 = 8 additions
+ |                                                      ........
+ v                                            -------- maximum 2^(n-1) additions
 ```
 
-So the total complexity is going to be `2+2^2+2^3+2^4 + ... + 2^(n-1)`, which is equal to `2^n` as far as the time space complexity analysis is concerned.
+So the total number of additions is going to be `2 + 2^2 + 2^3 + 2^4 + ... + 2^(n-1)`, which is approximately equal to `2^(n-1) + 2^(n-1) = 2 * 2^(n-1)`, thus the time complexity is O(2^n).
 
 The space complexity is O(n), because we are going to have at most `n` function calls on the call stack.
 
