@@ -8,6 +8,8 @@ A tandem bicycle is a bicycle operated by two people. The speed of the bicycle i
 
 🙋‍♀️🙋‍♂️ In a coding interview, I can ask the interviewer what does the minimum possible total speed mean to eliminate ambiguity.
 
+#
+
 ### Approach - O(nlog(n)) time | O(1) space, where n is the number of riders.
 
 Suppose the input arrays are `[8, 5, 3]` and `[7, 2, 4]`. There are following ways to pair every integer in the first array with a integer from the second array:

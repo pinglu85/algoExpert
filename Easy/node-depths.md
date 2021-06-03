@@ -16,6 +16,8 @@ tree =   1
 
 The sum of all nodes' depths in the above Binary Tree is 10, because the depth of the node with value 1 is 0, the depth of the node with value 2 is 1, the depth of the node with value 3 is 1, the depth of the node with value 4 is 2...
 
+#
+
 ### Recursive Approach 1 - Average: O(n) time | O(h) space, Worst(imbalanced Binary Tree): O(n) time | O(n) space, where n is the number of nodes in the Binary Tree and h is the height of the Binary Tree.
 
 Create a variable that is going to keep track of the running sum of the nodes' depths. To find the depths of every node in the tree, I can traverse the tree, and at each node, compute its depth by adding 1 to the depth of its parent node, because the node are one level deeper than its parent node. After getting the depth of the node, add it to the running sum of depths.
@@ -53,6 +55,8 @@ class BinaryTree {
   }
 }
 ```
+
+#
 
 ### Recursive Approach 2 - Average: O(n) time | O(h) space, Worst(imbalanced Binary Tree): O(n) time | O(n) space, where n is the number of nodes in the Binary Tree and h is the height of the Binary Tree.
 
@@ -105,6 +109,8 @@ class BinaryTree {
   }
 }
 ```
+
+#
 
 ### Iterative Approach - Average: O(n) time | O(h) space, Worst(imbalanced Binary Tree): O(n) time | O(n) space, where n is the number of nodes in the Binary Tree and h is the height of the Binary Tree.
 

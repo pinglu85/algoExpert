@@ -22,6 +22,8 @@ The output should be:
 [15, 16, 8, 10, 11]
 ```
 
+#
+
 ### Approach with iterative DFS - O(n) time | O(n) space, where n is the number of nodes in the Binary Tree.
 
 Create an empty array to store the branch sums. Use Depth-First Search to traverse the binary tree. For each node, add its value to the sum of all nodes above it, store the result and the node in a data structure, so that I can keep track of the running sum, which means when I visit a new node, I can retrieve the sum of all nodes above the new node. If a node is a leaf node, append the updated running sum to the branch sums array.
@@ -77,6 +79,8 @@ function branchSums(root) {
   return sums;
 }
 ```
+
+#
 
 ### Approach with recursive DFS - O(n) time | O(n) space, where n is the number of nodes in the Binary Tree.
 

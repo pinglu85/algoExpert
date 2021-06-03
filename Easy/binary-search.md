@@ -4,6 +4,8 @@
 
 Given a sorted array of integers and a target integer, I am asked to write a function that uses Binary Search to find out if the target integer is in the array. If the target is in the array, the function should return its index; otherwise return `-1`.
 
+#
+
 ### Iterative Approach - O(log(n)) time | O(1) space, where n is the number of integers in the input array.
 
 The overarching logic of Binary Search is:
@@ -35,6 +37,8 @@ function binarySearch(array, target) {
   return -1;
 }
 ```
+
+#
 
 ### Recursive Approach - O(log(n)) time | O(log(n)) space, where the n is the length of the input array.
 

@@ -4,6 +4,8 @@
 
 I am given the head of a singly linked list. The nodes of the linked list are going to be sorted in ascending order with respect to their values and the values are going to be integers. I am asked to write a function that is going to remove all the nodes with duplicate values and return the modified linked list. The linked list should be modified in place and the nodes should remain in their original order.
 
+#
+
 ### Approach 1 - O(n) time | O(1) space, where n is the number of nodes in the Linked List
 
 Since the linked list is sorted, it means all of the duplicate values are grouped together. So I would keep track of the node I am currently at, and compare its value to the value of the next node. If they are equal to each other, delete the next node; otherwise update the current node to the next node. Lastly, return the head of the modified linked list.
@@ -33,6 +35,8 @@ function removeDuplicatesFromLinkedList(linkedList) {
   return linkedList;
 }
 ```
+
+#
 
 ### Approach 2 - O(n) time | O(1) space, where n is the number of nodes in the Linked List
 

@@ -6,6 +6,8 @@ I am given an array of positive integers, where each integer represents the dura
 
 Suppose the input array is going to be `[1, 3, 2]`. The first query can be executed immediately, therefore the waiting time of the first query is 0. The second query have to wait until the first one finishes before it can execute, so the waiting time of the second query is going to be 1 second, the duration of the first query. The third query has to wait for both the first query and the second query to finish executing before it can start. Since the second query takes 3 seconds to execute, the waiting time of the third query is going to be 1 + 3 seconds. So if the queries are executed in that order, then the total awaiting time for all of the queries is going to be `(0) + (1) + (1 + 3) = 5`.
 
+#
+
 ### Approach 1 - O(nlog(n)) time | O(1) space
 
 Since I am asked to compute the minimum amount of total waiting time, I am going to sort the input array in ascending order at the very beginning. Suppose the input array is going to be `[6, 1]`, the total waiting time is going to be `(0) + (6) = 6`. However, if they are executed in the order of `[1, 6]`, then the waiting time is going to be `(0) + (1) = 1`. Therefore, to get the minimum amount of the total waiting time, I need to figure out the optimal execution order. It can be also noticed, if the largest query is executed first, all of the queries after it will have to wait at least the duration of the largest query; if the shortest query is executed first, then all queries after it are for sure waiting the minimum amount of time, and since the largest query is going to be executed at the very end, that means no queries need to wait for the largest query to finish executing.
@@ -35,6 +37,8 @@ function minimumWaitingTime(queries) {
   return totalWaitingTime;
 }
 ```
+
+#
 
 ### Approach 2 - O(nlog(n)) time | O(1) space
 

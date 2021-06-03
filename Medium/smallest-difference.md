@@ -13,6 +13,8 @@ arrayTwo = [26, 134, 135, 15, 17];
 
 The output is `[28, 26]`.
 
+#
+
 ### Approach 1 - O(n\*m) time | O(1) space, where n is the length of the first input array, and m is the length of the second input array.
 
 - Initialize a variable that is going to keep track of the smallest absolute difference so far.
@@ -40,6 +42,8 @@ function smallestDifference(arrayOne, arrayTwo) {
   return smallestPair;
 }
 ```
+
+#
 
 ### Approach 2 - O(nlog(m) + mlog(m)) time | O(1) space, where n is the length of the first input array, and m is the length of the second input array.
 
@@ -119,6 +123,8 @@ function findNumBeforeAndAfter(array, target) {
   return [array[endIdx], array[startIdx]];
 }
 ```
+
+#
 
 ### Best Approach - O(nlog(n) + m(log(m))) time | O(1) space, where n is the length of the first input array, and m is the length of the second input array.
 

@@ -6,6 +6,8 @@ We're asked to imagine there is an algorithms tournament taking place in which m
 
 We are given two inputs, the `competitions` array and the `results` array, and we need to write a function that returns the winner of the tournament, or more specifically, the name of the team that has the most number of points. The `competitions` array is an array of pairs, representing all of the competitions in the tournament. Inside of these pairs, we have two strings. The first string is the name of the home team, the second string is the name of the away team. The `results` array represents the winner of each of these competitions. Inside the `results` array, a `1` means that the home team won and a `0` means the away team won. The `results` array is the same length as the `competitions` array, and the indices in the `results` array correspond with the indices in the `competitions` array.
 
+#
+
 ### Approach - O(n) time | O(k) space, where n is the number of competitions and k is the number of teams.
 
 I can use a hash table to keep track of each team's points, because a hash table is used to store key/value pairs, here each key is a team's name and the values are each team's points. Given a team name, I can retrieve its points. Moreover, hash tables provide constant-time lookup and insertion on average. Once I know all of the points for all of the teams, I can go through the hash table and figure out which team has the most amount of points and then return the name of that team.
@@ -45,6 +47,8 @@ function tournamentWinner(competitions, results) {
   return currentBestTeam;
 }
 ```
+
+#
 
 ### Improved Approach - O(n) time | O(k) space, where n is the number of competitions and k is the number of teams.
 

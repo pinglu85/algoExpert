@@ -19,6 +19,8 @@ target = 12
 
 The closest value to the target value in the BST is 13.
 
+#
+
 ### Approach - Average: O(log(n)) time | O(1) space; Worst: O(n) time | O(1) space
 
 Use a variable to keep track of the current node; initialize it to be the root node of the BST. I also need a variable to keep track of the closest value in the BST so far; initialize it to 0, and another variable to keep track of the smallest absolute difference I've currently seen, that is the absolute difference between the current closest value and the target value; initialize it to `Infinity`.
@@ -62,6 +64,8 @@ class BST {
   }
 }
 ```
+
+#
 
 ### Recursive Solution - Average: O(log(n)) time | O(log(n)) space; Worst: O(n) time | O(n) space
 

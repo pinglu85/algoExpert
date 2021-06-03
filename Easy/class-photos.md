@@ -11,6 +11,8 @@ I am given two non-empty arrays of positive integers. The first array is going t
 
 The function is going to arrange the students and return true if we can take a photo that follows these constraints; otherwise return false.
 
+#
+
 ### Approach - O(nlog(n)) time | O(1) space, where n is the number of integers.
 
 The problem could be summarized as the following: for every integer in one array whether there is a greater integer in the other array. Suppose the first array is `[4, 6, 2, 7]` and the second array is `[3, 5, 8, 9]`. After sorting them in ascending order, I get `[2, 4, 6, 7]` and `[3, 5, 8, 9]`. `2` is the smallest integer in the first array and it is smaller than `3`, which is the smallest integer in the second array, that means I should find out whether for every integer in the first array there is a greater integer in the second array. I can then compare the second smallest integers in the two arrays, that are `4` and `5`. `4` is smaller than `5`, therefore I can compare the integers thereafter. If the second smallest integer in the first array was `6`, then I can return false, since every integer after `6` in the first array is for sure greater than `5`. If the integers from the two arrays are equal to each other, return false. When the end of both arrays are reached, that means for every integer in one array there is a greater integer in another array, I can then return true.
@@ -39,6 +41,8 @@ function classPhotos(redShirtHeights, blueShirtHeights) {
   return true;
 }
 ```
+
+#
 
 ### Better Approach - O(nlog(n)) time | O(1) space, where n is the number of integers(students).
 
