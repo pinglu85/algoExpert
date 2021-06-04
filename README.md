@@ -29,3 +29,4 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
 | [Nth Fibonacci](/Easy/nth-fibonacci.md)                                           | 🟢         |                      |                          |                |
 | [Product Sum](/Easy/product-sum.md)                                               | 🟢         | Arrays               |                          |                |
 | [Binary Search](/Easy/binary-search.md)                                           | 🟢         | Searching Algorithms |                          |                |
+| [Find Three Largest Numbers](/Easy/find-three-largest-numbers.md)                 | 🟢         | Arrays               |                          |                |
