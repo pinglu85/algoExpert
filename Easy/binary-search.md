@@ -10,28 +10,35 @@ Given a sorted array of integers and a target integer, I am asked to write a fun
 
 The overarching logic of Binary Search is:
 
-1. Compare the target integer to the middle number of the array. If they are equal to each other, then we find the target in the array. If the target is smaller than the middle number, then it means the target might be located in the left half of the array, because all the integers to the right of the middle number must be greater than the middle number. If the target is greater than the middle number, then the target might be located in the right half of the array, because all the numbers to the left of the middle number are going to be smaller than the middle number;
-2. Eliminate half of the array that for sure doesn't contain the target, which means we don't need to explore the integers in that half;
-3. Continue this process until we eventually find the target in the array or the target is not contained in the array.
+1. Find the middle number in the sorted array.
+2. Compare the middle number to the target. Eliminate half of the array, which means we don't need to explore the integers in that half, depending on where the target would be located compared to the middle number:
 
-I am going to create two pointers that are going to keep track of the start position and the end position of the search range in the array; initially, the start pointer is going to point to the start of the array and the end pointer to the end of the array. While the start pointer does not exceed the end pointer, keep getting the integer that is at the middle of the search range; if the target is equal to the integer, then it means I find the target, so break out of the while loop, return the index of the middle integer; otherwise figure out which half of the search range might contains the target, then eliminate the rest half and update the search range. Finally, if I get out of the while loop without returning the result, which means the target is not found in the array, return `-1`.
+   - If the target is equal to the middle number, then we have found the target.
+
+   - If the target is smaller than the middle number, then it means the target would be located in the left half of the array, because all the integers to the right of the middle number are for sure greater than the middle number, and so even greater than the target.
+
+   - If the target is greater than the middle number, then the target would be located in the right half of the array, because all the numbers to the left of the middle number must be smaller than the middle number, and thus even smaller than the target.
+
+3. Find the middle number in the remaining half of the array and continue as in step 2. Eventually, we will find the target or there is no more array to explore, which means the target is not found in the array.
+
+I am going to initialize two pointers `left` and `right` to keep track of the current subarray that remains to be explored. Initially, the `left` pointer is going to point at the start of the array and the `right` pointer at the end of the array. While the `left` pointer doesn't surpass the `right` pointer, keep finding the middle number in the current subarray; if the target is equal to the middle number, then I have found the target, so return the index of the middle number; otherwise update either the left pointer or the right pointer based on the comparison, eliminating half of the current subarray. Finally, if I get out of the while loop without returning the result, then it means the target has not been found and it can not be found, return `-1`.
 
 ### Iterative Solution
 
 ```js
 function binarySearch(array, target) {
-  let startIdx = 0;
-  let endIdx = array.length - 1;
-  while (startIdx <= endIdx) {
-    const middleIdx = Math.floor((startIdx + endIdx) / 2);
+  let left = 0;
+  let right = array.length - 1;
+  while (left <= right) {
+    const middleIdx = Math.floor((left + right) / 2);
     const potentialMatch = array[middleIdx];
 
     if (target === potentialMatch) return middleIdx;
 
     if (target < potentialMatch) {
-      endIdx = middleIdx - 1;
+      right = middleIdx - 1;
     } else {
-      startIdx = middleIdx + 1;
+      left = middleIdx + 1;
     }
   }
   return -1;
@@ -42,7 +49,7 @@ function binarySearch(array, target) {
 
 ### Recursive Approach - O(log(n)) time | O(log(n)) space, where the n is the length of the input array.
 
-Instead of using a while loop, I am going to define a recursive function that is going to be called on each search range. I am going to pass in two pointers that keep track of the start position and the end position of the search range to the recursive function, and also pass in the array and the target integer. The base case of the recursive function is going to be a start pointer that exceeds the end pointer.
+Instead of using a while loop, I am going to define a recursive function that is going to be called on each subarray that remains to be explored. The recursive function is going to take in the input array, the target integer and two pointers, the `left` pointer and the `right` pointer, which specify the starting index and the ending index of the subarray to be explored. The base case of the recursive function is the `left` pointer is greater than the `right` pointer.
 
 ### Recursive Solution
 
@@ -51,18 +58,18 @@ function binarySearch(array, target) {
   return binarySearchImpl(array, target, 0, array.length - 1);
 }
 
-function binarySearchImpl(array, target, startIdx, endIdx) {
-  if (startIdx > endIdx) return -1;
+function binarySearchImpl(array, target, left, right) {
+  if (left > right) return -1;
 
-  const middleIdx = Math.floor((startIdx + endIdx) / 2);
+  const middleIdx = Math.floor((left + right) / 2);
   const potentialMatch = array[middleIdx];
 
   if (target === potentialMatch) return middleIdx;
 
   if (target < potentialMatch) {
-    return binarySearchImpl(array, target, startIdx, middleIdx - 1);
+    return binarySearchImpl(array, target, left, middleIdx - 1);
   } else {
-    return binarySearchImpl(array, target, middleIdx + 1, endIdx);
+    return binarySearchImpl(array, target, middleIdx + 1, right);
   }
 }
 ```
