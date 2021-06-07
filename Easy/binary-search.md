@@ -11,7 +11,7 @@ Given a sorted array of integers and a target integer, I am asked to write a fun
 The overarching logic of Binary Search is:
 
 1. Find the middle number in the sorted array.
-2. Compare the middle number to the target. Eliminate half of the array, which means we don't need to explore the integers in that half, depending on where the target would be located compared to the middle number:
+2. Compare the middle number to the target. Eliminate half of the array, depending on where the target would be located compared to the middle number:
 
    - If the target is equal to the middle number, then we have found the target.
 
