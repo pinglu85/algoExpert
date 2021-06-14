@@ -35,33 +35,38 @@ function sortedSquaredArray(array) {
     }
   }
 
-  const squares = [];
-  let positiveIdx = 0;
-  let negativeIdx = negativeSquares.length - 1;
+  return mergeSortedArrays(positiveSquares, negativeSquares);
+}
 
-  while (positiveIdx < positiveSquares.length || negativeIdx >= 0) {
-    const positiveSquare =
-      positiveSquares[positiveIdx] !== undefined
-        ? positiveSquares[positiveIdx]
-        : Infinity;
-    const negativeSquare = negativeSquares[negativeIdx] || Infinity;
+function mergeSortedArrays(ascendingArray, descendingArray) {
+  const mergedArray = [];
+  let ascendingIdx = 0;
+  let descendingIdx = descendingArray.length - 1;
 
-    if (positiveSquare < negativeSquare) {
-      squares.push(positiveSquare);
-      positiveIdx++;
+  while (ascendingIdx < ascendingArray.length || descendingIdx >= 0) {
+    const ascendingItem = getItemByIdx(ascendingArray, ascendingIdx);
+    const descendingItem = getItemByIdx(descendingArray, descendingIdx);
+
+    if (ascendingItem < descendingItem) {
+      mergedArray.push(ascendingItem);
+      ascendingIdx++;
     } else {
-      squares.push(negativeSquare);
-      negativeIdx--;
+      mergedArray.push(descendingItem);
+      descendingIdx--;
     }
   }
 
-  return squares;
+  return mergedArray;
+}
+
+function getItemByIdx(array, idx) {
+  return array[idx] === undefined ? Infinity : array[idx];
 }
 ```
 
 #
 
-### Improved Approach (based on the video explanation of AlgoExpert)
+### Better Approach (based on the video explanation of AlgoExpert)
 
 Consider we have the input array `[-4, -2, 0, 1, 3]`, after being squared, we got `[16, 4, 0, 1, 9]`, we can realize the smallest possible squared value which could be end up in the output array is `0`. The farther the value is away from 0, regardless of whether it is positive or negative, the larger the squared value will become. And the closer the value is to 0, the smaller the squared value.
 The number line below illustrates this.
@@ -86,7 +91,7 @@ Since we know where to find the largest squared value in the input array, we can
 
 O(n) time | O(n) space, where n is the length of the input array.
 
-### Improved Solution
+### Better Solution
 
 ```js
 function sortedSquaredArray(array) {
