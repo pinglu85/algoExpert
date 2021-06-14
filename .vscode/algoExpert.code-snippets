@@ -9,7 +9,7 @@
       "#\n",
       "### Approach\n",
       "${6:approach}\n",
-      "#### Time & Space Complexity\n",
+      "### Time & Space Complexity\n",
       "${3:time complexity} | ${4:space complexity}, ${5:notation}\n",
       "### Solution\n",
       "```js",
