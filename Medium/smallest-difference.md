@@ -15,13 +15,17 @@ The output is `[28, 26]`.
 
 #
 
-### Approach 1 - O(n\*m) time | O(1) space, where n is the length of the first input array, and m is the length of the second input array.
+### Brute-force Approach
 
 - Initialize a variable that is going to keep track of the smallest absolute difference so far.
 - Initialize an empty array to store the current smallest pair.
 - Iterate through every number in the first array. For each number, start iterating through the every number in the second array, compute the absolute difference between the number and each number in the second array, if I get a smaller absolute difference, update the current smallest difference and the current smallest pair.
 
-### Solution 1
+### Time & Space Complexity
+
+O(n\*m) time | O(1) space, where n is the length of the first input array, and m is the length of the second input array.
+
+### Brute-force Solution
 
 ```js
 function smallestDifference(arrayOne, arrayTwo) {
@@ -45,7 +49,7 @@ function smallestDifference(arrayOne, arrayTwo) {
 
 #
 
-### Approach 2 - O(nlog(m) + mlog(m)) time | O(1) space, where n is the length of the first input array, and m is the length of the second input array.
+### Approach 2
 
 - Initialize a variable that is going to keep track of the smallest absolute difference so far.
 - Initialize an empty array to store the current smallest pair.
@@ -64,6 +68,10 @@ We are now at index 0 in the `arrayOne` and the number is `20`. `20` should be i
 Compare the two absolute differences to the current smallest difference; if one of the absolute differences is smaller than the current smallest difference, set it as the current smallest difference and update the current smallest pair. If one of the absolute difference is equal to 0, return the current smallest pair.
 
 - Return the current smallest pair after we reach the very end of the first array.
+
+### Time & Space Complexity
+
+O(nlog(m) + mlog(m)) time | O(1) space, where n is the length of the first input array, and m is the length of the second input array.
 
 ### Solution 2
 
@@ -126,7 +134,7 @@ function findNumBeforeAndAfter(array, target) {
 
 #
 
-### Best Approach - O(nlog(n) + m(log(m))) time | O(1) space, where n is the length of the first input array, and m is the length of the second input array.
+### Best Approach
 
 Suppose we want to find the pair of numbers from the following two arrays:
 
@@ -161,6 +169,10 @@ Based on the above observation, we can come up with the following solution:
   - Compute the absolute difference between the number that `idxOne` points to and the number that `idxTwo` points to. Compare the result to the current smallest difference; if it is smaller, set it as the current smallest difference and update the current smallest pair with these two numbers.
   - Compare the number that `idxOne` points to with the number that `idxTwo` points to. If the former is smaller, move `idxOne` to right by one; if the latter is smaller, move `idxTwo` to right by one; if they are equal to each other, break the loop.
 - Return the current smallest pair.
+
+### Time & Space Complexity
+
+O(nlog(n) + m(log(m))) time | O(1) space, where n is the length of the first input array, and m is the length of the second input array.
 
 ### Best Solution
 

@@ -6,11 +6,15 @@ We will be given an array of positive integers, which represent the values of co
 
 #
 
-### Brute-force approach - O(m \* n) time | O(1) space, where n is the number of coins and m is the sum that all of the coins add up to.
+### Brute-force approach
 
 Iterate from 1 to the maximum amount of change that I can create, which is the value that all of the coins in the input array sum up to. At each iteration, find out if we can sum up to the current value using our coins; if we can't then the minimum amount of change is found. If we get out of the loop without returning the result, return maximum amount of change + 1.
 
 To find out if there is a subset in the input array that adds up to a target value, I can first sort the array in ascending order, then iterate through every integer in the sorted array, starting from the last one; for each integer, compare it with the target value, if the integer is equal to the target value, then the subset is found; if the integer is smaller than the target value, subtract it from the target value and update the target value to the result, move to the next integer. If the very beginning of the input array is reached and the target value is still larger than 0, then I find the value that no subset can add up to.
+
+### Time & Space Complexity
+
+O(m \* n) time | O(1) space, where n is the number of coins and m is the sum that all of the coins add up to.
 
 ### Brute-force Solution
 
@@ -42,7 +46,7 @@ function nonConstructibleChange(coins) {
 
 #
 
-### Optimal Approach - O(nlog(n)) time | O(1) space (based on the video explanation of AlgoExpert)
+### Optimal Approach (based on the video explanation of AlgoExpert)
 
 If you don't know how to solve a array problem, the first thing you usually can do is sort the input array and see what that looks like. The sample input is `[5, 7, 1, 1, 2, 3, 22]`. After sorting it, we get `[1, 1, 2, 3, 5, 7, 22]`. Let's walk through the sorted array and try to solve the problem.
 
@@ -153,6 +157,10 @@ So to solve the problem, what we need to do is:
 - Iterate through every integer in the sorted array.
   - For every integer, compare it to the current change, if it is greater than the current change, we found the minimum amount of change we cannot make, which is current change we make plus 1, return the result; otherwise, add the integer to the current change.
 - If we get out of the loop without returning the result, return current change we make plus 1.
+
+### Time & Space Complexity
+
+O(nlog(n)) time | O(1) space, where n is the number of coins.
 
 ### Optimal Solution
 

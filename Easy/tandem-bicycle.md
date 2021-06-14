@@ -10,7 +10,7 @@ A tandem bicycle is a bicycle operated by two people. The speed of the bicycle i
 
 #
 
-### Approach - O(nlog(n)) time | O(1) space, where n is the number of riders.
+### Approach
 
 Suppose the input arrays are `[8, 5, 3]` and `[7, 2, 4]`. There are following ways to pair every integer in the first array with a integer from the second array:
 
@@ -28,6 +28,10 @@ The maximum total speed is yielded when the pairs are `[8, 2], [5, 4], [3, 7]` o
 So to get the maximum total speed, I would sort the first array in ascending order and the second array in descending order at the very beginning. Initialize a variable to 0 that is going to store the running sum of the total speed. Traverse through each integer in the first array. At each integer, get the integer at the current index in the second array and add the larger one from these two integers to the running sum.
 
 From the above pairings, the minimum possible total speed is `8 + 5 + 3 = 16`, which is yielded by pairing the largest numbers from both of these arrays together: `[8, 7], [5, 4], [3, 2]`, because that way I can eliminate two large numbers. So to get the minimum total speed, I would sort the second array also in ascending order, then loop through each number in the first array; for each number, get the number at the current index in the second array and add the larger one from these two numbers to the running sum.
+
+### Time & Space Complexity
+
+O(nlog(n)) time | O(1) space, where n is the number of riders.
 
 ### Solution
 

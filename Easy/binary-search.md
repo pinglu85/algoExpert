@@ -6,7 +6,7 @@ Given a sorted array of integers and a target integer, I am asked to write a fun
 
 #
 
-### Iterative Approach - O(log(n)) time | O(1) space, where n is the number of integers in the input array.
+### Iterative Approach
 
 The overarching logic of Binary Search is:
 
@@ -22,6 +22,10 @@ The overarching logic of Binary Search is:
 3. Find the middle number in the remaining half of the array and continue as in step 2. Eventually, we will find the target or there is no more array to explore, which means the target is not found in the array.
 
 I am going to initialize two pointers `left` and `right` to keep track of the current subarray that remains to be explored. Initially, the `left` pointer is going to point at the start of the array and the `right` pointer at the end of the array. While the `left` pointer doesn't surpass the `right` pointer, keep finding the middle number in the current subarray; if the target is equal to the middle number, then I have found the target, so return the index of the middle number; otherwise update either the left pointer or the right pointer based on the comparison, eliminating half of the current subarray. Finally, if I get out of the while loop without returning the result, then it means the target has not been found and it can not be found, return `-1`.
+
+### Time & Space Complexity
+
+O(log(n)) time | O(1) space, where n is the number of integers in the input array.
 
 ### Iterative Solution
 
@@ -47,9 +51,13 @@ function binarySearch(array, target) {
 
 #
 
-### Recursive Approach - O(log(n)) time | O(log(n)) space, where the n is the length of the input array.
+### Recursive Approach
 
 Instead of using a while loop, I am going to define a recursive function that is going to be called on each subarray that remains to be explored. The recursive function is going to take in the input array, the target integer and two pointers, the `left` pointer and the `right` pointer, which specify the starting index and the ending index of the subarray to be explored. The base case of the recursive function is the `left` pointer is greater than the `right` pointer.
+
+### Time & Space Complexity
+
+O(log(n)) time | O(log(n)) space, where the n is the length of the input array.
 
 ### Recursive Solution
 

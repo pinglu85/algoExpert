@@ -8,13 +8,17 @@ We are given two inputs, the `competitions` array and the `results` array, and w
 
 #
 
-### Approach - O(n) time | O(k) space, where n is the number of competitions and k is the number of teams.
+### Approach
 
 I can use a hash table to keep track of each team's points, because a hash table is used to store key/value pairs, here each key is a team's name and the values are each team's points. Given a team name, I can retrieve its points. Moreover, hash tables provide constant-time lookup and insertion on average. Once I know all of the points for all of the teams, I can go through the hash table and figure out which team has the most amount of points and then return the name of that team.
 
 - Initialize an empty Map to store the teams and their scores.
 - Iterate through the `competitions` array. At each iteration, access the index that current competition is at in the `results` array to find out the winning team of current competition. Get the current score of the winning team from the Map. If the team is not already a key in the Map, set the current score to 0, and then add 3 points to the current score. Add the team and its current score to the Map or update its score in the Map.
 - After the end of the `competitions` array is reached, iterate through the Map to find the team that has the highest score. Use a variable to keep track of the best score that I've currently seen, and use another variable to keep track of the current best team. At each iteration, if I get to a better score, set it as the current best score and set the team as the current best team. After the loop completes, return the current best team.
+
+### Time & Space Complexity
+
+O(n) time | O(k) space, where n is the number of competitions and k is the number of teams.
 
 ### Solution
 
@@ -50,9 +54,13 @@ function tournamentWinner(competitions, results) {
 
 #
 
-### Improved Approach - O(n) time | O(k) space, where n is the number of competitions and k is the number of teams.
+### Improved Approach
 
 I can solve the problem in one loop. Instead of iterating through the hash table to find the team that has the most number of points, I can keep track of the best team and the best score while traversing the `competitions` array.
+
+### Time & Space Complexity
+
+O(n) time | O(k) space, where n is the number of competitions and k is the number of teams.
 
 ### Improved Solution
 

@@ -6,9 +6,13 @@ I am given the head of a singly linked list. The nodes of the linked list are go
 
 #
 
-### Approach 1 - O(n) time | O(1) space, where n is the number of nodes in the Linked List
+### Approach 1
 
 Since the linked list is sorted, it means all of the duplicate values are grouped together. So I would keep track of the node I am currently at, and compare its value to the value of the next node. If they are equal to each other, delete the next node; otherwise update the current node to the next node. Lastly, return the head of the modified linked list.
+
+### Time & Space Complexity
+
+O(n) time | O(1) space, where n is the number of nodes in the Linked List.
 
 ### Solution 1
 
@@ -38,9 +42,13 @@ function removeDuplicatesFromLinkedList(linkedList) {
 
 #
 
-### Approach 2 - O(n) time | O(1) space, where n is the number of nodes in the Linked List
+### Approach 2
 
 Instead of deleting the duplicate nodes one at time, I can also remove all duplicate nodes in one go. I am going to loop over all of the nodes in the linked list. For each node I am going to check its value against its next neighbor's value, if they are the same, I am going to look at the next node of that neighbor and check if it has the same value as the current node; repeat the process until I find a node that has a different value than the current node; then I am going to change the next pointer of the current node to point to that node, which means all of the duplicate nodes are removed, and then I update the current node to that node.
+
+### Time & Space Complexity
+
+O(n) time | O(1) space, where n is the number of nodes in the Linked List.
 
 ### Solution 2
 

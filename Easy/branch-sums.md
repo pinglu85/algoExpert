@@ -24,7 +24,7 @@ The output should be:
 
 #
 
-### Approach with iterative DFS - O(n) time | O(n) space, where n is the number of nodes in the Binary Tree.
+### Approach with iterative DFS
 
 Create an empty array to store the branch sums. Use Depth-First Search to traverse the binary tree. For each node, add its value to the sum of all nodes above it, store the result and the node in a data structure, so that I can keep track of the running sum, which means when I visit a new node, I can retrieve the sum of all nodes above the new node. If a node is a leaf node, append the updated running sum to the branch sums array.
 
@@ -39,6 +39,10 @@ DFS can be implemented using iterative approach or recursive approach. Here I wi
   - Otherwise, for each child node, calculate the the new running sum by adding the value at that child node to the running sum, store the child node and the new running sum in an object and append the object to the stack. Because of how stack works, if I first append the left child node to the stack, then at next iteration, I will visit the right child node first. Since the branch sums should be ordered from leftmost branch sum to rightmost branch sum, I need to append the right child node first.
 
 - Return the branch sums array.
+
+### Time & Space Complexity
+
+O(n) time | O(n) space, where n is the number of nodes in the Binary Tree.
 
 ### Iterative Solution
 
@@ -82,7 +86,7 @@ function branchSums(root) {
 
 #
 
-### Approach with recursive DFS - O(n) time | O(n) space, where n is the number of nodes in the Binary Tree.
+### Approach with recursive DFS
 
 Instead of using a stack to keep track of the next node that needs to be visited and the running sum, use the call stack to track these info.
 
@@ -95,7 +99,9 @@ Instead of using a stack to keep track of the next node that needs to be visited
   - Recursively call the helper function passing in the right child of the node, the new running sum and the branch sums array.
 - When I get out of the helper function, return the branch sums array as part of the main function.
 
-**Note regarding the space complexity**
+### Time & Space Complexity
+
+O(n) time | O(n) space, where n is the number of nodes in the Binary Tree.
 
 Each recursive call to the helper function adds a new frame on the call stack. On average we will never have more than log(n) recursive calls on the call stack, since we eliminate half the nodes in the remaining tree at each recursive call. In the worst case, when we are dealing with a very imbalanced binary tree, we would have O(n) space from the recursive calls, since we have n recursive calls on the call stack at once. Besides the space from the recursive calls, we also return an array of branch sums. The size of the array is same as the number of branches in the Binary Tree, which is the number of leaf nodes in the Binary Tree. There are roughly half of n leaf nodes in the Binary Tree and half of n is equal to O(n) in the space time complexity analysis.
 

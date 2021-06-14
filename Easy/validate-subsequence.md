@@ -15,9 +15,13 @@ The output should be `true`.
 
 #
 
-### Approach - O(n) time | O(1) space
+### Approach
 
 Use a pointer to keep track of the position we are at in the `sequence` array. Iterate through every integer in the first array. At each iteration, compare the integer in the first array with the value in the `sequence` array that the pointer currently points to, if they are equal, then we found the value in the first array, move the pointer forward by 1. If the pointer is equal to the length of the `sequence` array, then it means all the numbers in the `sequence` array are found in the first array and they are in the same order, return `true`. After the loop finishes, if the pointer is not equal to the length of the `sequence` array, return `false`.
+
+### Time & Space Complexity
+
+O(n) time | O(1) space, where n is the length of the array.
 
 ### Solution 1
 

@@ -8,7 +8,7 @@ Suppose the input array is going to be `[1, 3, 2]`. The first query can be execu
 
 #
 
-### Approach 1 - O(nlog(n)) time | O(1) space
+### Approach 1
 
 Since I am asked to compute the minimum amount of total waiting time, I am going to sort the input array in ascending order at the very beginning. Suppose the input array is going to be `[6, 1]`, the total waiting time is going to be `(0) + (6) = 6`. However, if they are executed in the order of `[1, 6]`, then the waiting time is going to be `(0) + (1) = 1`. Therefore, to get the minimum amount of the total waiting time, I need to figure out the optimal execution order. It can be also noticed, if the largest query is executed first, all of the queries after it will have to wait at least the duration of the largest query; if the shortest query is executed first, then all queries after it are for sure waiting the minimum amount of time, and since the largest query is going to be executed at the very end, that means no queries need to wait for the largest query to finish executing.
 
@@ -20,6 +20,10 @@ Then I would calculate the waiting time of each individual query and sum all of 
   - add the time that current query have to wait to the total waiting time;
   - update the waiting time that next query needs to wait by adding the duration of the current query to the waiting time.
 - Return the amount of total waiting time.
+
+### Time & Space Complexity
+
+O(nlog(n)) time | O(1) space, where n is the number of queries.
 
 ### Solution 1
 
@@ -40,7 +44,7 @@ function minimumWaitingTime(queries) {
 
 #
 
-### Approach 2 - O(nlog(n)) time | O(1) space
+### Approach 2
 
 Suppose the input array is `[8, 9, 10, 11]`. If the queries are executed in that order, the total waiting time is going to be `0 + 8 + (8 + 9) + (8 + 9 + 10) = 52`.
 
@@ -61,6 +65,10 @@ Or
 The reason is that all queries after a query need to wait the duration of that query. So to compute the total waiting time, I would initialize a variable that is going to keep track of the total waiting time so far, then iterate through every query in the input array, keeping track of the index each query is at, since I need to know how many queries are remaining in the array; at each query, multiply the duration of the query by the number of queries that are left, and add the result to the total waiting time.
 
 Since the function needs to return the minimum amount of total waiting time, it would sort the input array at the very beginning.
+
+### Time & Space Complexity
+
+O(nlog(n)) time | O(1) space, where n is the number of queries.
 
 ### Solution 2
 

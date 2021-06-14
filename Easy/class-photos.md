@@ -13,9 +13,13 @@ The function is going to arrange the students and return true if we can take a p
 
 #
 
-### Approach - O(nlog(n)) time | O(1) space, where n is the number of integers.
+### Approach
 
 The problem could be summarized as the following: for every integer in one array whether there is a greater integer in the other array. Suppose the first array is `[4, 6, 2, 7]` and the second array is `[3, 5, 8, 9]`. After sorting them in ascending order, I get `[2, 4, 6, 7]` and `[3, 5, 8, 9]`. `2` is the smallest integer in the first array and it is smaller than `3`, which is the smallest integer in the second array, that means I should find out whether for every integer in the first array there is a greater integer in the second array. I can then compare the second smallest integers in the two arrays, that are `4` and `5`. `4` is smaller than `5`, therefore I can compare the integers thereafter. If the second smallest integer in the first array was `6`, then I can return false, since every integer after `6` in the first array is for sure greater than `5`. If the integers from the two arrays are equal to each other, return false. When the end of both arrays are reached, that means for every integer in one array there is a greater integer in another array, I can then return true.
+
+### Time & Space Complexity
+
+O(nlog(n)) time | O(1) space, where n is the number of integers.
 
 ### Solution
 
@@ -44,7 +48,7 @@ function classPhotos(redShirtHeights, blueShirtHeights) {
 
 #
 
-### Better Approach - O(nlog(n)) time | O(1) space, where n is the number of integers(students).
+### Better Approach
 
 Suppose the two arrays are `[4, 6, 2, 7]` and `[8, 3, 5, 9]`. To arrange the students under the aforementioned constraints, first I am going to find out the tallest student in the two arrays, because all of the other students are shorter than that student and they can not stand behind him. The height of the tallest student is `9` from the second array. It also means all of the students from the second array should be in the back row.
 
@@ -91,6 +95,10 @@ Front row(red shirt):  7, 6, 4, 2
 ```
 
 So that means I need to sort both arrays at the very beginning in the descending order and compare the tallest student in the first array to the tallest student in the second array to find out whether or not the students wearing red shirts are going to be in the front row. I would use a Boolean to store the comparison result. Iterate through the two sorted arrays starting from index `0`, **because I need to handle the case where the tallest students in the two arrays have the same height**, for instance, the two arrays are `[6, 5]` and `[6, 4]`. At each iteration, compare the heights at current index in the two arrays. If the students wearing red shirts are going to be in the front row, then the height from the second array should be greater than the height from the first array; otherwise it should be smaller. Return `false`, if that is not the case. When I get out of the loop without returning the result, return `true`.
+
+### Time & Space Complexity
+
+O(nlog(n)) time | O(1) space, where n is the number of integers(students).
 
 ### Better Solution
 
