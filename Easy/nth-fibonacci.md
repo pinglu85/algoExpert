@@ -8,7 +8,7 @@ I am given an integer `n` and I am asked to write a function that is going to re
 
 ### Iterative Approach
 
-I would initialize an array that is going to keep track of the last two Fibonacci numbers. Initially, the array contains the value of `F0`, which is `0`, and the value of `F1`, which is `1`. Then I would use a for loop that starts at `3`, because I already have `F0` and `F1`, and ends at `n`, to keep track of how many Fibonacci numbers I have calculated. At each iteration, I am going to add the last two Fibonacci numbers up and their sum will become my new last Fibonacci number; then I will update the array that stores the last two Fibonacci numbers. Lastly, use a ternary operator to take care of the edge case where `n` is equal to `1`, because when `n` is `1`, I should return the value of `F0`; otherwise return the last Fibonacci number.
+I would initialize an array that is going to keep track of the last two Fibonacci numbers. Initially, the array is going to contain the first two numbers of the Fibonacci sequence, which are `0` and `1`. Then I am going to initialize a variable `counter` that is going to keep track of how many Fibonacci numbers I have calculated. Initially, set it to `3`, because I already have the first two Fibonacci numbers. While the `counter` is less than or equal to `n`, keep calculating the next Fibonacci number by adding up the last two Fibonacci numbers and keep updating the array of the last two Fibonacci numbers as well as the `counter`. Once I get out of the while loop, return the last Fibonacci number or the first number of the Fibonacci sequence if `n` is less than or equal to `1`.
 
 ### Time & Space Complexity
 
@@ -19,13 +19,13 @@ O(n) time | O(1) space, where n is the input number.
 ```js
 function getNthFib(n) {
   const lastTwoFibs = [0, 1];
-
-  for (let idx = 3; idx <= n; idx++) {
+  let counter = 3;
+  while (counter <= n) {
     const nextFib = lastTwoFibs[0] + lastTwoFibs[1];
     lastTwoFibs[0] = lastTwoFibs[1];
     lastTwoFibs[1] = nextFib;
+    counter++;
   }
-
   return n <= 1 ? lastTwoFibs[0] : lastTwoFibs[1];
 }
 ```
@@ -82,7 +82,7 @@ function getNthFib(n) {
 
 ### Recursive Approach with Dynamic Programming
 
-Since the naive recursive solution has repeated calls for same inputs, I can memoize the results of function calls to avoid repeated computations. So to do that, at every recursive call I am going to pass down an object which is going to keep track of the results that I have computed. In this object, each key is going to be a input number and the values are going to be the result for each input. Initially, the object is going to hold the value of `F0` and the value of `F1`. At each recursion, I am going to lookup the input number in the object; if it is already a key in the object, return the result for that input; otherwise, compute the result, and store the input and the corresponding result in that object.
+Since the naive recursive solution has repeated calls for same inputs, I can optimize it by memoizing the results of function calls. At every recursive call I am going to pass down an object which is going to store the Fibonacci numbers I have calculated. In this object, each key is going to be a input number and the values are going to be the corresponding Fibonacci number. Initially, the object is going to hold the first two numbers of the Fibonacci sequence. At each recursion, I am going to lookup the input number in the object; if it is already a key in the object, return the corresponding Fibonacci number; otherwise, compute the Fibonacci number for that input number, and store them in the object.
 
 ### Time & Space Complexity
 
