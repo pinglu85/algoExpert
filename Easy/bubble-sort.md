@@ -8,7 +8,135 @@ Given an array of integers, I am asked to write a function that is going to sort
 
 ### Approach
 
-The main idea of the Bubble Sort is repeatedly swap the adjacent elements if they are in wrong order. So I am going to use a nested for loop, where the outer loop is going to start at the very end of the input array, and the inner loop is going to start at the very beginning of the input array and stops at the current index of the outer loop, current index of the outer loop is exclusive. In the inner loop I am going to compare the integer to its right neighbor, if it is greater than the neighbor, which means they are in wrong order, swap them. The reason that the outer loop starts at the very end of the array and the inner loop stops at the current index of the outer loop is that after bubbling the larger numbers up, they are already in correct place. If the input array is already sorted or nearly sorted, I can optimize the Bubble Sort by initializing a Boolean flag in the outer loop that is going to keep track of whether a swap has occurred, if I get out of the inner loop, and didn't swap any numbers, which means all the numbers are already in correct place, I can break out of the outer loop.
+The main idea of the Bubble Sort is repeatedly swap the adjacent elements if they are in wrong order.
+
+Suppose we have the following array:
+
+```
+[8, 5, 2, 9, 6, 1]
+```
+
+We start at index `0`, compare `8` to its right neighbor, which is `5`.
+
+```
+[8, 5, 2, 9, 6, 1]
+ ^
+```
+
+Since `8` is greater than `5`, we swap the two elements:
+
+```
+[5, 8, 2, 9, 6, 1]
+ ^
+```
+
+We then move to index `1`, compare `8` to its right neighbor.
+
+```
+[5, 8, 2, 9, 6, 1]
+    ^
+```
+
+Since `8` is greater than `2`, swap the two elements:
+
+```
+[5, 2, 8, 9, 6, 1]
+    ^
+```
+
+We move to index `2`.
+
+```
+[5, 2, 8, 9, 6, 1]
+       ^
+```
+
+`8` is smaller than `9`, so we do nothing and move to index `3`.
+
+```
+[5, 2, 8, 9, 6, 1]
+          ^
+```
+
+`9` is larger than `6`, swap them:
+
+```
+[5, 2, 8, 6, 9, 1]
+          ^
+```
+
+We then move to index `4`.
+
+```
+[5, 2, 8, 6, 9, 1]
+             ^
+```
+
+`9` is greater than `1`, we swap the two elements:
+
+```
+[5, 2, 8, 6, 1, 9]
+             ^
+```
+
+We can notice that the largest element in the array, which is `9`, is now in the correct position, so we don't need to compare it any more.
+
+Then we start from index `0` again, compare `5` to its right neighbor.
+
+```
+[5, 2, 8, 6, 1, 9]
+ ^
+```
+
+`5` is greater than `2`, we swap the two elements.
+
+```
+[2, 5, 8, 6, 1, 9]
+ ^
+```
+
+Move to index `1`.
+
+```
+[2, 5, 8, 6, 1, 9]
+    ^
+```
+
+`5` is smaller than `8`, do nothing and move to index `2`.
+
+```
+[2, 5, 8, 6, 1, 9]
+       ^
+```
+
+`8` is greater than `6`, we swap the two elements:
+
+```
+[2, 5, 6, 8, 1, 9]
+       ^
+```
+
+Move to index `3`.
+
+```
+[2, 5, 6, 8, 1, 9]
+          ^
+```
+
+`8` is larger than `1`, swap the two elements:
+
+```
+[2, 5, 6, 1, 8, 9]
+          ^
+```
+
+Now the second largest element in the array, which is `8`, is now in the correct place.
+
+We start at index `0` again and keep doing the same process until the second smallest element in the array is in its correct position.
+
+So I am going to use a while loop to keep track of the number of elements that we still need to sort, until there is only one element left. In the while loop, I am going to loop through the remaining unsorted elements, compare adjacent elements and swap them if they are in wrong order.
+
+We can also optimize the bubble sort, if the input array is already sorted or nearly sorted, by initializing a Boolean flag, which is going to keep track of whether a swap has occurred. If I get out of the for loop and didn't swap any elements, then it means all the elements are already in the correct order and I can break out of the while loop.
 
 ### Time & Space Complexity
 
@@ -22,17 +150,20 @@ Worst: O(n^2) time | O(1) space, where n is the length of the input array.
 
 ```js
 function bubbleSort(array) {
-  for (let idx = array.length - 1; idx >= 0; idx--) {
-    let isSorted = true;
+  let numOfUnsortedElements = array.length;
+  let noSwaps = true;
 
-    for (let j = 0; j < idx; j++) {
-      if (array[j] > array[j + 1]) {
-        [array[j], array[j + 1]] = [array[j + 1], array[j]];
-        isSorted = false;
+  while (numOfUnsortedElements > 1) {
+    for (let idx = 0; idx < numOfUnsortedElements - 1; idx++) {
+      if (array[idx] > array[idx + 1]) {
+        [array[idx], array[idx + 1]] = [array[idx + 1], array[idx]];
+        noSwaps = false;
       }
     }
 
-    if (isSorted) break;
+    if (noSwaps) break;
+
+    numOfUnsortedElements--;
   }
 
   return array;
