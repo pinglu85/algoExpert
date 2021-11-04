@@ -173,3 +173,33 @@ function swap(array, i, j) {
   [array[i], array[j]] = [array[j], array[i]];
 }
 ```
+
+### Solution in GO
+
+```go
+package main
+
+func BubbleSort(array []int) []int {
+	isSorted := false
+	numOfUnsortedElements := len(array)
+
+	for !isSorted {
+		isSorted = true
+
+		for i := 0; i < numOfUnsortedElements-1; i++ {
+			if array[i] > array[i+1] {
+				swap(array, i, i+1)
+				isSorted = false
+			}
+		}
+
+		numOfUnsortedElements--
+	}
+
+	return array
+}
+
+func swap(array []int, i, j int) {
+	array[i], array[j] = array[j], array[i]
+}
+```
