@@ -154,6 +154,8 @@ function bubbleSort(array) {
   let noSwaps = true;
 
   while (numOfUnsortedElements > 1) {
+    noSwaps = true;
+
     for (let idx = 0; idx < numOfUnsortedElements - 1; idx++) {
       if (array[idx] > array[idx + 1]) {
         [array[idx], array[idx + 1]] = [array[idx + 1], array[idx]];
