@@ -25,8 +25,8 @@ function nonConstructibleChange(coins) {
 
   for (let sum = 1; sum < maximumSum; sum++) {
     let currentSum = sum;
-    for (let idx = coins.length - 1; idx >= 0; idx--) {
-      const currentValue = coins[idx];
+    for (let i = coins.length - 1; i >= 0; i--) {
+      const currentValue = coins[i];
       if (currentValue <= currentSum) {
         currentSum -= currentValue;
       }

@@ -45,9 +45,9 @@ function tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest) {
   }
 
   let totalSpeed = 0;
-  for (let idx = 0; idx < redShirtSpeeds.length; idx++) {
-    const redShirtSpeed = redShirtSpeeds[idx];
-    const blueShirtSpeed = blueShirtSpeeds[idx];
+  for (let i = 0; i < redShirtSpeeds.length; i++) {
+    const redShirtSpeed = redShirtSpeeds[i];
+    const blueShirtSpeed = blueShirtSpeeds[i];
     totalSpeed += Math.max(redShirtSpeed, blueShirtSpeed);
   }
 
@@ -65,9 +65,9 @@ function tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest) {
   if (fastest) reverseArrayInPlace(blueShirtSpeeds);
 
   let totalSpeed = 0;
-  for (let idx = 0; idx < redShirtSpeeds.length; idx++) {
-    const redShirtSpeed = redShirtSpeeds[idx];
-    const blueShirtSpeed = blueShirtSpeeds[idx];
+  for (let i = 0; i < redShirtSpeeds.length; i++) {
+    const redShirtSpeed = redShirtSpeeds[i];
+    const blueShirtSpeed = blueShirtSpeeds[i];
     totalSpeed += Math.max(redShirtSpeed, blueShirtSpeed);
   }
 

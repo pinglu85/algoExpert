@@ -31,9 +31,9 @@ const HOME_TEAM_WON = 1;
 function tournamentWinner(competitions, results) {
   const scores = new Map();
 
-  for (let idx = 0; idx < competitions.length; idx++) {
-    const [homeTeam, awayTeam] = competitions[idx];
-    const result = results[idx];
+  for (let i = 0; i < competitions.length; i++) {
+    const [homeTeam, awayTeam] = competitions[i];
+    const result = results[i];
     const winningTeam = result === HOME_TEAM_WON ? homeTeam : awayTeam;
     const currentScore = scores.get(winningTeam) || 0;
     scores.set(winningTeam, currentScore + 3);
@@ -72,9 +72,9 @@ function tournamentWinner(competitions, results) {
   let currentBestScore = 0;
   const scores = new Map();
 
-  for (let idx = 0; idx < competitions.length; idx++) {
-    const [homeTeam, awayTeam] = competitions[idx];
-    const result = results[idx];
+  for (let i = 0; i < competitions.length; i++) {
+    const [homeTeam, awayTeam] = competitions[i];
+    const result = results[i];
     const winningTeam = result === HOME_TEAM_WON ? homeTeam : awayTeam;
     const updatedScore = updateScore(winningTeam, 3, scores);
 
