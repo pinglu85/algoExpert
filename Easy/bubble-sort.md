@@ -151,23 +151,25 @@ Worst: O(n^2) time | O(1) space, where n is the length of the input array.
 ```js
 function bubbleSort(array) {
   let numOfUnsortedElements = array.length;
-  let noSwaps = true;
+  let isSorted = false;
 
-  while (numOfUnsortedElements > 1) {
-    noSwaps = true;
+  while (!isSorted) {
+    isSorted = true;
 
-    for (let idx = 0; idx < numOfUnsortedElements - 1; idx++) {
-      if (array[idx] > array[idx + 1]) {
-        [array[idx], array[idx + 1]] = [array[idx + 1], array[idx]];
-        noSwaps = false;
+    for (let i = 0; i < numOfUnsortedElements - 1; i++) {
+      if (array[i] > array[i + 1]) {
+        swap(array, i, i + 1);
+        isSorted = false;
       }
     }
-
-    if (noSwaps) break;
 
     numOfUnsortedElements--;
   }
 
   return array;
+}
+
+function swap(array, i, j) {
+  [array[i], array[j]] = [array[j], array[i]];
 }
 ```
