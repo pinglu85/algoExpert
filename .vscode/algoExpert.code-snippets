@@ -16,5 +16,10 @@
       "${7:solution}",
       "```\n"
     ]
+  },
+  "Table Row Template": {
+    "scope": "markdown",
+    "prefix": "tableRow",
+    "body": "|[${1:question}](${2:file path})|${3:difficulty} 🟢🔵🔴⚫️|${4:category}|${5:approach}|${6:good to review} ✅|"
   }
 }
