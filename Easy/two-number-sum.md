@@ -33,6 +33,27 @@ function twoNumberSum(array, targetSum) {
 }
 ```
 
+### Solution 1 in Go
+
+```go
+package main
+
+func TwoNumberSum(array []int, target int) []int {
+	diffs := map[int]int{}
+
+	for _, num := range array {
+		if val, found := diffs[num]; found {
+			return []int{val, num}
+		}
+
+		diff := target - num
+		diffs[diff] = num
+	}
+
+	return []int{}
+}
+```
+
 #
 
 ### Approach 2
@@ -58,6 +79,25 @@ function twoNumberSum(array, targetSum) {
   }
 
   return [];
+}
+```
+
+### Solution 2 in Go
+
+```go
+package main
+
+func TwoNumberSum(array []int, target int) []int {
+	for i, firstNum := range array {
+		for j := i + 1; j < len(array); j++ {
+			secondNum := array[j]
+			if firstNum+secondNum == target {
+				return []int{firstNum, secondNum}
+			}
+		}
+	}
+
+	return []int{}
 }
 ```
 
@@ -91,5 +131,32 @@ function twoNumberSum(array, targetSum) {
   }
 
   return [];
+}
+```
+
+### Solution 3 in Go
+
+```go
+package main
+
+import "sort"
+
+func TwoNumberSum(array []int, target int) []int {
+	sort.Ints(array)
+	left, right := 0, len(array)-1
+
+	for left < right {
+		currSum := array[left] + array[right]
+
+		if currSum == target {
+			return []int{array[left], array[right]}
+		} else if currSum > target {
+			right--
+		} else {
+			left++
+		}
+	}
+
+	return []int{}
 }
 ```
