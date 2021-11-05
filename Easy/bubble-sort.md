@@ -2,56 +2,56 @@
 
 ### Understanding the problem
 
-Given an array of integers, I am asked to write a function that is going to sort the array in ascending order using the Bubble Sort and return the sorted array.
+Given an array of integers, I am asked to write a function that is going to sort the array in ascending order using Bubble Sort and return the sorted array.
 
 #
 
 ### Approach
 
-The main idea of the Bubble Sort is repeatedly swap the adjacent elements if they are in wrong order.
+The main idea of Bubble Sort is repeatedly iterate through an array and in each pass swap the adjacent elements if they are in wrong order.
 
-Suppose we have the following array:
+Suppose we have the following array of numbers:
 
 ```
 [8, 5, 2, 9, 6, 1]
 ```
 
-We start at index `0`, compare `8` to its right neighbor, which is `5`.
+We start at index `0`, compare `8` to the number right next to it, which is `5`.
 
 ```
 [8, 5, 2, 9, 6, 1]
  ^
 ```
 
-Since `8` is greater than `5`, we swap the two elements:
+`8` is greater than `5`, we swap these two numbers:
 
 ```
 [5, 8, 2, 9, 6, 1]
  ^
 ```
 
-We then move to index `1`, compare `8` to its right neighbor.
+We then move on to index `1`, compare `8` to the number comes after it.
 
 ```
 [5, 8, 2, 9, 6, 1]
     ^
 ```
 
-Since `8` is greater than `2`, swap the two elements:
+Since `8` is greater than `2`, put them in order:
 
 ```
 [5, 2, 8, 9, 6, 1]
     ^
 ```
 
-We move to index `2`.
+We move on to index `2`.
 
 ```
 [5, 2, 8, 9, 6, 1]
        ^
 ```
 
-`8` is smaller than `9`, so we do nothing and move to index `3`.
+`8` is smaller than `9`, they are in correct order, so we move on to index `3`.
 
 ```
 [5, 2, 8, 9, 6, 1]
@@ -65,78 +65,82 @@ We move to index `2`.
           ^
 ```
 
-We then move to index `4`.
+Move on to index `4`.
 
 ```
 [5, 2, 8, 6, 9, 1]
              ^
 ```
 
-`9` is greater than `1`, we swap the two elements:
+`9` is greater than `1`, we swap the two numbers:
 
 ```
 [5, 2, 8, 6, 1, 9]
              ^
 ```
 
-We can notice that the largest element in the array, which is `9`, is now in the correct position, so we don't need to compare it any more.
+We can notice that the largest number in the array, which is `9`, is now in the final correct order. The reason for that is whenever we get to the largest number in the array, the number is going to be swapped all the way to the end of the array. And since it is in the final position, we don't need to check it again.
 
-Then we start from index `0` again, compare `5` to its right neighbor.
+We then start at index `0` again, compare `5` to `2`.
 
 ```
 [5, 2, 8, 6, 1, 9]
  ^
 ```
 
-`5` is greater than `2`, we swap the two elements.
+`5` is greater than `2`, so we swap the two numbers.
 
 ```
 [2, 5, 8, 6, 1, 9]
  ^
 ```
 
-Move to index `1`.
+Move on to index `1`.
 
 ```
 [2, 5, 8, 6, 1, 9]
     ^
 ```
 
-`5` is smaller than `8`, do nothing and move to index `2`.
+`5` is smaller than `8`, we don't need to touch these two numbers and we move on to index `2`, and compare `8` to `6`.
 
 ```
 [2, 5, 8, 6, 1, 9]
        ^
 ```
 
-`8` is greater than `6`, we swap the two elements:
+`8` is greater than `6`, we swap these two numbers:
 
 ```
 [2, 5, 6, 8, 1, 9]
        ^
 ```
 
-Move to index `3`.
+Move on to index `3`.
 
 ```
 [2, 5, 6, 8, 1, 9]
           ^
 ```
 
-`8` is larger than `1`, swap the two elements:
+`8` is larger than `1`, swap them:
 
 ```
 [2, 5, 6, 1, 8, 9]
           ^
 ```
 
-Now the second largest element in the array, which is `8`, is now in the correct place.
+Now the second largest element in the array, `8`, is in the final position.
 
-We start at index `0` again and keep doing the same process until the second smallest element in the array is in its correct position.
+We go all the way back to index `0`, loop through the array again and perform the same logic. We keep doing this until no swaps were made, which indicates the array is sorted.
 
-So I am going to use a while loop to keep track of the number of elements that we still need to sort, until there is only one element left. In the while loop, I am going to loop through the remaining unsorted elements, compare adjacent elements and swap them if they are in wrong order.
+So I am going to declare a variable `isSorted` which is going to keep track of whether or not the array is sorted. Initially, set it to `false`. In addition, I am going to use a counter to keep track of how many numbers still need to be sorted; initially, set it to the length of the array.
 
-We can also optimize the bubble sort, if the input array is already sorted or nearly sorted, by initializing a Boolean flag, which is going to keep track of whether a swap has occurred. If I get out of the for loop and didn't swap any elements, then it means all the elements are already in the correct order and I can break out of the while loop.
+While `isSorted` is `false`,
+
+1. first, set `isSorted` to `true` - we assume the array is now sorted;
+2. then, use a for loop to iterate through the remaining unsorted array, compare pairs of neighboring numbers. If they are out of order, swap them and set `isSorted` to `false`.
+3. when the for loop is finished, decrement the counter by 1.
 
 ### Time & Space Complexity
 
