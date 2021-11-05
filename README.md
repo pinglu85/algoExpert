@@ -31,3 +31,4 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
 | [Binary Search](/Easy/binary-search.md)                                           | 🟢         | Searching Algorithms |                          |                |
 | [Find Three Largest Numbers](/Easy/find-three-largest-numbers.md)                 | 🟢         | Arrays               |                          |                |
 | [Bubble Sort](/Easy/bubble-sort.md)                                               | 🟢         | Sorting Algorithms   |                          |                |
+| [Insertion Sort](/Easy/insertion-sort.md)                                         | 🟢         | Sorting Algorithms   |                          |                |
