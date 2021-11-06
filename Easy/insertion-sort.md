@@ -8,10 +8,89 @@ Given an array of integers, I am asked to write a function that is going to sort
 
 ### Approach
 
-To sort an array in ascending order using the Insertion Sort:
+In the Insertion Sort, we virtually split the array into a sorted and an unsorted part, and we keep inserting values from the unsorted part at the correct position into the sorted part. At the beginning, the sorted part consists just of the first value in the array.
 
-1. First, we loop through the array starting at index `1`, because in the Insertion Sort, we assume the first element in the array is already sorted.
-2. At each iteration, we compare the element at the current index to its predecessor. If the element is smaller than its predecessor, swap the element with its predecessor, and then compare it to the element that comes before it again. Keep performing the comparison and the swap, until a predecessor is smaller than the element or there is no more predecessor.
+Suppose we have the following array of integers:
+
+```
+[5, 4, 8, 2, 6]
+```
+
+We start at index `1`. The sorted part consists just of `5`.
+
+```
+[5, 4, 8, 2, 6]
+ -
+    i
+```
+
+We want to insert `4` into the sorted part. We compare `4` to `5`, the very last number in the sorted part. `4` is smaller than `5`, so we swap `4` with `5`.
+
+```
+[4, 5, 8, 2, 6]
+    i
+```
+
+We reach the very beginning of the sorted part, so we are done. Now the sorted part is `4, 5`. We move on to index `2`.
+
+```
+[4, 5, 8, 2, 6]
+ ----
+       i
+```
+
+Compare `8` to `5`. They are in the correct order, so we just expand the sorted part and move on to index `3`.
+
+```
+[4, 5, 8, 2, 6]
+ -------
+          i
+```
+
+Compare `2`, to the last number in the sorted part, which is `8`. `2` is smaller than `8`, so we swap them:
+
+```
+[4, 5, 2, 8, 6]
+          i
+```
+
+We then compare `2` to `5`. Since they are out of order, we swap `2` and `5`:
+
+```
+[4, 2, 5, 8, 6]
+          i
+```
+
+Then compare `2` to `4`. `2` is smaller than `4`, so we swap them again.
+
+```
+[2, 4, 5, 8, 6]
+          i
+```
+
+We reach the very beginning of the sorted part, so we move on to index `4` and the sorted part becomes `2, 4, 5, 8`.
+
+```
+[2, 4, 5, 8, 6]
+ ----------
+             i
+```
+
+Compare `6` to `8`. `6` is smaller than `8`, so we swap these two numbers.
+
+```
+[2, 4, 5, 6, 8]
+             i
+```
+
+Then we compare `6` to `5`, they are in the correct order, so we don't need to touch them. Since we are already at the end of the array, the array is now sorted.
+
+To implement the insertion sort,
+
+1. First, we use a for loop to iterate through the array starting at index `1`.
+2. At each iteration,
+   1. initialize a variable, called `j`, which is going to keep track of the position of the value we are trying to insert. Initially, set it to be equal to the index of the for loop, since the value we're trying to insert is the value at the current index of the for loop.
+   2. while the value is smaller than its predecessor and we haven't reach the very beginning of the sorted part, swap the value with its predecessor and decrement `j` by 1.
 
 ### Time & Space Complexity
 
