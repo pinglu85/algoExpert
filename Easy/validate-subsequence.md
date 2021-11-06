@@ -7,8 +7,8 @@ Implement a function that takes two arrays of integers as input and finds whethe
 For example:
 
 ```js
-array = [5, 1, 22, 25, 6, -1, 8, 10];
-sequence = [1, 6, -1, 10];
+array = [3, 1, 7, 5, 10, 2];
+sequence = [1, 5, 2];
 ```
 
 The output should be `true`.
