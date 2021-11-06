@@ -37,6 +37,28 @@ function isValidSubsequence(array, sequence) {
 }
 ```
 
+### Solution 1 in Go
+
+```go
+package main
+
+func IsValidSubsequence(array []int, sequence []int) bool {
+	seqIdx := 0
+
+	for _, num := range(array) {
+		if num == sequence[seqIdx] {
+			seqIdx++
+		}
+
+		if seqIdx == len(sequence) {
+			return true
+		}
+	}
+
+	return false
+}
+```
+
 ### Solution 2
 
 ```js
@@ -51,5 +73,26 @@ function isValidSubsequence(array, sequence) {
   }
 
   return seqIdx === sequence.length;
+}
+```
+
+### Solution 2 in Go
+
+```go
+package main
+
+func IsValidSubsequence(array []int, sequence []int) bool {
+	arrIdx := 0
+	seqIdx := 0
+
+	for arrIdx < len(array) && seqIdx < len(sequence) {
+		if array[arrIdx] == sequence[seqIdx] {
+			seqIdx++
+		}
+
+		arrIdx++
+	}
+
+	return seqIdx == len(sequence)
 }
 ```
