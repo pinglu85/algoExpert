@@ -34,7 +34,9 @@ function binarySearch(array, target) {
   let left = 0;
   let right = array.length - 1;
   while (left <= right) {
-    const middleIdx = Math.floor((left + right) / 2);
+    // Avoid overflow
+    const middleIdx = left + Math.floor((right - left) / 2);
+
     const potentialMatch = array[middleIdx];
 
     if (target === potentialMatch) return middleIdx;
@@ -69,7 +71,9 @@ function binarySearch(array, target) {
 function binarySearchImpl(array, target, left, right) {
   if (left > right) return -1;
 
-  const middleIdx = Math.floor((left + right) / 2);
+  // Avoid overflow
+  const middleIdx = left + Math.floor((right - left) / 2);
+
   const potentialMatch = array[middleIdx];
 
   if (target === potentialMatch) return middleIdx;
