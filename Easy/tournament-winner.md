@@ -39,16 +39,16 @@ function tournamentWinner(competitions, results) {
     scores.set(winningTeam, currentScore + 3);
   }
 
-  let currentBestScore = 0;
-  let currentBestTeam = '';
+  let currBestScore = 0;
+  let currBestTeam = '';
   scores.forEach((score, team) => {
-    if (score > currentBestScore) {
-      currentBestScore = score;
-      currentBestTeam = team;
+    if (score > currBestScore) {
+      currBestScore = score;
+      currBestTeam = team;
     }
   });
 
-  return currentBestTeam;
+  return currBestTeam;
 }
 ```
 
@@ -56,7 +56,7 @@ function tournamentWinner(competitions, results) {
 
 ### Improved Approach
 
-I can solve the problem in one loop. Instead of iterating through the hash table to find the team that has the most number of points, I can keep track of the best team and the best score while traversing the `competitions` array.
+I can solve the problem in one pass. Instead of iterating through the hash table to find the team that has the most number of points, I can keep track of the current best team while traversing the `competitions` array. To retrieve the current best team's score, I can simply look it up in the hash table.
 
 ### Time & Space Complexity
 
@@ -66,32 +66,31 @@ O(n) time | O(k) space, where n is the number of competitions and k is the numbe
 
 ```js
 const HOME_TEAM_WON = 1;
+const POINTS = 3;
 
 function tournamentWinner(competitions, results) {
-  let currentBestTeam = '';
-  let currentBestScore = 0;
-  const scores = new Map();
+  let currBestTeam = '';
+  const scores = { [currBestTeam]: 0 };
 
   for (let i = 0; i < competitions.length; i++) {
     const [homeTeam, awayTeam] = competitions[i];
     const result = results[i];
-    const winningTeam = result === HOME_TEAM_WON ? homeTeam : awayTeam;
-    const updatedScore = updateScore(winningTeam, 3, scores);
 
-    if (updatedScore > currentBestScore) {
-      currentBestScore = updatedScore;
-      currentBestTeam = winningTeam;
+    const winningTeam = result === HOME_TEAM_WON ? homeTeam : awayTeam;
+
+    updateScores(scores, winningTeam);
+
+    if (scores[winningTeam] > scores[currBestTeam]) {
+      currBestTeam = winningTeam;
     }
   }
 
-  return currentBestTeam;
+  return currBestTeam;
 }
 
-function updateScore(team, points, scores) {
-  const prevScore = scores.get(team) || 0;
-  const newScore = prevScore + points;
-  scores.set(team, newScore);
-  return newScore;
+function updateScores(scores, team) {
+  const prevScore = scores[team] || 0;
+  scores[team] = prevScore + POINTS;
 }
 ```
 
