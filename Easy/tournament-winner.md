@@ -94,3 +94,35 @@ function updateScore(team, points, scores) {
   return newScore;
 }
 ```
+
+### Improved Solution in Go
+
+```go
+package main
+
+const HOME_TEAM_WON = 1
+const POINTS = 3
+
+func TournamentWinner(competitions [][]string, results []int) string {
+	currBestTeam := ""
+	scores := map[string]int{currBestTeam: 0}
+
+	for i, competition := range competitions {
+		homeTeam, awayTeam := competition[0], competition[1]
+		result := results[i]
+
+		winningTeam := awayTeam
+		if result == HOME_TEAM_WON {
+			winningTeam = homeTeam
+		}
+
+		scores[winningTeam] += POINTS
+
+		if scores[winningTeam] > scores[currBestTeam] {
+			currBestTeam = winningTeam
+		}
+	}
+
+	return currBestTeam
+}
+```
