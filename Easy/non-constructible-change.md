@@ -180,3 +180,29 @@ function nonConstructibleChange(coins) {
   return currentChangeCreated + 1;
 }
 ```
+
+### Optimal Solution in Go
+
+```go
+package main
+
+import (
+	"sort"
+)
+
+func NonConstructibleChange(coins []int) int {
+	sort.Ints(coins)
+
+	currChangeCreated := 0
+
+	for _, coin := range coins {
+		if coin-currChangeCreated > 1 {
+			break
+		}
+
+		currChangeCreated += coin
+	}
+
+	return currChangeCreated + 1
+}
+```
