@@ -90,7 +90,7 @@ The change we can create are `12 (1 + 1 + 2 + 3 + 5)`, `11 (1 + 2 + 3 + 5)`, `10
                 ^
 ```
 
-The change we can create are `19 (1 + 1 + 2 + 3 + 5 + 7)`, `18 (1 + 2 + 3 + 5 + 7)`, `17 (2 + 3 + 5 + 7)`, `16 (1 + 1 + 2 + 5 + 7)`, `15 (1 + 2 + 5 + 7)`, `14 (1 + 1 + 2 + 3 + 7)`, `13 (1 + 2 + 3 + 7)` so now we can make any amount of change from `1` to `19`. This also means, we can make previous amount of change plus the current integer. We were able to make `12`, add `7` to it, we get `19`. We were also able to make `11`, add `7` to it, we get `18`, `10` + `7` = `17`, `9` + `7` = `16`...
+The change we can create are `19 (1 + 1 + 2 + 3 + 5 + 7)`, `18 (1 + 2 + 3 + 5 + 7)`, `17 (2 + 3 + 5 + 7)`, `16 (1 + 1 + 2 + 5 + 7)`, `15 (1 + 2 + 5 + 7)`, `14 (1 + 1 + 2 + 3 + 7)`, `13 (1 + 2 + 3 + 7)` so now we can make any amount of change from `1` to `19`. This also means, we can make previous amount of change plus the current integer, which is `7`. We were able to make `12`, add `7` to it, we get `19`; we were also able to make `11`, add `7` to it, we get `18`; `10` + `7` = `17`; `9` + `7` = `16`; ...
 
 ```
 [1, 1, 2, 3, 5, 7, 22]
