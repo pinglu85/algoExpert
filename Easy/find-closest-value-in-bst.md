@@ -23,9 +23,21 @@ The closest value to the target value in the BST is 13.
 
 ### Approach
 
-Use a variable to keep track of the current node; initialize it to be the root node of the BST. I also need a variable to keep track of the closest value in the BST so far; initialize it to 0, and another variable to keep track of the smallest absolute difference I've currently seen, that is the absolute difference between the current closest value and the target value; initialize it to `Infinity`.
+We are going to use a variable to keep track of the current node and initialize it to the root node of the BST. In addition, we also need a variable to keep track of the closest value in the BST so far; initialize it to the value of the root node.
 
-Compute the absolute difference between the current node's value and the target value, compare the result to the current smallest difference, if the result is smaller, set the node's value as the current closest value and update the current smallest absolute difference. Compare the target value to the current node's value, if the target value is less than the current node's value, explore the left subtree of the current node; if it is greater than the value, explore the right subtree; otherwise return the closest value, since the current node's value and the target value are equal to each other, which means there is no other value that can be closer to the target value than this value. Keep exploring the BST until the bottom of the tree is reached. Then return the current closest value.
+While current node is not `null`,
+
+1. compute the absolute difference between the value of the current node and the target value, compare the result to the absolute difference between the closest value we've seen so far and the target. If we get to a smaller absolute difference, set the value of the current node as the current closest value.
+
+2. Compare the target value to the current node's value:
+
+   - if the target value is less than the current node's value, explore the left subtree of the current node;
+
+   - if the target value is greater than the current node's value, explore the right subtree;
+
+   - otherwise break out of the while loop, since the current node's value and the target value are equal to each other, which means there is no other value that can be closer to the target value than this value.
+
+3. Return the closest value.
 
 ### Time & Space Complexity
 
@@ -47,28 +59,26 @@ Compute the absolute difference between the current node's value and the target 
 
 ```js
 function findClosestValueInBst(tree, target) {
-  let currentClosestValue = 0;
-  let currentSmallestDifference = Infinity;
-  let currentNode = tree;
+  let currNode = tree;
+  let currClosestValue = tree.value;
 
-  while (currentNode !== null) {
-    const currentValue = currentNode.value;
-    const currentDifference = Math.abs(currentValue - target);
-    if (currentDifference < currentSmallestDifference) {
-      currentSmallestDifference = currentDifference;
-      currentClosestValue = currentValue;
+  while (currNode !== null) {
+    if (
+      Math.abs(currNode.value - target) < Math.abs(currClosestValue - target)
+    ) {
+      currClosestValue = currNode.value;
     }
 
-    if (target < currentValue) {
-      currentNode = currentNode.left;
-    } else if (target > currentValue) {
-      currentNode = currentNode.right;
+    if (target < currNode.value) {
+      currNode = currNode.left;
+    } else if (target > currNode.value) {
+      currNode = currNode.right;
     } else {
       break;
     }
   }
 
-  return currentClosestValue;
+  return currClosestValue;
 }
 
 // This is the class of the input tree. Do not edit.
@@ -102,10 +112,12 @@ func (tree *BST) FindClosestValue(target int) int {
 			closest = currNode.Value
 		}
 
-		if target >= currNode.Value {
+		if target < currNode.Value {
+			currNode = currNode.Left
+		} else if target > currNode.Value {
 			currNode = currNode.Right
 		} else {
-			currNode = currNode.Left
+			break
 		}
 	}
 
@@ -125,35 +137,23 @@ func absDiff(x, y int) int {
 
 ```js
 function findClosestValueInBst(tree, target) {
-  return findClosestValueInBstImpl(tree, target, 0, Infinity);
+  return findClosestValueInBstImpl(tree, target, tree.value);
 }
 
-function findClosestValueInBstImpl(
-  tree,
-  target,
-  closestValue,
-  smallestDifference
-) {
-  if (tree === null) return closestValue;
-
-  const currentValue = tree.value;
-  const currentDifference = Math.abs(currentValue - target);
-  if (currentDifference < smallestDifference) {
-    closestValue = currentValue;
-    smallestDifference = currentDifference;
+function findClosestValueInBstImpl(tree, target, closestValue) {
+  if (Math.abs(tree.value - target) < Math.abs(closestValue - target)) {
+    closestValue = tree.value;
   }
 
-  if (target === currentValue) {
-    return closestValue;
+  if (target < tree.value && tree.left !== null) {
+    return findClosestValueInBstImpl(tree.left, target, closestValue);
   }
 
-  const nextNode = target < currentValue ? tree.left : tree.right;
-  return findClosestValueInBstImpl(
-    nextNode,
-    target,
-    closestValue,
-    smallestDifference
-  );
+  if (target > tree.value && tree.right !== null) {
+    return findClosestValueInBstImpl(tree.right, target, closestValue);
+  }
+
+  return closestValue;
 }
 
 // This is the class of the input tree. Do not edit.
@@ -183,19 +183,19 @@ func (tree *BST) FindClosestValue(target int) int {
 }
 
 func findClosestValueImpl(tree *BST, target, closest int) int {
-	if tree == nil {
-		return closest
-	}
-
 	if absDiff(tree.Value, target) < absDiff(closest, target) {
 		closest = tree.Value
 	}
 
-	if target >= tree.Value {
-		return findClosestValueImpl(tree.Right, target, closest)
-	} else {
+	if target < tree.Value && tree.Left != nil {
 		return findClosestValueImpl(tree.Left, target, closest)
 	}
+
+	if target > tree.Value && tree.Right != nil {
+		return findClosestValueImpl(tree.Right, target, closest)
+	}
+
+	return closest
 }
 
 func absDiff(x, y int) int {
