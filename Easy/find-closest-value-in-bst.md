@@ -81,6 +81,46 @@ class BST {
 }
 ```
 
+### Iterative Solution in Go
+
+```go
+package main
+
+type BST struct {
+	Value int
+
+	Left  *BST
+	Right *BST
+}
+
+func (tree *BST) FindClosestValue(target int) int {
+	currNode := tree
+	closest := tree.Value
+
+	for currNode != nil {
+		if absDiff(currNode.Value, target) < absDiff(closest, target) {
+			closest = currNode.Value
+		}
+
+		if target >= currNode.Value {
+			currNode = currNode.Right
+		} else {
+			currNode = currNode.Left
+		}
+	}
+
+	return closest
+}
+
+func absDiff(x, y int) int {
+	if x > y {
+		return x - y
+	}
+
+	return y - x
+}
+```
+
 ### Recursive Solution
 
 ```js
@@ -123,5 +163,46 @@ class BST {
     this.left = null;
     this.right = null;
   }
+}
+```
+
+### Recursive Solution in Go
+
+```go
+package main
+
+type BST struct {
+	Value int
+
+	Left  *BST
+	Right *BST
+}
+
+func (tree *BST) FindClosestValue(target int) int {
+	return findClosestValueImpl(tree, target, tree.Value)
+}
+
+func findClosestValueImpl(tree *BST, target, closest int) int {
+	if tree == nil {
+		return closest
+	}
+
+	if absDiff(tree.Value, target) < absDiff(closest, target) {
+		closest = tree.Value
+	}
+
+	if target >= tree.Value {
+		return findClosestValueImpl(tree.Right, target, closest)
+	} else {
+		return findClosestValueImpl(tree.Left, target, closest)
+	}
+}
+
+func absDiff(x, y int) int {
+	if x > y {
+		return x - y
+	}
+
+	return y - x
 }
 ```
