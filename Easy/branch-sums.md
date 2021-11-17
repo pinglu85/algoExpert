@@ -31,12 +31,18 @@ Create an empty array to store the branch sums. Use Depth-First Search to traver
 DFS can be implemented using iterative approach or recursive approach. Here I will implement it iteratively. The iterative DFS use a stack to keep track of next nodes need to be visited. A stack is typically implemented with a dynamic array or a singly linked list. Since arrays in JavaScript are dynamic, that means ending or removing an element at the end of an array is amortized constant time, I will use an array as the stack.
 
 - Initialize an empty array to store the branch sums.
-- Initialize an empty array as a stack to keep track of the next nodes I need to visit and the running sum till that node. The stack is going to be an array of objects; each object stores the node to be visited and the running sum. Initially, the stack has only one object, which contains the root node and the running sum till the root node that is the value of the root node.
+
+- Initialize an empty array as a stack to keep track of the next nodes I need to visit and the running sum till that node. The stack is going to be an array of objects; each object stores the node to be visited and the running sum. Initially, the stack has only one object, which contains the root node and the running sum till the root node that is `0`.
+
 - Loop until the stack is empty
 
-  - Pop an element off the stack. Get the node and the running sum till that node.
-  - If the node has zero children nodes, append the running sum to the branch sums array and continue the loop.
-  - Otherwise, for each child node, calculate the the new running sum by adding the value at that child node to the running sum, store the child node and the new running sum in an object and append the object to the stack. Because of how stack works, if I first append the left child node to the stack, then at next iteration, I will visit the right child node first. Since the branch sums should be ordered from leftmost branch sum to rightmost branch sum, I need to append the right child node first.
+  - Pop an element off the stack to get the node and the running sum till that node.
+
+  - Calculate the new running sum by adding the value of the node to the running sum.
+
+  - If the node has zero child nodes, append the new running sum to the branch sums array and continue the loop.
+
+  - Otherwise, for each child node, store the child node and the new running sum in an object and append the object to the stack. Because of how iterative DFS traversal works, if I first append the left child node to the stack, then at next iteration, I will visit the right child node first. Since the branch sums should be ordered from leftmost branch sum to rightmost branch sum, I need to append the right child node first.
 
 - Return the branch sums array.
 
@@ -59,23 +65,23 @@ class BinaryTree {
 
 function branchSums(root) {
   const sums = [];
-  const stack = [{ node: root, runningSum: root.value }];
+  const stack = [{ node: root, runningSum: 0 }];
 
   while (stack.length > 0) {
     const { node, runningSum } = stack.pop();
 
+    const newRunningSum = runningSum + node.value;
+
     if (!node.left && !node.right) {
-      sums.push(runningSum);
+      sums.push(newRunningSum);
       continue;
     }
 
-    let newRunningSum;
     if (node.right) {
-      newRunningSum = runningSum + node.right.value;
       stack.push({ node: node.right, runningSum: newRunningSum });
     }
+
     if (node.left) {
-      newRunningSum = runningSum + node.left.value;
       stack.push({ node: node.left, runningSum: newRunningSum });
     }
   }
@@ -137,12 +143,19 @@ func BranchSums(root *BinaryTree) []int {
 Instead of using a stack to keep track of the next node that needs to be visited and the running sum, use the call stack to track these info.
 
 - Initialize an empty array to store the branch sums.
+
 - Define a helper function that will be recursively invoked. The function takes in three parameters. The first parameter is the node needs to be visited; the second parameter is the running sum; and the last parameter is the branch sums array. Call the helper function in the main function passing in the root node of the tree as the node to be visited, 0 as the running sums and the empty branch sums array. In the helper function:
+
   - Check if the node to be visited is null. If it is, return.
+
   - Calculate the new running sum by adding the value of the node to the running sum.
+
   - If the node doesn't have any children, append the new running sum to the branch sums array.
+
   - Recursively call the helper function passing in the left child of the node, the new running sum and the branch sums array.
+
   - Recursively call the helper function passing in the right child of the node, the new running sum and the branch sums array.
+
 - When I get out of the helper function, return the branch sums array as part of the main function.
 
 ### Time & Space Complexity
