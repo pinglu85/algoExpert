@@ -84,6 +84,52 @@ function branchSums(root) {
 }
 ```
 
+### Iterative Solution in Go
+
+```go
+package main
+
+// This is the struct of the input root. Do not edit it.
+type BinaryTree struct {
+	Value int
+	Left  *BinaryTree
+	Right *BinaryTree
+}
+
+type unvisited struct {
+	node       *BinaryTree
+	runningSum int
+}
+
+func BranchSums(root *BinaryTree) []int {
+	sums := []int{}
+	stack := []unvisited{unvisited{root, 0}}
+
+	for len(stack) > 0 {
+		lastIdx := len(stack) - 1
+		node, runningSum := stack[lastIdx].node, stack[lastIdx].runningSum
+		stack = stack[:lastIdx]
+
+		runningSum += node.Value
+
+		if node.Left == nil && node.Right == nil {
+			sums = append(sums, runningSum)
+			continue
+		}
+
+		if node.Right != nil {
+			stack = append(stack, unvisited{node.Right, runningSum})
+		}
+
+		if node.Left != nil {
+			stack = append(stack, unvisited{node.Left, runningSum})
+		}
+	}
+
+	return sums
+}
+```
+
 #
 
 ### Approach with recursive DFS
@@ -134,5 +180,39 @@ function calculateBranchSums(node, runningSum, sums) {
 
   calculateBranchSums(node.left, newRunningSum, sums);
   calculateBranchSums(node.right, newRunningSum, sums);
+}
+```
+
+### Recursive Solution in Go
+
+```go
+package main
+
+// This is the struct of the input root. Do not edit it.
+type BinaryTree struct {
+	Value int
+	Left  *BinaryTree
+	Right *BinaryTree
+}
+
+func BranchSums(root *BinaryTree) []int {
+	sums := []int{}
+	branchSumsImpl(root, 0, &sums)
+	return sums
+}
+
+func branchSumsImpl(node *BinaryTree, runningSum int, sums *[]int) {
+	if node == nil {
+		return
+	}
+
+	runningSum += node.Value
+	if node.Left == nil && node.Right == nil {
+		*sums = append(*sums, runningSum)
+		return
+	}
+
+	branchSumsImpl(node.Left, runningSum, sums)
+	branchSumsImpl(node.Right, runningSum, sums)
 }
 ```
