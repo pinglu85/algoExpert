@@ -122,6 +122,29 @@ class BinaryTree {
 }
 ```
 
+### Recursive Solution 2 in Go
+
+```go
+package main
+
+type BinaryTree struct {
+	Value       int
+	Left, Right *BinaryTree
+}
+
+func NodeDepths(root *BinaryTree) int {
+	return calculateNodeDepths(root, 0)
+}
+
+func calculateNodeDepths(node *BinaryTree, depth int) int {
+	if node == nil {
+		return 0
+	}
+
+	return depth + calculateNodeDepths(node.Left, depth+1) + calculateNodeDepths(node.Right, depth+1)
+}
+```
+
 #
 
 ### Iterative Approach
@@ -172,5 +195,43 @@ class BinaryTree {
     this.left = null;
     this.right = null;
   }
+}
+```
+
+### Iterative Solution in Go
+
+```go
+package main
+
+type BinaryTree struct {
+	Value       int
+	Left, Right *BinaryTree
+}
+
+type level struct {
+	node  *BinaryTree
+	depth int
+}
+
+func NodeDepths(root *BinaryTree) int {
+	sumOfDepths := 0
+	stack := []level{level{root, 0}}
+
+	for len(stack) > 0 {
+		node, depth := stack[len(stack)-1].node, stack[len(stack)-1].depth
+		stack = stack[:len(stack)-1]
+
+		sumOfDepths += depth
+
+		if node.Left != nil {
+			stack = append(stack, level{node.Left, depth + 1})
+		}
+
+		if node.Right != nil {
+			stack = append(stack, level{node.Right, depth + 1})
+		}
+	}
+
+	return sumOfDepths
 }
 ```
