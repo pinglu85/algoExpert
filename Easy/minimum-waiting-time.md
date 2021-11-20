@@ -86,3 +86,26 @@ function minimumWaitingTime(queries) {
   return totalWaitingTime;
 }
 ```
+
+### Solution 2 in Go
+
+```go
+package main
+
+import (
+	"sort"
+)
+
+func MinimumWaitingTime(queries []int) int {
+	sort.Ints(queries)
+
+	minWaitingTime, numOfQueries := 0, len(queries)
+
+	for i, duration := range queries {
+		queriesLeft := numOfQueries - (i + 1)
+		minWaitingTime += duration * queriesLeft
+	}
+
+	return minWaitingTime
+}
+```
