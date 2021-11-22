@@ -122,3 +122,37 @@ function classPhotos(redShirtHeights, blueShirtHeights) {
   return true;
 }
 ```
+
+### Better Solution in Go
+
+```go
+package main
+
+import (
+	"sort"
+)
+
+func ClassPhotos(redShirtHeights []int, blueShirtHeights []int) bool {
+	sort.Slice(redShirtHeights, func(i, j int) bool {
+		return redShirtHeights[i] > redShirtHeights[j]
+	})
+	sort.Slice(blueShirtHeights, func(i, j int) bool {
+		return blueShirtHeights[i] > blueShirtHeights[j]
+	})
+
+	redShirtsInFrontRow := redShirtHeights[0] < blueShirtHeights[0]
+	for i, redShirtHeight := range redShirtHeights {
+		blueShirtHeight := blueShirtHeights[i]
+
+		if redShirtsInFrontRow && redShirtHeight >= blueShirtHeight {
+			return false
+		}
+
+		if !redShirtsInFrontRow && blueShirtHeight >= redShirtHeight {
+			return false
+		}
+	}
+
+	return true
+}
+```
