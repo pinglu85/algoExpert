@@ -107,14 +107,15 @@ function classPhotos(redShirtHeights, blueShirtHeights) {
   redShirtHeights.sort((a, b) => b - a);
   blueShirtHeights.sort((a, b) => b - a);
 
-  const redShirtsAreInFrontRow = redShirtHeights[0] < blueShirtHeights[0];
+  const redShirtsInFrontRow = redShirtHeights[0] < blueShirtHeights[0];
   for (let i = 0; i < redShirtHeights.length; i++) {
     const redShirtHeight = redShirtHeights[i];
     const blueShirtHeight = blueShirtHeights[i];
-    if (redShirtsAreInFrontRow && redShirtHeight >= blueShirtHeight) {
+
+    if (redShirtsInFrontRow && redShirtHeight >= blueShirtHeight) {
       return false;
     }
-    if (!redShirtsAreInFrontRow && redShirtHeight <= blueShirtHeight) {
+    if (!redShirtsInFrontRow && redShirtHeight <= blueShirtHeight) {
       return false;
     }
   }
