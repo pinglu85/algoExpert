@@ -26,13 +26,13 @@ class LinkedList {
 }
 
 function removeDuplicatesFromLinkedList(linkedList) {
-  let currentNode = linkedList;
-  while (currentNode !== null) {
-    let nextNode = currentNode.next;
-    if (nextNode !== null && nextNode.value === currentNode.value) {
-      currentNode.next = nextNode.next;
+  let currNode = linkedList;
+  while (currNode !== null && currNode.next !== null) {
+    const nextNode = currNode.next;
+    if (nextNode.value == currNode.value) {
+      currNode.next = nextNode.next;
     } else {
-      currentNode = nextNode;
+      currNode = nextNode;
     }
   }
 
@@ -62,18 +62,18 @@ class LinkedList {
 }
 
 function removeDuplicatesFromLinkedList(linkedList) {
-  let currentNode = linkedList;
-  while (currentNode !== null) {
-    let nextDistinctNode = currentNode.next;
+  let currNode = linkedList;
+  while (currNode !== null) {
+    let nextDistinctNode = currNode.next;
     while (
       nextDistinctNode !== null &&
-      nextDistinctNode.value === currentNode.value
+      nextDistinctNode.value === currNode.value
     ) {
       nextDistinctNode = nextDistinctNode.next;
     }
 
-    currentNode.next = nextDistinctNode;
-    currentNode = nextDistinctNode;
+    currNode.next = nextDistinctNode;
+    currNode = nextDistinctNode;
   }
 
   return linkedList;
