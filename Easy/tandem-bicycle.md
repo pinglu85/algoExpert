@@ -55,6 +55,44 @@ function tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest) {
 }
 ```
 
+### Solution in Go
+
+```go
+package main
+
+import (
+	"sort"
+)
+
+func TandemBicycle(redShirtSpeeds []int, blueShirtSpeeds []int, fastest bool) int {
+	sort.Ints(redShirtSpeeds)
+	if !fastest {
+		sort.Ints(blueShirtSpeeds)
+	} else {
+		sort.Slice(blueShirtSpeeds, func(i, j int) bool {
+			return blueShirtSpeeds[i] > blueShirtSpeeds[j]
+		})
+	}
+
+	totalSpeed := 0
+
+	for i, redShirtSpeed := range redShirtSpeeds {
+		blueShirtSpeed := blueShirtSpeeds[i]
+		totalSpeed += max(redShirtSpeed, blueShirtSpeed)
+	}
+
+	return totalSpeed
+}
+
+func max(x, y int) int {
+	if x < y {
+		return y
+	}
+
+	return x
+}
+```
+
 ### Solution with reverse array function
 
 ```js
@@ -82,5 +120,47 @@ function reverseArrayInPlace(array) {
     start++;
     end--;
   }
+}
+```
+
+### Solution with reverse array function in Go
+
+```go
+package main
+
+import (
+	"sort"
+)
+
+func TandemBicycle(redShirtSpeeds []int, blueShirtSpeeds []int, fastest bool) int {
+	sort.Ints(redShirtSpeeds)
+	sort.Ints(blueShirtSpeeds)
+
+	if fastest {
+		reverseSlice(blueShirtSpeeds)
+	}
+
+	totalSpeed := 0
+
+	for i, redShirtSpeed := range redShirtSpeeds {
+		blueShirtSpeed := blueShirtSpeeds[i]
+		totalSpeed += max(redShirtSpeed, blueShirtSpeed)
+	}
+
+	return totalSpeed
+}
+
+func reverseSlice(s []int) {
+	for start, end := 0, len(s)-1; start < end; start, end = start+1, end-1 {
+		s[start], s[end] = s[end], s[start]
+	}
+}
+
+func max(x, y int) int {
+	if x < y {
+		return y
+	}
+
+	return x
 }
 ```
