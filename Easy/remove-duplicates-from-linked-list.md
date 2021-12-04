@@ -40,6 +40,33 @@ function removeDuplicatesFromLinkedList(linkedList) {
 }
 ```
 
+### Solution 1 in Go
+
+```go
+package main
+
+// This is an input struct. Do not edit.
+type LinkedList struct {
+	Value int
+	Next  *LinkedList
+}
+
+func RemoveDuplicatesFromLinkedList(linkedList *LinkedList) *LinkedList {
+	currNode := linkedList
+
+	for currNode != nil && currNode.Next != nil {
+		nextNode := currNode.Next
+		if currNode.Value == nextNode.Value {
+			currNode.Next = nextNode.Next
+		} else {
+			currNode = nextNode
+		}
+	}
+
+	return linkedList
+}
+```
+
 #
 
 ### Approach 2
@@ -77,5 +104,33 @@ function removeDuplicatesFromLinkedList(linkedList) {
   }
 
   return linkedList;
+}
+```
+
+### Solution 2 in Go
+
+```go
+package main
+
+// This is an input struct. Do not edit.
+type LinkedList struct {
+	Value int
+	Next  *LinkedList
+}
+
+func RemoveDuplicatesFromLinkedList(linkedList *LinkedList) *LinkedList {
+	currNode := linkedList
+
+	for currNode != nil {
+		nextDistinctNode := currNode.Next
+		for nextDistinctNode != nil && currNode.Value == nextDistinctNode.Value {
+			nextDistinctNode = nextDistinctNode.Next
+		}
+
+		currNode.Next = nextDistinctNode
+		currNode = nextDistinctNode
+	}
+
+	return linkedList
 }
 ```
