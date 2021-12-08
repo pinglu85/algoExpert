@@ -33,3 +33,31 @@ function productSum(array, multiplier = 1) {
   return sum * multiplier;
 }
 ```
+
+### Solution in Go
+
+```go
+package main
+
+type SpecialArray []interface{}
+
+// Tip: Each element of `array` can either be cast
+// to `SpecialArray` or `int`.
+func ProductSum(array []interface{}) int {
+	return calculateProductSum(array, 1)
+}
+
+func calculateProductSum(array []interface{}, multiplier int) int {
+	sum := 0
+
+	for _, el := range array {
+		if specialArray, ok := el.(SpecialArray); ok {
+			sum += calculateProductSum(specialArray, multiplier+1)
+		} else if num, ok := el.(int); ok {
+			sum += num
+		}
+	}
+
+	return sum * multiplier
+}
+```
