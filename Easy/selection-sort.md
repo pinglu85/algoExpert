@@ -8,7 +8,7 @@ Given an array of numbers, I am asked to sort the array in ascending order with 
 
 ### Approach
 
-The Selection Sort works by virtually splitting the array into a sorted and an unsorted part, keep finding the smallest value in the remaining unsorted part and appending it to the sorted part, in other words, moving it to the beginning of the unsorted part, until all of the values are in the correct order. At the beginning, the sorted part is empty and the unsorted part is the entire array.
+In the Selection Sort, the array is virtually divided into a sorted and an unsorted part. We then keep finding the smallest value in the unsorted part and appending it to the end of the sorted part, until all of the values are in the correct order. At the very beginning, the sorted part is empty and the unsorted part is the entire array. To append the smallest value to the sorted part, we can just swap it with the first number in the unsorted part.
 
 Suppose we have the following array of integers:
 
