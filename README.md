@@ -33,3 +33,4 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
 | [Bubble Sort](/Easy/bubble-sort.md)                                               | 🟢         | Sorting Algorithms   |                          |                |
 | [Insertion Sort](/Easy/insertion-sort.md)                                         | 🟢         | Sorting Algorithms   |                          |                |
 | [Selection Sort](/Easy/selection-sort.md)                                         | 🟢         | Sorting Algorithms   |                          |                |
+| [Palindrome Check](/Easy/palindrome-check.md)                                     | 🟢         | Strings              | Two Pointers             |                |
