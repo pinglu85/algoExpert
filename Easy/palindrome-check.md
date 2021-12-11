@@ -6,7 +6,7 @@ I am asked to write a function that is going to determine whether or not a given
 
 #
 
-### Approach
+### Approach: Two Pointers
 
 Suppose we have the following string, which is a palindrome:
 
@@ -27,9 +27,11 @@ check whether or not a string is a palindrome by walking from both the start and
 
 ### Time & Space Complexity
 
-O(n) time | O(1) space, where n is the length of the string.
+Iterative: O(n) time | O(1) space, where n is the length of the string.
 
-### Solution
+Recursive: O(n) time | O(n) space, where n is the length of the string.
+
+### Iterative Solution
 
 ```js
 function isPalindrome(string) {
@@ -44,5 +46,19 @@ function isPalindrome(string) {
   }
 
   return true;
+}
+```
+
+### Recursive Solution
+
+```js
+function isPalindrome(string, leftIdx = 0) {
+  const rightIdx = string.length - 1 - leftIdx;
+
+  if (leftIdx >= rightIdx) return true;
+
+  return (
+    string[leftIdx] === string[rightIdx] && isPalindrome(string, leftIdx + 1)
+  );
 }
 ```
