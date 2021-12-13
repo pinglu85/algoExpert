@@ -6,7 +6,7 @@ I am asked to write a function that is going to determine whether or not a given
 
 #
 
-### Approach: Two Pointers
+### Approach 1: Two Pointers
 
 Suppose we have the following string, which is a palindrome:
 
@@ -60,5 +60,41 @@ function isPalindrome(string, leftIdx = 0) {
   return (
     string[leftIdx] === string[rightIdx] && isPalindrome(string, leftIdx + 1)
   );
+}
+```
+
+#
+
+### Approach 2: Brute Force
+
+If a string is a palindrome, the reversed version of the string is the same as the original string.
+
+```
+"racecar"
+reversed: "racecar"
+
+"hello"
+reversed: "olleh"
+```
+
+So to determine whether a string is a palindrome, we can just reverse the input string and compare it to the original one.
+
+### Time & Space Complexity
+
+With string: O(n^2) time | O(n) space, where n is the length of the string.
+
+With array: O(n) time | O(n) space, where n is the length of the string.
+
+### Solution
+
+```js
+function isPalindrome(string) {
+  let reversedString = '';
+
+  for (let i = string.length - 1; i >= 0; i--) {
+    reversedString += string[i];
+  }
+
+  return reversedString === string;
 }
 ```
