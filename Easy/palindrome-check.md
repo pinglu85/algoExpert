@@ -27,9 +27,9 @@ check whether or not a string is a palindrome by walking from both the start and
 
 ### Time & Space Complexity
 
-Iterative: O(n) time | O(1) space, where n is the length of the string.
+- Iterative: O(n) time | O(1) space, where n is the length of the string.
 
-Recursive: O(n) time | O(n) space, where n is the length of the string.
+- Recursive: O(n) time | O(n) space, where n is the length of the string.
 
 ### Iterative Solution
 
@@ -81,11 +81,13 @@ So to determine whether a string is a palindrome, we can just reverse the input 
 
 ### Time & Space Complexity
 
-With string: O(n^2) time | O(n) space, where n is the length of the string.
+- Storing the reversed version of the input string as a string: O(n^2) time | O(n) space, where n is the length of the string. The reason that it takes O(n^2) time is because in most programming languages strings
+  are immutable. When appending a character to a string, a new string must be created, which is an O(n) operation. To create a reversed version of a string of length n, we will append n characters to the reversed string. Thus the overall time complexity is O(n^2).
 
-With array: O(n) time | O(n) space, where n is the length of the string.
+- Using an array to store the reversed string:
+  O(n) time | O(n) space, where n is the length of the string.
 
-### Solution
+### Solution with string
 
 ```js
 function isPalindrome(string) {
@@ -96,5 +98,19 @@ function isPalindrome(string) {
   }
 
   return reversedString === string;
+}
+```
+
+### Solution with array
+
+```js
+function isPalindrome(string) {
+  const reversedChars = [];
+
+  for (let i = string.length - 1; i >= 0; i--) {
+    reversedChars.push(string[i]);
+  }
+
+  return reversedChars.join('') === string;
 }
 ```
