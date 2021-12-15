@@ -34,3 +34,4 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
 | [Insertion Sort](/Easy/insertion-sort.md)                                         | 🟢         | Sorting Algorithms   |                          |                |
 | [Selection Sort](/Easy/selection-sort.md)                                         | 🟢         | Sorting Algorithms   |                          |                |
 | [Palindrome Check](/Easy/palindrome-check.md)                                     | 🟢         | Strings              | Two Pointers             |                |
+| [Cesar Cipher Encryptor](/Easy/cesar-cipher-encryptor.md)                         | 🟢         | Strings              |                          |                |
