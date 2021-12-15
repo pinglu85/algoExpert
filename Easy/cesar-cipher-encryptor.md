@@ -14,9 +14,9 @@ Given a non-empty string that consists of lowercase English letters and a non-ne
 
   - For each character in the string, get its ASCII value. Then we can use the following formula to get the new ASCII value:
 
-  ```
-  (ASCII code + key - 19) % 26 + 97
-  ```
+    ```
+    (ASCII code + key - 19) % 26 + 97
+    ```
 
   - Convert the new ASCII value back to character and push it into the `newChars` array.
 
