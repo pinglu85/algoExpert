@@ -2,7 +2,7 @@
 
 ### Understanding the problem
 
-I am asked to write a function that is going to determine whether or not a given string is a palindrome, in other words, whether a given string reads the same backward or forward.
+I am asked to write a function that is going to determine whether or not a given string is a palindrome, in other words, whether the given string reads the same backward as forward.
 
 #
 
@@ -14,16 +14,17 @@ Suppose we have the following string, which is a palindrome:
 racecar
 ```
 
-We can observe that the first character in the string is the same as the last character in the string, the second character is the same as the second last character, ..., until we reach the middle character. So we can
-check whether or not a string is a palindrome by walking from both the start and the end of the string to the middle and comparing every character against the other. If we reach the middle character without any mismatches, then the string is a palindrome.
+We can observe that the first character of the string is equal to the last character, the second character is equal to the second to last character, ..., except the middle character. So we can
+determine whether or not a string is a palindrome by walking from both the start and the end of the string to the middle and comparing every character against the other. If we reach the middle character without any mismatches, then the string is a palindrome.
 
-- Initialize two pointers, one pointing to the start index of the string and the other one to the final index of the string.
+- Initialize two pointers `left` and `right` to the first index of the string and the last index of the string respectively.
 
-- While pointer 1 is smaller than pointer 2,
+- While the left pointer comes before the right pointer,
 
-  - Compare the characters that the two pointers are pointing at. If they are not the same, return `false`
+  - Compare the characters that the two pointers are pointing at. If they are not the same, return `false`.
+    Otherwise, move the left pointer to right and the right pointer to left.
 
-- When the loop ends without returning `false`, it means there are no mismatches, so the string is a palindrome, we return `true`.
+- When the loop ends without returning `false`, it means there are no mismatches, so the string is a palindrome and we return `true`.
 
 ### Time & Space Complexity
 
