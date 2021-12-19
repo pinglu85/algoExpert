@@ -105,7 +105,7 @@ func TwoNumberSum(array []int, target int) []int {
 
 ### Approach 3: Two Pointers
 
-Use two pointers approach. First sort the array in ascending order. Then initialize two pointers, one pointing to the first element in the sorted array, and the other pointing to the last element in the sorted array. Sum up the values that the two pointers point to. If their sum is smaller than the `targetSum`, shift the left pointer to right by one, because the array is sorted in ascending order, if we move the right pointer to left, the new sum is even smaller than the current sum, which is already smaller than the `targetSum`. If their sum is greater than the `targetSum`, shift the right pointer to left by one. Keep moving the pointers until we get to a sum that is equal to `targetSum` or the pointers overlap each other, in other words, the pointers are pointing to the same number.
+First sort the array in ascending order. Then initialize two pointers, one pointing to the first element in the sorted array, and the other pointing to the last element in the sorted array. Sum up the values that the two pointers point to. If their sum is smaller than the `targetSum`, shift the left pointer to right by one, because the array is sorted in ascending order, if we move the right pointer to left, the new sum is even smaller than the current sum, which is already smaller than the `targetSum`. If their sum is greater than the `targetSum`, shift the right pointer to left by one. Keep moving the pointers until we get to a sum that is equal to `targetSum` or the pointers overlap each other, in other words, the pointers are pointing to the same number.
 
 ### Time & Space Complexity
 
