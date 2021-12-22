@@ -1,16 +1,17 @@
 # Binary Search
 
-### Understanding the problem
+## Understanding the problem
 
 Given a sorted array of integers and a target integer, I am asked to write a function that uses Binary Search to find out if the target integer is in the array. If the target is in the array, the function should return its index; otherwise return `-1`.
 
 #
 
-### Iterative Approach
+## Approach 1: Iterative
 
 The overarching logic of Binary Search is:
 
 1. Find the middle number in the sorted array.
+
 2. Compare the middle number to the target. Eliminate half of the array, depending on where the target would be located compared to the middle number:
 
    - If the target is equal to the middle number, then we have found the target.
@@ -23,11 +24,7 @@ The overarching logic of Binary Search is:
 
 I am going to initialize two pointers `left` and `right` to keep track of the current subarray that remains to be explored. Initially, the `left` pointer is going to point at the start of the array and the `right` pointer at the end of the array. While the `left` pointer doesn't surpass the `right` pointer, keep finding the middle number in the current subarray; if the target is equal to the middle number, then I have found the target, so return the index of the middle number; otherwise update either the left pointer or the right pointer based on the comparison, eliminating half of the current subarray. Finally, if I get out of the while loop without returning the result, then it means the target has not been found and it can not be found, return `-1`.
 
-### Time & Space Complexity
-
-O(log(n)) time | O(1) space, where n is the number of integers in the input array.
-
-### Iterative Solution
+## Implementation
 
 ```js
 function binarySearch(array, target) {
@@ -51,17 +48,17 @@ function binarySearch(array, target) {
 }
 ```
 
+## Time & Space Complexity
+
+O(log(n)) time | O(1) space, where n is the number of integers in the input array.
+
 #
 
-### Recursive Approach
+## Approach 2: Recursive
 
 Instead of using a while loop, I am going to define a recursive function that is going to be called on each subarray that remains to be explored. The recursive function is going to take in the input array, the target integer and two pointers, the `left` pointer and the `right` pointer, which specify the starting index and the ending index of the subarray to be explored. The base case of the recursive function is the `left` pointer is greater than the `right` pointer.
 
-### Time & Space Complexity
-
-O(log(n)) time | O(log(n)) space, where the n is the length of the input array.
-
-### Recursive Solution
+## Implementation
 
 ```js
 function binarySearch(array, target) {
@@ -85,3 +82,7 @@ function binarySearchImpl(array, target, left, right) {
   }
 }
 ```
+
+## Time & Space Complexity
+
+O(log(n)) time | O(log(n)) space, where the n is the length of the input array.
