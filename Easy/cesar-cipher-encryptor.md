@@ -8,8 +8,7 @@ Given a non-empty string that consists of lowercase English letters and a non-ne
 
 ### Approach
 
-To shift a English letter `k` places down in the alphabet, we can convert it to ASCII value, add `k` to it,then convert the new ASCII value back to the corresponding letter. We can use the formula `newPos = (oldPos + k) % 26` to handle the circular shifting, for instance, `(26 + 1) % 26 = 1`, where `26` is the position of letter `z` in the alphabet (one based indexing). However, we should notice, the result of `122 % 26` is `18`, where `122` is the ASCII value of letter `z`, and `97 % 26 = 19`, where `97` is the ASCII value of letter `a`.
-If we do `(97 - 19) % 26`, then we get `0`; `(122 - 19) % 26 = 25`, `(122 + 1 - 19) % 26 = 0`. So to get the position of the new letter in the alphabet, we can use the formula `newPos = (oldAsciiValue + k - 19) % 26` (zero based indexing). Then we can add `97` to the position to get the ASCII value.
+To shift a English letter `k` places down in the alphabet, we can convert it to ASCII value, add `k` to it,then convert the new ASCII value back to the corresponding letter. We can use the formula `newPos = (oldPos + k) % 26` (zero-based position) to handle the circular shifting, for instance, `(25 + 1) % 26 = 0`, `(25 + 26) % 26 = 25`, `(25 + 27) % 26 = 0`. However, we should notice, the result of `122 % 26` is `18`, where `122` is the ASCII value of letter `z`, and `97 % 26 = 19`, where `97` is the ASCII value of letter `a`. If we do `(97 - 19) % 26`, then we get `0`; `(122 - 19) % 26 = 25`, `(122 + 1 - 19) % 26 = 0`. So to get the position of the new letter in the alphabet, we can use the formula `newPos = (oldAsciiValue + k - 19) % 26`. Then we can add `97` to the position to get the ASCII value.
 
 - Initialize an empty array `newChars` to store the new characters.
 
