@@ -117,3 +117,40 @@ function getNewLetter(letter, key) {
 ### Time & Space Complexity
 
 O(n) time | O(n) space, where n is the length of the input string.
+
+#
+
+### Approach 4
+
+Since the input string only contains lowercase English letters, we can store the lowercase alphabet in an array. For each letter in the string,
+
+- find its index in the `alphabet` array,
+
+- use `(index of letter + key) % 26` to get the index of the new letter,
+
+- use `alphabet[index of new letter]` to get the new letter.
+
+### Implementation
+
+```js
+const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
+function caesarCipherEncryptor(string, key) {
+  const newLetters = [];
+
+  for (const letter of string) {
+    newLetters.push(getNewLetter(letter, key));
+  }
+
+  return newLetters.join('');
+}
+
+function getNewLetter(letter, key) {
+  const newLetterIdx = (alphabet.indexOf(letter) + key) % 26;
+  return alphabet[newLetterIdx];
+}
+```
+
+### Time & Space Complexity
+
+O(n) time | O(n) space, where n is the length of the input string.
