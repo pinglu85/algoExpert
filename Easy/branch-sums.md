@@ -46,11 +46,9 @@ DFS can be implemented using iterative approach or recursive approach. Here I wi
 
 - Return the branch sums array.
 
-### Time & Space Complexity
+### Implementation
 
-O(n) time | O(n) space, where n is the number of nodes in the Binary Tree.
-
-### Iterative Solution
+JavaScript
 
 ```js
 // This is the class of the input root.
@@ -90,7 +88,7 @@ function branchSums(root) {
 }
 ```
 
-### Iterative Solution in Go
+Go:
 
 ```go
 package main
@@ -136,6 +134,10 @@ func BranchSums(root *BinaryTree) []int {
 }
 ```
 
+### Time & Space Complexity
+
+O(n) time | O(n) space, where n is the number of nodes in the Binary Tree.
+
 #
 
 ### Approach with recursive DFS
@@ -158,13 +160,9 @@ Instead of using a stack to keep track of the next node that needs to be visited
 
 - When I get out of the helper function, return the branch sums array as part of the main function.
 
-### Time & Space Complexity
+### Implementation
 
-O(n) time | O(n) space, where n is the number of nodes in the Binary Tree.
-
-Each recursive call to the helper function adds a new frame on the call stack. On average we will never have more than log(n) recursive calls on the call stack, since we eliminate half the nodes in the remaining tree at each recursive call. In the worst case, when we are dealing with a very imbalanced binary tree, we would have O(n) space from the recursive calls, since we have n recursive calls on the call stack at once. Besides the space from the recursive calls, we also return an array of branch sums. The size of the array is same as the number of branches in the Binary Tree, which is the number of leaf nodes in the Binary Tree. There are roughly half of n leaf nodes in the Binary Tree and half of n is equal to O(n) in the space time complexity analysis.
-
-### Recursive Solution
+JavaScript:
 
 ```js
 // This is the class of the input root.
@@ -196,7 +194,7 @@ function calculateBranchSums(node, runningSum, sums) {
 }
 ```
 
-### Recursive Solution in Go
+Go:
 
 ```go
 package main
@@ -229,3 +227,9 @@ func branchSumsImpl(node *BinaryTree, runningSum int, sums *[]int) {
 	branchSumsImpl(node.Right, runningSum, sums)
 }
 ```
+
+### Time & Space Complexity
+
+O(n) time | O(n) space, where n is the number of nodes in the Binary Tree.
+
+Each recursive call to the helper function adds a new frame on the call stack. On average we will never have more than log(n) recursive calls on the call stack, since we eliminate half the nodes in the remaining tree at each recursive call. In the worst case, when we are dealing with a very imbalanced binary tree, we would have O(n) space from the recursive calls, since we have n recursive calls on the call stack at once. Besides the space from the recursive calls, we also return an array of branch sums. The size of the array is same as the number of branches in the Binary Tree, which is the number of leaf nodes in the Binary Tree. There are roughly half of n leaf nodes in the Binary Tree and half of n is equal to O(n) in the space time complexity analysis.
