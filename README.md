@@ -35,4 +35,4 @@ My solutions to coding interview questions on [AlgoExpert](https://www.algoexper
 | [Selection Sort](/Easy/selection-sort.md)                                         | 🟢         | Sorting Algorithms   |                          |                |
 | [Palindrome Check](/Easy/palindrome-check.md)                                     | 🟢         | Strings              | Two Pointers             |                |
 | [Cesar Cipher Encryptor](/Easy/cesar-cipher-encryptor.md)                         | 🟢         | Strings              |                          |                |
-| [Run-Length Encoding](/Easy/run-length-encoding.md)                               | 🟢         | Strings              | Sliding Window           |                |
+| [Run-Length Encoding](/Easy/run-length-encoding.md)                               | 🟢         | Strings              |                          |                |
