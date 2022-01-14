@@ -25,15 +25,11 @@ function runLengthEncoding(string) {
   const encodedChars = [];
   let start = 0;
 
-  for (let end = 1; end <= string.length; end++) {
-    if (
-      end === string.length ||
-      string[start] !== string[end] ||
-      end - start === 9
-    ) {
-      encodedChars.push(end - start);
+  for (let i = 1; i <= string.length; i++) {
+    if (i === string.length || string[start] !== string[i] || i - start === 9) {
+      encodedChars.push(i - start);
       encodedChars.push(string[start]);
-      start = end;
+      start = i;
     }
   }
 
