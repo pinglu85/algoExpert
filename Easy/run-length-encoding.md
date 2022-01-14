@@ -6,7 +6,7 @@ Given an non-empty string, we are asked to write a function that is going to run
 
 #
 
-### Approach
+### Approach 1
 
 - Initialize an empty array `encodedChars` that is going to store the encoded characters.
 
@@ -35,6 +35,39 @@ function runLengthEncoding(string) {
       encodedChars.push(string[start]);
       start = end;
     }
+  }
+
+  return encodedChars.join('');
+}
+```
+
+### Time & Space Complexity
+
+O(n) time | O(n) space, where n is the length of the input string.
+
+#
+
+### Approach 2
+
+Instead of tracking the start index of a sequence, we can also keep track of the length of the current sequence.
+
+### Implementation
+
+```js
+function runLengthEncoding(string) {
+  const encodedChars = [];
+  let currRunLength = 1;
+
+  for (let i = 1; i <= string.length; i++) {
+    const prevChar = string[i - 1];
+
+    if (i === string.length || string[i] !== prevChar || currRunLength === 9) {
+      encodedChars.push(String(currRunLength));
+      encodedChars.push(prevChar);
+      currRunLength = 0;
+    }
+
+    currRunLength++;
   }
 
   return encodedChars.join('');
