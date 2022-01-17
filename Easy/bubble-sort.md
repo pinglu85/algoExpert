@@ -142,15 +142,9 @@ While `isSorted` is `false`,
 2. then, use a for loop to iterate through the remaining unsorted array, compare pairs of neighboring numbers. If they are out of order, swap them and set `isSorted` to `false`.
 3. when the for loop is finished, decrement the counter by 1.
 
-### Time & Space Complexity
+### Implementation
 
-Best: O(n) time | O(1) space, where n is the length of the input array.
-
-Average: O(n^2) time | O(1) space, where n is the length of the input array.
-
-Worst: O(n^2) time | O(1) space, where n is the length of the input array.
-
-### Solution
+JavaScript:
 
 ```js
 function bubbleSort(array) {
@@ -178,7 +172,7 @@ function swap(array, i, j) {
 }
 ```
 
-### Solution in GO
+Go:
 
 ```go
 package main
@@ -207,3 +201,11 @@ func swap(array []int, i, j int) {
 	array[i], array[j] = array[j], array[i]
 }
 ```
+
+### Time & Space Complexity
+
+Best: O(n) time | O(1) space, where n is the length of the input array.
+
+Average: O(n^2) time | O(1) space, where n is the length of the input array.
+
+Worst: O(n^2) time | O(1) space, where n is the length of the input array.
