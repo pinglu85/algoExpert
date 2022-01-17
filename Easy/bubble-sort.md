@@ -134,13 +134,19 @@ Now the second largest element in the array, `8`, is in the final position.
 
 We go all the way back to index `0`, loop through the array again and perform the same logic. We keep doing this until no swaps were made, which indicates the array is sorted.
 
-So I am going to declare a variable `isSorted` which is going to keep track of whether or not the array is sorted. Initially, set it to `false`. In addition, I am going to use a counter to keep track of how many numbers still need to be sorted; initially, set it to the length of the array.
+**Algorithm**
 
-While `isSorted` is `false`,
+- Declare a variable `isSorted` which is going to keep track of whether or not the array is sorted. Initially, set it to `false`.
 
-1. first, set `isSorted` to `true` - we assume the array is now sorted;
-2. then, use a for loop to iterate through the remaining unsorted array, compare pairs of neighboring numbers. If they are out of order, swap them and set `isSorted` to `false`.
-3. when the for loop is finished, decrement the counter by 1.
+- Use a counter to keep track of how many numbers still need to be sorted. Initially, set it to the length of the array.
+
+- While `isSorted` is `false`,
+
+  - We assume the array is now sorted, set `isSorted` to `true`.
+
+  - Iterate through the remaining unsorted array. At each iteration, compare pairs of neighboring numbers. If they are out of order, swap them and set `isSorted` to `false`.
+
+  - When the iteration finishes, decrement the counter by `1`.
 
 ### Implementation
 
