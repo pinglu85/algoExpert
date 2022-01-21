@@ -2,60 +2,45 @@
 
 ### Understanding the problem
 
-Given a Binary Search Tree and a target integer value, I am asked to write a function that returns the closest value to that target value that's contained in the BST. There will be only one closest value.
+Given a Binary Search Tree and a target integer, we are asked to write a function that is going to return the value in the BST that is closest to the target. We can assume there is only one closest value.
 
 For example,
 
 ```
-bst =   10
-      /     \
-     5      15
-   /   \   /   \
-  2     5 13   22
- /          \
-1           14
-target = 12
+      10
+    /    \
+   4      20
+ /   \
+1     6
+
+target = 5
 ```
 
-The closest value to the target value in the BST is 13.
+The closest value to the target is `4`.
 
 #
 
-### Approach
+### Iterative Approach
 
 We are going to use a variable to keep track of the current node and initialize it to the root node of the BST. In addition, we also need a variable to keep track of the closest value in the BST so far; initialize it to the value of the root node.
 
 While current node is not `null`,
 
-1. compute the absolute difference between the value of the current node and the target value, compare the result to the absolute difference between the closest value we've seen so far and the target. If we get to a smaller absolute difference, set the value of the current node as the current closest value.
+- Compute the absolute difference between the value of the current node and the target. Compare the result to the absolute difference between the current closest value and the target. If we get to a smaller absolute difference, set the value of the current node as the current closest value.
 
-2. Compare the target value to the current node's value:
+- Compare the target to the current node's value to decide which subtree we should explore:
 
-   - if the target value is less than the current node's value, explore the left subtree of the current node;
+  - If the target value is less than the current node's value, explore the left subtree of the current node;
 
-   - if the target value is greater than the current node's value, explore the right subtree;
+  - If the target value is greater than the current node's value, explore the right subtree;
 
-   - otherwise break out of the while loop, since the current node's value and the target value are equal to each other, which means there is no other value that can be closer to the target value than this value.
+  - Otherwise break out of the while loop, since the current node's value and the target value are equal to each other, which means there is no other value in the BST that can be closer to the target value than this value.
 
 3. Return the closest value.
 
-### Time & Space Complexity
+### Implementation
 
-- Iterative:
-
-  Average: O(log(n)) time | O(1) space, where n is the number of nodes in the Binary Search Tree.
-
-  Worst: O(n) time | O(1) space, , where n is the number of nodes in the Binary Search Tree.
-
-- Recursive:
-
-  Average: O(log(n)) time | O(log(n)) space, where n is the number of nodes in the Binary Search Tree.
-
-  Worst: O(n) time | O(n) space, where n is the number of nodes in the Binary Search Tree.
-
-  The space complexity is on average O(log(n)) and the worst O(n), because each recursive call to `findClosestValueInBst` adds a new frame on the call stack, which means we are using extra memory. In other words, we'll be using O(h) memory, where `h` is the height of the tree.
-
-### Iterative Solution
+JavaScript:
 
 ```js
 function findClosestValueInBst(tree, target) {
@@ -91,7 +76,7 @@ class BST {
 }
 ```
 
-### Iterative Solution in Go
+Go:
 
 ```go
 package main
@@ -133,7 +118,21 @@ func absDiff(x, y int) int {
 }
 ```
 
-### Recursive Solution
+### Time & Space Complexity
+
+Average: O(log(n)) time | O(1) space, where n is the number of nodes in the Binary Search Tree.
+
+Worst: O(n) time | O(1) space, , where n is the number of nodes in the Binary Search Tree.
+
+#
+
+### Recursive Approach
+
+The iterative solution above can be rewritten in the recursion form.
+
+### Implementation
+
+JavaScript:
 
 ```js
 function findClosestValueInBst(tree, target) {
@@ -166,7 +165,7 @@ class BST {
 }
 ```
 
-### Recursive Solution in Go
+Go:
 
 ```go
 package main
@@ -206,3 +205,11 @@ func absDiff(x, y int) int {
 	return y - x
 }
 ```
+
+### Time & Space Complexity
+
+Average: O(log(n)) time | O(log(n)) space, where n is the number of nodes in the Binary Search Tree.
+
+Worst: O(n) time | O(n) space, where n is the number of nodes in the Binary Search Tree.
+
+The space complexity is on average O(log(n)) and the worst O(n), because each recursive call to `findClosestValueInBst` adds a new frame on the call stack, which means we are using extra memory. In other words, we'll be using O(h) memory, where `h` is the height of the tree.
