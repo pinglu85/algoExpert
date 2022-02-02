@@ -8,7 +8,7 @@ Given an array of integers, I am asked to write a function that is going to sort
 
 ### Approach
 
-In the Insertion Sort, we virtually split the array into a sorted and an unsorted part, and we keep inserting values from the unsorted part at the correct position into the sorted part. At the beginning, the sorted part consists just of the first value in the array.
+In the Insertion Sort, we virtually split the array into a sorted and an unsorted part, and we keep inserting values from the unsorted part into the sorted part until all the elements in the array are in the correct order . At the beginning, the sorted part consists just of the first value in the array.
 
 Suppose we have the following array of integers:
 
@@ -85,22 +85,17 @@ Compare `6` to `8`. `6` is smaller than `8`, so we swap these two numbers.
 
 Then we compare `6` to `5`, they are in the correct order, so we don't need to touch them. Since we are already at the end of the array, the array is now sorted.
 
-To implement the insertion sort,
+### Algorithm
 
-1. First, we use a for loop to iterate through the array starting at index `1`.
-2. At each iteration,
-   1. initialize a variable, called `j`, which is going to keep track of the position of the value we are trying to insert. Initially, set it to be equal to the index of the for loop, since the value we're trying to insert is the value at the current index of the for loop.
-   2. while the value is smaller than its predecessor and we haven't reach the very beginning of the sorted part, swap the value with its predecessor and decrement `j` by 1.
+- Use a for loop to iterate through the array starting at index `1`.
 
-### Time & Space Complexity
+- At each iteration,
 
-Best: O(n) time | O(1) space, where n is the length of the input array.
+  - initialize a variable `j` which is going to keep track of the position of the value we are trying to insert. Initially, set it to the index of the for loop, since the value we're trying to insert is the value at the current index of the for loop.
 
-Average: O(n^2) time | O(1) space, where n is the length of the input array.
+  - while the value is smaller than its predecessor and we haven't reach the very beginning of the sorted part, swap the value with its predecessor and decrement `j` by 1.
 
-Worst: O(n^2) time | O(1) space, where n is the length of the input array.
-
-### Solution
+### Implementation
 
 ```js
 function insertionSort(array) {
@@ -119,3 +114,11 @@ function swap(array, i, j) {
   [array[i], array[j]] = [array[j], array[i]];
 }
 ```
+
+### Time & Space Complexity
+
+Best: O(n) time | O(1) space, where n is the length of the input array.
+
+Average: O(n^2) time | O(1) space, where n is the length of the input array.
+
+Worst: O(n^2) time | O(1) space, where n is the length of the input array.
