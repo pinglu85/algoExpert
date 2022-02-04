@@ -2,13 +2,13 @@
 
 ### Understanding the problem
 
-Given an array of integers, I am asked to write a function that is going to sort the array using the Insertion Sort and return the sorted array.
+Given an array of integers, we are asked to sort the input array using the Insertion Sort and return the sorted array.
 
 #
 
 ### Approach
 
-In the Insertion Sort, we virtually split the array into a sorted and an unsorted part, and we keep inserting values from the unsorted part into the sorted part until all the elements in the array are in the correct order . At the beginning, the sorted part consists just of the first value in the array.
+In the Insertion Sort, we virtually split the array into a sorted and an unsorted part. We keep inserting values from the unsorted part into the sorted part until all the elements in the array are in the correct order . At the beginning, the sorted part consists just of the first value in the array.
 
 Suppose we have the following array of integers:
 
