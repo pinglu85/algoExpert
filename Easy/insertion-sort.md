@@ -85,7 +85,7 @@ Compare `6` to `8`. `6` is smaller than `8`, so we swap these two numbers.
 
 Then we compare `6` to `5`, they are in the correct order, so we don't need to touch them. Since we are already at the end of the array, the array is now sorted.
 
-### Algorithm
+**Algorithm**
 
 - Use a for loop to iterate through the array starting at index `1`.
 
