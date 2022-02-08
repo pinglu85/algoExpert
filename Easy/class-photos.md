@@ -13,7 +13,7 @@ The function is going to arrange the students and return true if we can take a p
 
 #
 
-### Approach:
+### Approach
 
 Suppose the first array is `[4, 6, 2, 7]` and the second array is `[9, 5, 8, 3]`. To arrange the students under the aforementioned constraints, we can first find out the shortest student in the two arrays, since that student is shorter than all of the other students and hence cannot stand behind any of them. The height of the shortest student is `2` from the first array. Since all the students in red shirts must be in the same row, all the students from the first array should be in the front row.
 
