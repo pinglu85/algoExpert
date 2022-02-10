@@ -2,13 +2,13 @@
 
 ### Understanding the problem
 
-Given an array of integers, I am asked to write a function that is going to sort the array in ascending order using Bubble Sort and return the sorted array.
+Given an array of integers, we are asked to sort the input array in ascending order using Bubble Sort and return the sorted array.
 
 #
 
 ### Approach
 
-The main idea of Bubble Sort is repeatedly iterate through an array and in each pass swap the adjacent elements if they are in wrong order.
+Bubble Sort sort an array by repeatedly iterating through an array and in each pass swapping the adjacent elements if they are in wrong order.
 
 Suppose we have the following array of numbers:
 
