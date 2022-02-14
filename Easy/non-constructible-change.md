@@ -2,21 +2,17 @@
 
 ### Understanding the problem
 
-We will be given an array of positive integers, which represent the values of coins that we have in our possession. The array could have duplicates. We are asked to write a function that returns the minimum amount of change that we cannot create with our coins. For instance, if the input array is `[1, 2, 5]`, the minimum amount of change that we cannot create is `4`, since we can create `1`, `2`, `3 (1 + 2)` and `5`.
+We are given an array of positive integers, which represent the values of coins that we have in our possession. The array could have duplicates. We are asked to write a function that returns the minimum amount of change that we cannot create with our coins. For instance, if the input array is `[1, 2, 5]`, the minimum amount of change that we cannot create is `4`, since we can create `1`, `2`, `3 (1 + 2)` and `5`.
 
 #
 
-### Brute-force approach
+### Approach 1: Brute Force
 
 Iterate from 1 to the maximum amount of change that I can create, which is the value that all of the coins in the input array sum up to. At each iteration, find out if we can sum up to the current value using our coins; if we can't then the minimum amount of change is found. If we get out of the loop without returning the result, return maximum amount of change + 1.
 
 To find out if there is a subset in the input array that adds up to a target value, I can first sort the array in ascending order, then iterate through every integer in the sorted array, starting from the last one; for each integer, compare it with the target value, if the integer is equal to the target value, then the subset is found; if the integer is smaller than the target value, subtract it from the target value and update the target value to the result, move to the next integer. If the very beginning of the input array is reached and the target value is still larger than 0, then I find the value that no subset can add up to.
 
-### Time & Space Complexity
-
-O(m \* n) time | O(1) space, where n is the number of coins and m is the sum that all of the coins add up to.
-
-### Brute-force Solution
+### Implementation
 
 ```js
 function nonConstructibleChange(coins) {
@@ -44,11 +40,18 @@ function nonConstructibleChange(coins) {
 }
 ```
 
+### Time & Space Complexity
+
+O(m \* n) time | O(1) space, where n is the number of coins and m is the sum that all of the coins add up to.
+
+The O(nlog(n)) runtime of the sorting step is not reflected in the final time complexity, because the nested loops take O(m \* n) time. The input array contains only positive integers, so the minimum value we can have is `1`. Suppose the number of coins is `10` and all the coins are `1`. The sum of all the coins is going to be `10`.
+Therefore `m` must be equal to or greater than `n`. When `m = n`, `O(n * log(n) + m * n) = O(n * log(n) + n * n) = O(n * n)`, since `n * n` is always greater than `n * log(n)`. When `m > n`, `O(n * log(n) + m * n) = O(n * (log(n) + m)) = O(n) * O(log(n) + m) = O(n * m)`, since `(m + log(n)) < (2 * m)`.
+
 #
 
-### Optimal Approach (based on the video explanation of AlgoExpert)
+### Approach 2: Optimized
 
-If you don't know how to solve a array problem, the first thing you usually can do is sort the input array and see what that looks like. The sample input is `[5, 7, 1, 1, 2, 3, 22]`. After sorting it, we get `[1, 1, 2, 3, 5, 7, 22]`. Let's walk through the sorted array and try to solve the problem.
+If we don't know how to solve an array problem, the first thing we usually can do is sort the input array and see what that looks like. The sample input is `[5, 7, 1, 1, 2, 3, 22]`. After sorting it, we get `[1, 1, 2, 3, 5, 7, 22]`. Let's walk through the sorted array and try to solve the problem.
 
 ```
 [1, 1, 2, 3, 5, 7, 22]
@@ -158,11 +161,9 @@ So to solve the problem, what we need to do is:
   - For every integer, compare it to the current change, if it is greater than the current change, we found the minimum amount of change we cannot make, which is current change we make plus 1, return the result; otherwise, add the integer to the current change.
 - If we get out of the loop without returning the result, return current change we make plus 1.
 
-### Time & Space Complexity
+### Implementation
 
-O(nlog(n)) time | O(1) space, where n is the number of coins.
-
-### Optimal Solution
+JavaScript:
 
 ```js
 function nonConstructibleChange(coins) {
@@ -181,7 +182,7 @@ function nonConstructibleChange(coins) {
 }
 ```
 
-### Optimal Solution in Go
+Go:
 
 ```go
 package main
@@ -206,3 +207,7 @@ func NonConstructibleChange(coins []int) int {
 	return currChangeCreated + 1
 }
 ```
+
+### Time & Space Complexity
+
+O(nlog(n)) time | O(1) space, where n is the number of coins.
