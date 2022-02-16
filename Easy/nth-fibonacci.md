@@ -2,46 +2,74 @@
 
 ### Understanding the problem
 
-I am given an integer `n` and I am asked to write a function that is going to return the nth Fibonacci number in the Fibonacci sequence. Normally, the Fibonacci sequence uses zero based indexing, meaning the first two numbers are `F0 = 0` and `F1 = 1`. However, in this problem, one based indexing is used, for instance, `getNthFib(1)` should return `0`.
+Given an integer `n`, we are asked to write a function that is going to return the `n`th Fibonacci number in the Fibonacci sequence. Normally, the Fibonacci sequence uses zero based indexing, which means the first two numbers of the sequence are `F0 = 0` and `F1 = 1`. However, in this problem, we are going to use one based indexing. For instance, `getNthFib(1)` should return `0` instead of `1`.
 
 #
 
-### Iterative Approach
+### Approach 1: Iterative
 
-I would initialize an array that is going to keep track of the last two Fibonacci numbers. Initially, the array is going to contain the first two numbers of the Fibonacci sequence, which are `0` and `1`. Then I am going to initialize a variable `counter` that is going to keep track of how many Fibonacci numbers I have calculated. Initially, set it to `3`, because I already have the first two Fibonacci numbers. While the `counter` is less than or equal to `n`, keep calculating the next Fibonacci number by adding up the last two Fibonacci numbers and keep updating the array of the last two Fibonacci numbers as well as the `counter`. Once I get out of the while loop, return the last Fibonacci number or the first number of the Fibonacci sequence if `n` is less than or equal to `1`.
+We keep track of the last two Fibonacci numbers in the Fibonacci sequence and use a counter to remember how many Fibonacci numbers we have calculated. While the counter is less than or equal to `n`, we keep calculating the next Fibonacci number.
 
-### Time & Space Complexity
+**Algorithm**
 
-O(n) time | O(1) space, where n is the input number.
+- Use an array `lastTwoFibs` to keep track of the last two Fibonacci numbers. Initially, the array is going to contain the first two numbers of the Fibonacci sequence, which are `0` and `1`.
 
-### Iterative Solution
+- Initialize `counter` to `3`, because we already have the first two Fibonacci numbers.
+
+- While the `counter` is less than or equal to `n`:
+
+  - Calculate the next Fibonacci number by adding up the last two Fibonacci numbers.
+
+  - Updating the last two Fibonacci numbers as well as the `counter`.
+
+- Return the last Fibonacci number or the first number of the Fibonacci sequence if `n` is less than or equal to `1`.
+
+### Implementation
 
 ```js
 function getNthFib(n) {
   const lastTwoFibs = [0, 1];
   let counter = 3;
+
   while (counter <= n) {
     const nextFib = lastTwoFibs[0] + lastTwoFibs[1];
     lastTwoFibs[0] = lastTwoFibs[1];
     lastTwoFibs[1] = nextFib;
     counter++;
   }
+
   return n <= 1 ? lastTwoFibs[0] : lastTwoFibs[1];
 }
 ```
 
+### Time & Space Complexity
+
+O(n) time | O(1) space, where n is the input number.
+
 #
 
-### Naive Recursive Approach
+### Approach 2: Naive Recursive Approach
 
 The math definition of a Fibonacci number is `F(n) = F(n - 1) + F(n - 2), for n > 1`. The naive recursive solution is going to be similar to this math definition.
 
 Since the question here uses one based indexing, the base case of the recursive function is going to be the following:
 
-- If `n` is equal to `1`, return `0`;
+- If `n` is equal to `1`, return `0`.
+
 - If `n` is equal to `2`, return `1`.
 
-The recursive part is going to be identical to the math equation. I am going to return `F(n - 1) + F(n - 2)`, where `F` is the recursive function.
+The recursive part is going to be identical to the math equation. We are going to just return `F(n - 1) + F(n - 2)`, where `F` is our recursive function.
+
+### Implementation
+
+```js
+function getNthFib(n) {
+  if (n === 1) return 0;
+  if (n === 2) return 1;
+
+  return getNthFib(n - 1) + getNthFib(n - 2);
+}
+```
 
 ### Time & Space Complexity
 
@@ -67,22 +95,22 @@ So the total number of additions is going to be `2 + 2^2 + 2^3 + 2^4 + ... + 2^(
 
 The space complexity is O(n), because we are going to have at most `n` function calls on the call stack.
 
-### Naive Recursive Solution
-
-```js
-function getNthFib(n) {
-  if (n === 1) return 0;
-  if (n === 2) return 1;
-
-  return getNthFib(n - 1) + getNthFib(n - 2);
-}
-```
-
 #
 
-### Recursive Approach with Dynamic Programming
+### Approach 3: Recursive Approach with Memoization
 
-Since the naive recursive solution has repeated calls for same inputs, I can optimize it by memoizing the results of function calls. At every recursive call I am going to pass down an object which is going to store the Fibonacci numbers I have calculated. In this object, each key is going to be a input number and the values are going to be the corresponding Fibonacci number. Initially, the object is going to hold the first two numbers of the Fibonacci sequence. At each recursion, I am going to lookup the input number in the object; if it is already a key in the object, return the corresponding Fibonacci number; otherwise, compute the Fibonacci number for that input number, and store them in the object.
+The naive recursive approach has repeated calls for same inputs. We can optimize it by memoizing the results of function calls. At every recursive call we are going to pass down an object which is going to store the Fibonacci numbers we have calculated. In this object, each key is going to be a input number and the values are going to be the corresponding Fibonacci number. Initially, the object is going to hold the first two numbers of the Fibonacci sequence. At each recursion, we are going to lookup the input number in the object. If it is already a key in the object, we can just return the corresponding Fibonacci number. Otherwise, we compute the Fibonacci number for that input number, and store them in the object.
+
+### Implementation
+
+```js
+function getNthFib(n, memoized = { 1: 0, 2: 1 }) {
+  if (n in memoized) return memoized[n];
+
+  memoized[n] = getNthFib(n - 1, memoized) + getNthFib(n - 2, memoized);
+  return memoized[n];
+}
+```
 
 ### Time & Space Complexity
 
@@ -100,15 +128,4 @@ The time complexity of this approach is going to be O(n), because we only calcul
     F(2)   F(1)
    /    \
 F(0)    F(1)
-```
-
-### Recursive Solution with Dynamic Programming
-
-```js
-function getNthFib(n, memoized = { 1: 0, 2: 1 }) {
-  if (n in memoized) return memoized[n];
-
-  memoized[n] = getNthFib(n - 1, memoized) + getNthFib(n - 2, memoized);
-  return memoized[n];
-}
 ```
