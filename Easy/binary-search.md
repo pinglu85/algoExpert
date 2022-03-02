@@ -8,7 +8,9 @@ Given a sorted array of integers and a target integer, I am asked to write a fun
 
 ### Approach 1: Iterative
 
-The Binary Search algorithm divides a sorted list of values into halves, and keeps narrowing down the search space until the target value is found. We maintain two pointers `left` and `right` that are going to keep track of the current search space. Initially, the search space is the entire list. We use the two pointers to find the middle value and then compare it to the search target. If the middle value is equal to the target value, then we've found the target value. If the middle value is greater than the target, then it means the target value cannot lie in the right half of the search space, since the list is sorted and all the values that come after the middle value must be greater than the middle value and even greater than the target, so we can remove the entire right half, narrowing down the search space to the left half. If the middle value is smaller than the target, then we can eliminate the entire left half and search for the target value in the right half. We repeat the process until the target value is found, or our search space is exhausted.
+The Binary Search algorithm divides a sorted list of values into halves, and keeps narrowing down the search space until the target value is found.
+
+We maintain two pointers `left` and `right` that are going to keep track of the current search space. Initially, the search space is the entire list. We use the two pointers to find the middle value, then compare it to the search target. If the middle value is equal to the target value, we've found the target. If the middle value is greater than the target, then it means the target value cannot lie in the right half of the search space. Because the list is sorted, all the values that come after the middle value must be greater than the middle value and even greater than the target, so we can remove the entire right half, narrowing down the search space to the left half. If the middle value is smaller than the target, then we can eliminate the entire left half and search for the target value in the right half. We repeat the process until the target value is found, or our search space is exhausted.
 
 ### Implementation
 
@@ -41,7 +43,7 @@ function binarySearch(array, target) {
 
 #
 
-### Approach 3: Recursive
+### Approach 2: Recursive
 
 We are going to define a recursive function that is going to take in the input array, the search target and two pointers `left` and `right` as parameters. We find the middle value using the two pointers, and call the recursive function on the remaining half. The recursion stops when the target is found or the `left` pointer surpasses the `right` pointer.
 
@@ -73,3 +75,50 @@ function binarySearchImpl(array, target, left, right) {
 - Time Complexity: O(log(n)), where n is the number of integers in the input array.
 
 - Space Complexity: O(log(n)) to keep the recursion stack.
+
+#
+
+### Approach 3: Advanced Form of Binary Search
+
+Instead of `right = mid - 1`, we set `right = mid`. This form of binary search is used when the middle number might be our candidate. An example of this is the problem [278. First Bad Version](https://leetcode.com/problems/first-bad-version/).
+
+In order to make the algorithm work, we also need to replace the loop condition `left <= right` with `left < right`. This is because when our search space contains only one element and we should move `right`: `right = mid`, if the loop condition is `left <= right`, our algorithm will never terminate.
+
+```
+[ a,   b ]
+      ^ ^
+      l r
+      ^
+      m
+```
+
+Since the loop ends when we have one element left (`left == right`), we need to determine whether the remaining element satisfy our condition.
+
+### Implementation
+
+```js
+function binarySearch(array, target) {
+  let left = 0;
+  let right = array.length - 1;
+
+  while (left < right) {
+    const mid = left + Math.floor((right - left) / 2);
+
+    if (array[mid] === target) return mid;
+
+    if (array[mid] < target) {
+      left = mid + 1;
+    } else {
+      right = mid;
+    }
+  }
+
+  return array[left] === target ? left : -1;
+}
+```
+
+### Complexity Analysis
+
+- Time Complexity: O(log(n)), where n is the number of integers in the input array.
+
+- Space Complexity: O(1).
