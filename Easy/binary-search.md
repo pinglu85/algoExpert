@@ -8,9 +8,9 @@ Given a sorted array of integers and a target integer, I am asked to write a fun
 
 ### Approach 1: Iterative
 
-The Binary Search algorithm divides a sorted list of values into halves, and keeps narrowing down the search space until the target value is found.
+The Binary Search algorithm works by dividing the search space into halves, and based on the value of the middle element, it eliminates half of the search space.
 
-We maintain two pointers `left` and `right` that are going to keep track of the current search space. Initially, the search space is the entire list. We use the two pointers to find the middle value, then compare it to the search target. If the middle value is equal to the target value, we've found the target. If the middle value is greater than the target, then it means the target value cannot lie in the right half of the search space. Because the list is sorted, all the values that come after the middle value must be greater than the middle value and even greater than the target, so we can remove the entire right half, narrowing down the search space to the left half. If the middle value is smaller than the target, then we can eliminate the entire left half and search for the target value in the right half. We repeat the process until the target value is found, or our search space is exhausted.
+We maintain two pointers `left` and `right` that are going to define the current search space. Initially, the search space is the entire list. We find the middle value using the two pointers and compare it to the search target. If the middle value is equal to the target value, we've found the target. If the middle value is greater than the target, then it means the target value cannot lie in the right half of the search space. Because the list is sorted, all the values that come after the middle value must be greater than the middle value and even greater than the target, so we can remove the entire right half, narrowing down the search space to the left half. If the middle value is smaller than the target, then we can discard the entire left half and search for the target value in the right half. We repeat the process until the target value is found, or our search space is exhausted.
 
 ### Implementation
 
@@ -45,7 +45,7 @@ function binarySearch(array, target) {
 
 ### Approach 2: Recursive
 
-We are going to define a recursive function that is going to take in the input array, the search target and two pointers `left` and `right` as parameters. We find the middle value using the two pointers, and call the recursive function on the remaining half. The recursion stops when the target is found or the `left` pointer surpasses the `right` pointer.
+We are going to define a recursive function that is going to take in the input array, the search target and two pointers `left` and `right` as parameters. We find the middle value using the two pointers and compare it to the search target. We then recurse either on the left half or on the right half based on the result of comparison. The recursion stops when the target is found or the `left` pointer surpasses the `right` pointer.
 
 ### Implementation
 
