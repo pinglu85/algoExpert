@@ -8,7 +8,7 @@ Given an array of integers, we are asked to sort the input array in ascending or
 
 ### Approach
 
-Bubble Sort sort an array by repeatedly iterating through an array and in each pass swapping the adjacent elements if they are in wrong order.
+Bubble Sort sorts an array by repeatedly iterating through an array and in each pass swapping the adjacent elements if they are in wrong order.
 
 Suppose we have the following array of numbers:
 
@@ -208,10 +208,12 @@ func swap(array []int, i, j int) {
 }
 ```
 
-### Time & Space Complexity
+### Complexity Analysis
 
-Best: O(n) time | O(1) space, where n is the length of the input array.
+- Time Complexity:
 
-Average: O(n^2) time | O(1) space, where n is the length of the input array.
+  Best Case: O(n), when the array is already sorted.
 
-Worst: O(n^2) time | O(1) space, where n is the length of the input array.
+  Average & Worst Case: O(n^2).
+
+- Space Complexity: O(1).
