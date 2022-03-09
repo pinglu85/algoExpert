@@ -126,7 +126,7 @@ func BranchSums(root *BinaryTree) []int {
 
 ### Approach 2: Recursive DFS
 
-Instead of using a stack to remember the next node to be visited and the running sum till that node, we can also use the call stack to track these info.
+Instead of using a stack to remember the next node to be visited and the running sum till that node, we can also use the call stack to track these info. We are going to define a recursive function `calculateBranchSums` and call it on each node, starting from the root node. At each recursive call, we will pass down the next node to visit, the sum of values from nodes above the node we are going to visit, and an array of branch sums which starts out empty. Whenever we get to a leaf node, we push the sum of all values in the current branch into the array of branch sums.
 
 ### Implementation
 
