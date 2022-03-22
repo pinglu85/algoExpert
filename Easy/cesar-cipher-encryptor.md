@@ -57,9 +57,11 @@ function getNewLetter(letter, key) {
 }
 ```
 
-### Time & Space Complexity
+### Complexity Analysis
 
-O(n) time | O(n) space, where n is the length of the input string.
+- Time Complexity: O(n), where n is the length of the input string.
+
+- Space Complexity: O(n).
 
 #
 
@@ -91,9 +93,11 @@ function getNewLetter(letter, key) {
 }
 ```
 
-### Time & Space Complexity
+### Complexity Analysis
 
-O(n) time | O(n) space, where n is the length of the input string.
+- Time Complexity: O(n), where n is the length of the input string.
+
+- Space Complexity: O(n).
 
 #
 
@@ -128,9 +132,11 @@ function getNewLetter(letter, key) {
 }
 ```
 
-### Time & Space Complexity
+### Complexity Analysis
 
-O(n) time | O(n) space, where n is the length of the input string.
+- Time Complexity: O(n), where n is the length of the input string.
+
+- Space Complexity: O(n).
 
 #
 
@@ -165,6 +171,8 @@ function getNewLetter(letter, key) {
 }
 ```
 
-### Time & Space Complexity
+### Complexity Analysis
 
-O(n) time | O(n) space, where n is the length of the input string.
+- Time Complexity: O(n), where n is the length of the input string.
+
+- Space Complexity: O(n).
