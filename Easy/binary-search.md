@@ -37,7 +37,7 @@ function binarySearch(array, target) {
 
 ### Complexity Analysis
 
-- Time Complexity: O(log(n)), where n is the number of integers in the input array.
+- Time Complexity: O(log(N)), where N is the number of integers in the input array.
 
 - Space Complexity: O(1).
 
@@ -72,9 +72,9 @@ function binarySearchImpl(array, target, left, right) {
 
 ### Complexity Analysis
 
-- Time Complexity: O(log(n)), where n is the number of integers in the input array.
+- Time Complexity: O(log(N)), where N is the number of integers in the input array.
 
-- Space Complexity: O(log(n)) to keep the recursion stack.
+- Space Complexity: O(log(N)) to keep the recursion stack.
 
 #
 
@@ -119,6 +119,6 @@ function binarySearch(array, target) {
 
 ### Complexity Analysis
 
-- Time Complexity: O(log(n)), where n is the number of integers in the input array.
+- Time Complexity: O(log(N)), where N is the number of integers in the input array.
 
 - Space Complexity: O(1).

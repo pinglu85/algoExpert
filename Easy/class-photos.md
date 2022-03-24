@@ -87,9 +87,9 @@ function classPhotos(redShirtHeights, blueShirtHeights) {
 
 ### Complexity Analysis
 
-- Time Complexity: O(nlog(n)), where n is the number of integers(students).
+- Time Complexity: O(N · log(N)), where N is the number of integers(students).
 
-- Space Complexity: O(log(n)) or O(n), depending on the implementation of the sorting algorithm.
+- Space Complexity: O(log(N)) or O(N), depending on the implementation of the sorting algorithm.
 
 #
 
@@ -159,6 +159,6 @@ func ClassPhotos(redShirtHeights []int, blueShirtHeights []int) bool {
 
 ### Complexity Analysis
 
-- Time Complexity: O(nlog(n)), where n is the number of integers(students).
+- Time Complexity: O(N · log(N)), where N is the number of integers(students).
 
-- Space Complexity: O(log(n)) or O(n), depending on the implementation of the sorting algorithm.
+- Space Complexity: O(log(N)) or O(N), depending on the implementation of the sorting algorithm.

@@ -212,8 +212,8 @@ func swap(array []int, i, j int) {
 
 - Time Complexity:
 
-  Best Case: O(n), when the array is already sorted.
+  Best Case: O(N), when the array is already sorted.
 
-  Average & Worst Case: O(n^2).
+  Average & Worst Case: O(N^2).
 
 - Space Complexity: O(1).
