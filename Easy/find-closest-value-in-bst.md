@@ -36,7 +36,7 @@ While current node is not `null`,
 
   - Otherwise break out of the while loop, since the current node's value and the target value are equal to each other, which means there is no other value in the BST that can be closer to the target value than this value.
 
-3. Return the closest value.
+- Return the closest value.
 
 ### Implementation
 
@@ -118,11 +118,15 @@ func absDiff(x, y int) int {
 }
 ```
 
-### Time & Space Complexity
+### Complexity Analysis
 
-Average: O(log(n)) time | O(1) space, where n is the number of nodes in the Binary Search Tree.
+- Time Complexity:
 
-Worst: O(n) time | O(1) space, , where n is the number of nodes in the Binary Search Tree.
+  Average Case: O(log(N)), where N is the number of nodes in the Binary Search Tree.
+
+  Worst Case: O(N), when the Binary Search Tree has only one branch.
+
+- Space Complexity: O(1).
 
 #
 
@@ -206,10 +210,18 @@ func absDiff(x, y int) int {
 }
 ```
 
-### Time & Space Complexity
+### Complexity Analysis
 
-Average: O(log(n)) time | O(log(n)) space, where n is the number of nodes in the Binary Search Tree.
+- Time Complexity:
 
-Worst: O(n) time | O(n) space, where n is the number of nodes in the Binary Search Tree.
+  Average Case: O(log(N)), where N is the number of nodes in the Binary Search Tree.
 
-The space complexity is on average O(log(n)) and the worst O(n), because each recursive call to `findClosestValueInBst` adds a new frame on the call stack, which means we are using extra memory. In other words, we'll be using O(h) memory, where `h` is the height of the tree.
+  Worst Case: O(N), when the Binary Search Tree has only one branch.
+
+- Space Complexity:
+
+  Average Case: O(log(N)), where N is the number of nodes in the Binary Search Tree.
+
+  Worst Case: O(N), when the Binary Search Tree has only one branch.
+
+  Each recursive call to `findClosestValueInBst` adds a new frame on the call stack, which means we are using extra memory. In other words, we'll be using O(h) memory, where `h` is the height of the tree.
