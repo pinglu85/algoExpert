@@ -115,10 +115,12 @@ function swap(array, i, j) {
 }
 ```
 
-### Time & Space Complexity
+### Complexity Analysis
 
-Best: O(n) time | O(1) space, where n is the length of the input array.
+- Time Complexity:
 
-Average: O(n^2) time | O(1) space, where n is the length of the input array.
+  Best Case: O(N), when the array is already sorted.
 
-Worst: O(n^2) time | O(1) space, where n is the length of the input array.
+  Average & Worst Case: O(N^2).
+
+- Space Complexity: O(1).
