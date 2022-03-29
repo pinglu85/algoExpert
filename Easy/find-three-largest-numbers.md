@@ -2,7 +2,7 @@
 
 ### Understanding the problem
 
-We are given an array that contains at least three integers. We are asked to write a function that is going to find the three largest numbers in the input array and return them in an array sorted in ascending order. We are not allowed to sort the input array.
+Given an array that contains at least three integers, we are asked to write a function that is going to find the three largest numbers in the input array and return them in an array sorted in ascending order. We are not allowed to sort the input array.
 
 #
 
@@ -38,11 +38,11 @@ function findThreeLargestNumbers(array) {
 }
 ```
 
-### Time & Space Complexity
+### Complexity Analysis
 
-O(n) time | O(1) space, where n is the length of the input array.
+- Time Complexity: O(N), where N is the length of the input array. The algorithm takes linear time, because the outer loop is always going to be executed 3 times - we only search for the three largest numbers in the array, so the run time of the algorithm is approximately equal to O(3 \* N), which is equal to O(N).
 
-The algorithm runs in O(n) time, because the outer loop is always going to be executed 3 times - we only search for the three largest numbers in the array, so the run time of the algorithm is approximately equal to O(3 \* n), which is equal to O(n).
+- Space Complexity: O(1).
 
 #
 
@@ -123,6 +123,8 @@ function shiftAndUpdate(array, num, idx) {
 }
 ```
 
-### Time & Space Complexity
+### Complexity Analysis
 
-O(n) time | O(1) space, where n is the length of the input array.
+- Time Complexity: O(N), where N is the length of the input array.
+
+- Space Complexity: O(1).
