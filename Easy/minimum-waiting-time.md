@@ -48,9 +48,11 @@ function minimumWaitingTime(queries) {
 }
 ```
 
-### Time & Space Complexity
+### Complexity Analysis
 
-O(nlog(n)) time | O(1) space, where n is the number of queries.
+- Time Complexity: O(N · log(N)), where N is the number of queries.
+
+- Space Complexity: O(1).
 
 #
 
@@ -131,6 +133,8 @@ func MinimumWaitingTime(queries []int) int {
 }
 ```
 
-### Time & Space Complexity
+### Complexity Analysis
 
-O(nlog(n)) time | O(1) space, where n is the number of queries.
+- Time Complexity: O(N · log(N)), where N is the number of queries.
+
+- Space Complexity: O(1).
