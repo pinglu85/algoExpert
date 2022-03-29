@@ -93,11 +93,11 @@ func calculateNodeDepths(node *BinaryTree, depth int) int {
 }
 ```
 
-### Time & Space Complexity
+### Complexity Analysis
 
-Average: O(n) time | O(h) space, where n is the number of nodes in the Binary Tree and h is the height of the Binary Tree.
+- Time Complexity: O(N), where N is the number of nodes in the Binary Tree.
 
-Worst(imbalanced Binary Tree): O(n) time | O(n) space, where n is the number of nodes in the Binary Tree.
+- Space Complexity: O(H) on average, where H is the height of the Binary Tree. In the worst case, when we are dealing with a Binary Tree that is very skewed, the algorithm takes O(N) space, where N is the number of nodes in the Binary Tree.
 
 #
 
@@ -183,8 +183,8 @@ func NodeDepths(root *BinaryTree) int {
 }
 ```
 
-### Time & Space Complexity
+### Complexity Analysis
 
-Average: O(n) time | O(h) space, where n is the number of nodes in the Binary Tree and h is the height of the Binary Tree.
+- Time Complexity: O(N), where N is the number of nodes in the Binary Tree.
 
-Worst(imbalanced Binary Tree): O(n) time | O(n) space, where n is the number of nodes in the Binary Tree.
+- Space Complexity: O(H) on average, where H is the height of the Binary Tree. In the worst case, when we are dealing with a Binary Tree that is very skewed, the algorithm takes O(N) space, where N is the number of nodes in the Binary Tree.
