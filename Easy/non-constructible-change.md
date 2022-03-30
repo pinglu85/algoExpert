@@ -40,12 +40,16 @@ function nonConstructibleChange(coins) {
 }
 ```
 
-### Time & Space Complexity
+### Complexity Analysis
 
-O(m \* n) time | O(1) space, where n is the number of coins and m is the sum that all of the coins add up to.
+- Time Complexity: O(M · N), where N is the number of coins and M is the sum that all the coins add up to. The
+  O(N · log(N)) runtime of the sorting step is not reflected in the final time complexity, because the nested loops take O(M · N) time. The input array contains only positive integers, so the minimum value we can have is `1`. Suppose the number of coins is `10` and all the coins are `1`. The sum of all the coins is going to be `10`. Therefore M must be equal to or greater than N.
 
-The O(nlog(n)) runtime of the sorting step is not reflected in the final time complexity, because the nested loops take O(m \* n) time. The input array contains only positive integers, so the minimum value we can have is `1`. Suppose the number of coins is `10` and all the coins are `1`. The sum of all the coins is going to be `10`.
-Therefore `m` must be equal to or greater than `n`. When `m = n`, `O(n * log(n) + m * n) = O(n * log(n) + n * n) = O(n * n)`, since `n * n` is always greater than `n * log(n)`. When `m > n`, `O(n * log(n) + m * n) = O(n * (log(n) + m)) = O(n) * O(log(n) + m) = O(n * m)`, since `(m + log(n)) < (2 * m)`.
+  - When M == N, O(N \* log(N) + M \* N) = O(N \* log(N) + N \* N) = O(N \* N), since N \* N is always greater than N \* log(N).
+
+  - When M > N, O(N \* log(N) + M \* N) = O(N \* (log(N) + M)) = O(N) \* O(log(N) + M) = O(N \* M), since (log(N)+ M) < (2 \* M).
+
+- Space Complexity: O(log(N)) or O(N), depending on the implementation of the sorting algorithm.
 
 #
 
@@ -153,13 +157,17 @@ We can arrive at the following conclusion:
 
 Imagine we have a set of coin called `U`. In this set we have now one coin and its value is 1: `U = {1}`. Imagine we have another value called `C`, representing the change we can create with our coins: `C = 1`. We have also `V` which represents the new coin we add to our set. If `V > C + 1`, we cannot make `C + 1` change; if `V <= C + 1`, we can make from `C` to `C + V` change, and the minimum amount of change we cannot create is `C + V + 1`.
 
-So to solve the problem, what we need to do is:
+**Algorithm**
 
-- Sort the input array in ascending order,
-- Use a variable to keep track of the current change we create. Initiate it to 0.
+- Sort the input array in ascending order.
+
+- Use a variable to keep track of the current change we create. Initiate it to `0`.
+
 - Iterate through every integer in the sorted array.
-  - For every integer, compare it to the current change, if it is greater than the current change, we found the minimum amount of change we cannot make, which is current change we make plus 1, return the result; otherwise, add the integer to the current change.
-- If we get out of the loop without returning the result, return current change we make plus 1.
+
+  - For every integer, compare it to the current change. If it is greater than the current change, we found the minimum amount of change we cannot make, which is current change we make plus `1`, return the result. Otherwise, add the integer to the current change.
+
+- If we get out of the loop without returning the result, return current change we make plus `1`.
 
 ### Implementation
 
@@ -208,6 +216,8 @@ func NonConstructibleChange(coins []int) int {
 }
 ```
 
-### Time & Space Complexity
+### Complexity Analysis
 
-O(nlog(n)) time | O(1) space, where n is the number of coins.
+- Time Complexity: O(N · log(N)), where N is the number of coins..
+
+- Space Complexity: O(log(N)) or O(N), depending on the implementation of the sorting algorithm.
