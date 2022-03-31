@@ -42,9 +42,11 @@ function getNthFib(n) {
 }
 ```
 
-### Time & Space Complexity
+### Complexity Analysis
 
-O(n) time | O(1) space, where n is the input number.
+- Time Complexity: O(n), where n is the input number.
+
+- Space Complexity: O(1).
 
 #
 
@@ -71,29 +73,31 @@ function getNthFib(n) {
 }
 ```
 
-### Time & Space Complexity
+### Complexity Analysis
 
-O(2^n) time | O(n) space, where n is the input number.
+Let n be the input number.
 
-The time complexity of this approach is O(2^n) or exponential, because in each step we are going to call the recursive function twice, which leads us to approximately `2 * 2 * 2 .... 2 = 2^n` operations(additions) for nth Fibonacci number.
+- Time Complexity: O(2^n).
 
-The time complexity can also be estimated by drawing the recursion tree:
+  In each step we are going to call the recursive function twice, which leads us to approximately 2 \* 2 \* 2 .... 2 = 2^n operations(additions) for nth Fibonacci number.
 
-```
-                            F(n)
-                          /      \
- ^                   F(n-1)      F(n-2)       -------- maximum 2^1 = 2 additions
- |                   /    \      /    \
- |               F(n-2) F(n-3) F(n-3) F(n-4)  -------- maximum 2^2 = 4 additions
-n-1 levels       /    \
- |            F(n-3) F(n-4)                   -------- maximum 2^3 = 8 additions
- |                                                      ........
- v                                            -------- maximum 2^(n-1) additions
-```
+  The time complexity can also be estimated by drawing the recursion tree:
 
-So the total number of additions is going to be `2 + 2^2 + 2^3 + 2^4 + ... + 2^(n-1)`, which is approximately equal to `2^(n-1) + 2^(n-1) = 2 * 2^(n-1)`, thus the time complexity is O(2^n).
+  ```
+                              F(n)
+                            /      \
+  ^                   F(n-1)      F(n-2)       -------- maximum 2^1 = 2 additions
+  |                   /    \      /    \
+  |               F(n-2) F(n-3) F(n-3) F(n-4)  -------- maximum 2^2 = 4 additions
+  n-1 levels       /    \
+  |            F(n-3) F(n-4)                   -------- maximum 2^3 = 8 additions
+  |                                                      ........
+  v                                            -------- maximum 2^(n-1) additions
+  ```
 
-The space complexity is O(n), because we are going to have at most `n` function calls on the call stack.
+  So the total number of additions is going to be 2 + 2^2 + 2^3 + 2^4 + ... + 2^(n-1), which is approximately equal to 2^(n-1) + 2^(n-1) = 2 \* 2^(n-1), thus the time complexity is O(2^n).
+
+- Space Complexity: O(n), because we are going to have at most n function calls on the call stack.
 
 #
 
@@ -112,20 +116,22 @@ function getNthFib(n, memoized = { 1: 0, 2: 1 }) {
 }
 ```
 
-### Time & Space Complexity
+### Complexity Analysis
 
-O(n) time | O(n) space, where n is the input number.
+Let n be the input number.
 
-The time complexity of this approach is going to be O(n), because we only calculate each Fibonacci number once:
+- Time Complexity: O(n), because we only calculate each Fibonacci number once:
 
-```
-              F(5)
-            /     \
-          F(4)     F(3)    -------- F(3)'s result is memoized.
-         /    \
-       F(3)   F(2)         -------- F(2)'s result is memoized.
-      /    \
-    F(2)   F(1)
-   /    \
-F(0)    F(1)
-```
+  ```
+                F(5)
+              /     \
+            F(4)     F(3)    -------- F(3)'s result is memoized.
+          /    \
+        F(3)   F(2)         -------- F(2)'s result is memoized.
+        /    \
+      F(2)   F(1)
+    /    \
+  F(0)    F(1)
+  ```
+
+- Space Complexity: O(n).
