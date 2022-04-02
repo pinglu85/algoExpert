@@ -77,7 +77,7 @@ func RemoveDuplicatesFromLinkedList(linkedList *LinkedList) *LinkedList {
 
 ### Approach 2
 
-Instead of deleting the duplicate nodes one at a time, we can also remove all duplicate nodes in one go. When we get to a node whose next neighbor has the same value as the current node, we are going to keep looking at the nodes after that neighbor until we find a node that has a different value. Then we change the next pointer of the current node to point to the distinct node, which means we skip all of the duplicate nodes.
+Instead of deleting the duplicate nodes one at a time, we can also remove all the duplicates in one go. When we get to a node whose next neighbor is a duplicate, we keep looking at the nodes after that neighbor until we find a node that has a different value. We then change the next pointer of the current node to point to the distinct node, thus removing all the duplicate nodes at once.
 
 ### Implementation
 
