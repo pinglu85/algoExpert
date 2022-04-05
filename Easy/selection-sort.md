@@ -83,6 +83,6 @@ function swap(array, i, j) {
 
 ### Complexity Analysis
 
-- Time Complexity: O(N^2), where N is length of the input array.
+- Time Complexity: O(N^2), where N is the length of the input array.
 
 - Space Complexity: O(1).
