@@ -8,7 +8,9 @@ We are given the head of a singly linked list. The nodes of the linked list are 
 
 ### Approach 1
 
-Since the linked list is sorted, it means all of the duplicate values are grouped together. We traverse the linked list. At each step we compare current node's value to the value of the next node. If they are equal to each other, delete the next node: point current node's next pointer to the one after the next node. Otherwise we move on to the next node. Lastly, return the head of the modified linked list.
+Since the linked list is sorted, all of the duplicate values are grouped together. Therefore we can determine whether a node is a duplicate by comparing its value to the node after it.
+
+We traverse the linked list. At each step we compare current node's value to the value of the next node. If they are the same, delete the next node by pointing current node's next pointer directly to the one after the next node. Otherwise we move on to the next node. Return the head of the modified linked list at the end.
 
 ### Implementation
 
