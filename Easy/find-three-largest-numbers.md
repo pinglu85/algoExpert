@@ -91,8 +91,11 @@ function updateThreeLargestNums(threeLargestNums, num) {
     threeLargestNums[0] = num;
   }
 }
+```
 
-// Alternative Implementation
+**Alternative Implementation**
+
+```js
 function findThreeLargestNumbers(array) {
   const threeLargestNums = [-Infinity, -Infinity, -Infinity];
   for (const num of array) {
