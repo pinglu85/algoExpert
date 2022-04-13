@@ -2,28 +2,25 @@
 
 ### Understanding the problem
 
-Implement a function that takes two arrays of integers as input and finds whether all the numbers in the `sequence` array appear in the first array and they appear in the same order. In other words, the function need to find out if we can get the `sequence` array, when we delete some or no elements in the first array without changing the order of the remaining elements.
+We are given two arrays of integers `array` and `sequence`. We are asked to implement a function that is going to check whether all the numbers in the `sequence` appear in the `array` and they appear in the same order. In other words, the function needs to find out if we can get the `sequence` array from the `array`, when we delete some or no elements in the `array` without changing the order of the remaining elements.
 
-For example:
+Example:
 
-```js
-array = [3, 1, 7, 5, 10, 2];
-sequence = [1, 5, 2];
 ```
-
-The output should be `true`.
+array: [3, 1, 7, 5, 10, 2];
+sequence: [1, 5, 2];
+Output: true
+```
 
 #
 
 ### Approach
 
-Use a pointer to keep track of the position we are at in the `sequence` array. Iterate through every integer in the first array. At each iteration, compare the integer in the first array with the value in the `sequence` array that the pointer currently points to, if they are equal, then we found the value in the first array, move the pointer forward by 1. If the pointer is equal to the length of the `sequence` array, then it means all the numbers in the `sequence` array are found in the first array and they are in the same order, return `true`. After the loop finishes, if the pointer is not equal to the length of the `sequence` array, return `false`.
+We can use a pointer to remember the position we are at in the `sequence` array. Iterate through the `array`. At each iteration, compare the current element in the `array` to the element that the pointer is pointing at. If they are equal to each other, then it means the element in the `sequence` does appear in the `array`, move the pointer forward by `1`. If the pointer is equal to the length of the `sequence` array, then it means all the elements in the `sequence` array are found in the `array` and they are in the same order, return `true`. When we get out of the loop without returning the result, return `false`.
 
-### Time & Space Complexity
+### Implementation
 
-O(n) time | O(1) space, where n is the length of the array.
-
-### Solution 1
+JavaScript:
 
 ```js
 function isValidSubsequence(array, sequence) {
@@ -37,7 +34,7 @@ function isValidSubsequence(array, sequence) {
 }
 ```
 
-### Solution 1 in Go
+Go:
 
 ```go
 package main
@@ -59,12 +56,15 @@ func IsValidSubsequence(array []int, sequence []int) bool {
 }
 ```
 
-### Solution 2
+**Alternative Implementation**
+
+JavaScript:
 
 ```js
 function isValidSubsequence(array, sequence) {
   let arrIdx = 0;
   let seqIdx = 0;
+
   while (arrIdx < array.length && seqIdx < sequence.length) {
     if (array[arrIdx] === sequence[seqIdx]) {
       seqIdx++;
@@ -76,7 +76,7 @@ function isValidSubsequence(array, sequence) {
 }
 ```
 
-### Solution 2 in Go
+Go:
 
 ```go
 package main
@@ -96,3 +96,9 @@ func IsValidSubsequence(array []int, sequence []int) bool {
 	return seqIdx == len(sequence)
 }
 ```
+
+### Complexity Analysis
+
+- Time Complexity: O(N), where N is the length of the `array`.
+
+- Space Complexity: O(1).
