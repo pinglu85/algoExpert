@@ -8,13 +8,15 @@
       "${2:understanding the problem}\n",
       "#\n",
       "### Approach\n",
-      "${6:approach}\n",
+      "${3:approach}\n",
       "### Implementation\n",
       "```js",
-      "${7:solution}",
+      "${4:implementation}",
       "```\n",
-      "### Time & Space Complexity\n",
-      "${3:time complexity} | ${4:space complexity}, ${5:notation}\n"
+      "### Complexity Analysis\n",
+      "- Time Complexity: ${5:time complexity}\n",
+      "\n",
+      "- Space Complexity: ${6:space complexity}\n"
     ]
   },
   "Table Row Template": {
