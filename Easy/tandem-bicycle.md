@@ -8,21 +8,25 @@ We are asked to write a function that is going to pair every red-shirt rider wit
 
 Example 1:
 
-```
-redShirtSpeeds: [3, 9, 2]
-blueShirtSpeeds: [7, 2, 1]
-fastest: true
-Output: 19
-```
+<pre>
+<b>Input:</b>
+redShirtSpeeds = [3, 9, 2]
+blueShirtSpeeds = [7, 2, 1]
+fastest = true
+
+<b>Output:</b> 19
+</pre>
 
 Example 2:
 
-```
-redShirtSpeeds: [3, 9, 2]
-blueShirtSpeeds: [7, 2, 1]
-fastest: false
-Output: 14
-```
+<pre>
+<b>Input:</b>
+redShirtSpeeds = [3, 9, 2]
+blueShirtSpeeds = [7, 2, 1]
+fastest = false
+
+<b>Output:</b> 14
+</pre>
 
 #
 
