@@ -67,21 +67,14 @@ function smallestDifference(arrayOne, arrayTwo) {
 
 ### Approach 2: Sorting + Two Pointers
 
-Suppose we want to find the pair of numbers from the following two arrays:
+Suppose we want to find the pair of numbers with the minimum absolute difference in the following two sorted arrays:
 
-```js
-arrayOne = [-1, 5, 10, 20, 28, 3];
-arrayTwo = [26, 134, 135, 15, 17];
 ```
-
-After sorting both arrays in ascending order, we get:
-
-```js
 arrayOne = [-1, 3, 5, 10, 20, 28];
 arrayTwo = [15, 17, 26, 134, 135];
 ```
 
-Map them onto a number line:
+Let's map them onto a number line.
 
 ```
          <--|---|---|---|---|---|---|---|---|---|---|-->
@@ -89,21 +82,23 @@ arrayOne:  -1   3   5   10          20      28
 arrayTwo:                  15  17      26     134  135
 ```
 
-It can be noticed that for each number in the range of `-1` to `10` in `arrayOne`, we only need to compute their absolute difference with regards to `15`, because they are all smaller than `15`; since every number in `arrayTwo` that is after `15` is greater than `15`, they are all farther apart than `10` and `15`. For `15` and `17` in `arrayTwo`, we only need to compute the absolute difference between `15` and `20` and the absolute difference between `17` and `20`, and for `15` and `17` we can eliminate all the numbers after `20`. In other words, if a number from one array is smaller than the number from the other array, for instance, `5` from `arrayOne` and `15` from `arrayTwo`, we compute their absolute difference, then move to the number that is after `5` and compute the difference between that number and `15`. The reason is that since our arrays are sorted, the number that is after `5` is definitely greater than `5` and it might be closer to `15` than `5`. In our `arrayOne` the number that is after `5` is `10` and it is indeed closer to `15` than `5`. We don't need to compute the difference between the numbers that are after `15` and `5`, since they are all farther away from `5` than `15`, so for `5`, we don't need to look at the numbers that are after `15`.
+It can be noticed that for each number in the range from `-1` to `10` in `arrayOne`, we only need to compute their absolute difference with regards to `15`. Since they are all smaller than `15`, and every number in `arrayTwo` that comes after `15` is greater than `15`, they are all farther apart than `10` and `15`. For `15` and `17` in `arrayTwo`, we only need to compute their absolute difference with regards to `20` and we can eliminate all the numbers after `20`. In other words, if a number from one array is smaller than the number from the other array, for instance, `5` from `arrayOne` and `15` from `arrayTwo`, we compute their absolute difference, then move on to the number that is after `5` and compute the difference between that number and `15`. Since our arrays are sorted, the number that comes after `5` is definitely going to be greater than `5` and it might be closer to `15` than `5`. In our `arrayOne`, the number after `5` is `10`; it is indeed closer to `15` than `5`. We don't need to compute the difference between `5` and the numbers after `15` and `5`, since they are all farther away from `5` than `15`.
 
-Based on the above observation, we can come up with the following solution:
+Based on the above observation, we could come up with the following algorithm:
 
 - Sort both arrays.
 
-- Initialize a variable that is going to keep track of the smallest absolute difference so far and initialize an empty array to store the current smallest pair.
+- Use a variable to track the smallest absolute difference so far.
 
-- Initialize two pointers `idxOne` and `idxTwo` to `0`. `idxOne` is going to keep track of the index in the first array, and `idxTwo` the index in the second array.
+- Initialize an empty array to store the current smallest pair.
 
-- Loop until both pointers reach the end of the arrays.
+- Initialize two pointers `idxOne` and `idxTwo` to `0`. `idxOne` is going to track the current index in the first array, and `idxTwo` is going to track the current index in the second array.
 
-  - Compute the absolute difference between the number that `idxOne` points to and the number that `idxTwo` points to. Compare the result to the current smallest difference; if it is smaller, set it as the current smallest difference and update the current smallest pair with these two numbers.
+- Loop until we reach the end of one of the two arrays.
 
-  - Compare the number that `idxOne` points to with the number that `idxTwo` points to. If the former is smaller, move `idxOne` to right by one; if the latter is smaller, move `idxTwo` to right by one; if they are equal to each other, break the loop.
+  - Compute the absolute difference between the number that `idxOne` points at and the number that `idxTwo` points at. Compare the result to the current smallest absolute difference. If we get to a smaller difference, set it as the current smallest difference and update the current smallest pair with these two numbers.
+
+  - Compare the number that `idxOne` is pointing at with the number that `idxTwo` is pointing at. Move `idxOne` to right by one if the number from the first array is smaller, or move `idxTwo` to right by one if the number from the second array is smaller. If they are equal to each other, break the loop.
 
 - Return the current smallest pair.
 
