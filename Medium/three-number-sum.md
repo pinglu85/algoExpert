@@ -55,3 +55,6 @@ Let N be the length of the input array.
   The nested loops take O(N^2) time, so it is the dominant term in the total time complexity.
 
 - Space Complexity: O(N).
+
+  If we ignore the space required for the output array, the space complexity of the algorithm can be O(1) when the
+  sorting algorithm we are using takes O(1) space, e.g. bubble sort. Since the overall time complexity of the algorithm is O(N^2), using an in-place sorting algorithm such as bubble sort (which has worst case time complexity of O(N^2)) won't change the upper bound.
