@@ -2,11 +2,11 @@
 
 ### Understanding the problem
 
-Given an array of distinct integers and an integer representing a target sum, write a function that find all combinations of three numbers in the array that add up to the target sum. The function should return a 2-dimensional array of all these combinations. The numbers in each combination should be ordered in ascending order, and the combinations themselves should also be ordered in ascending order, for instance: `[[-8, 2, 6],[-8, 3, 5], [-6, 1, 5]]`. If there is no such combination, return an empty array.
+We are given an array of distinct integers and an integer that represents a target sum. We are asked to write a function that is going to find all the triplets in the array that sum to the target value and return them in a 2-dimensional array. The triplets should be ordered in ascending order, and so are the numbers in each triplets. For instance, if the triplets we found are: `[5, -6, 1]`, `[2, -8, 6]` and `[3, 5, -8]`, then we should return `[[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]]`. If there is no such triplet, return an empty array.
 
 #
 
-### Approach
+### Approach: Sorting + Two Pointers
 
 We can kind of break this problem down into a smaller, easier to solve problem. The basic idea is, iterate through every integers in the array; at each integer, subtract it from the target sum, now it becomes a two number sum problem - find all pairs of numbers in the rest of the array that sum up to the difference between the integer and the target sum, which can be solved with the two pointers approach. In order to use the two pointers approach, and since the result should be ordered in ascending order, we need to sort the array in ascending order at the beginning. The two pointers approach works like this:
 
