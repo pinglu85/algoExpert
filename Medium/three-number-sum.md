@@ -65,3 +65,11 @@ Let N be the length of the input array.
 
   If we ignore the space required for the output array, the space complexity of the algorithm can be O(1) when the
   sorting algorithm we are using takes O(1) space, e.g. bubble sort. Since the overall time complexity of the algorithm is O(N^2), using an in-place sorting algorithm such as bubble sort (which has worst case time complexity of O(N^2)) won't change the upper bound.
+
+#
+
+### Follow-up
+
+What if the input array contains duplicates and the output array must not include duplicate triplets?
+
+[3Sum](https://leetcode.com/problems/3sum/)
