@@ -18,9 +18,11 @@ reversed: "racecar"
 reversed: "olleh"
 ```
 
-So to determine whether a string is a palindrome, we can just reverse the input string and compare the reversed string to the original one.
+So to determine whether a string is a palindrome, we can just reverse the input string and compare the reversed version with the original one.
 
 ### Implementation
+
+JavaScript:
 
 ```js
 function isPalindrome(string) {
@@ -34,13 +36,35 @@ function isPalindrome(string) {
 }
 ```
 
+Go:
+
+```go
+package main
+
+import "strings"
+
+func IsPalindrome(str string) bool {
+    var reversed strings.Builder
+
+    for i := len(str)-1; i >= 0; i-- {
+        reversed.WriteByte(str[i])
+    }
+
+	return reversed.String() == str
+}
+```
+
 ### Complexity Analysis
 
 Given N as the length of the string.
 
-- Time Complexity: O(N^2).
+- Time Complexity: O(N) to O(N^2).
 
-  In most programming languages, strings are immutable. When appending a character to a string, a new string must be created, which is an O(N) operation. To create a reversed version of a string of length N, we will append N characters to the reversed string. Thus the overall time complexity is O(N^2).
+  In most programming languages, strings are immutable. Generally speaking, when appending a character to a string using `+=`, a new string must be created, which is an O(N) operation. So to create a reversed version of a string of length N, we will append N characters, thus the overall time complexity is O(N^2).
+
+  However, [this is not the case in JavaScript](https://josephmate.github.io/java/javascript/stringbuilder/2020/07/27/javascript-does-not-need-stringbuilder.html). Firefox's JavaScript VM, for example, uses [the rope data structure](<https://en.wikipedia.org/wiki/Rope_(data_structure)>) under the hood to allow O(log(N)) string concatenation. Thus to concatenate N times, the time complexity is O(N · log(N)).
+
+  If the language we use provides `StringBuilder` (or something similar) and we create the reversed version with it, then the time complexity of our algorithm is amortized O(N).
 
 - Space Complexity: O(N).
 
