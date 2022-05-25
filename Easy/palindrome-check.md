@@ -60,7 +60,7 @@ Given N as the length of the string.
 
 - Time Complexity: O(N) to O(N^2).
 
-  In most programming languages, strings are immutable. Generally speaking, when appending a character to a string using `+=`, a new string must be created, which is an O(N) operation. So to create a reversed version of a string of length N, we will append N characters, thus the overall time complexity is O(N^2).
+  In most programming languages, strings are immutable. Generally speaking, every time we append a character to a string using `+=`, a new string must be created, which is an O(N) operation. So to create a reversed version of a string of length N, we will append N characters, thus the overall time complexity is O(N^2).
 
   However, [this is not the case in JavaScript](https://josephmate.github.io/java/javascript/stringbuilder/2020/07/27/javascript-does-not-need-stringbuilder.html). Firefox's JavaScript VM, for example, uses [the rope data structure](<https://en.wikipedia.org/wiki/Rope_(data_structure)>) under the hood to allow O(log(N)) string concatenation. Thus to concatenate N times, the time complexity is O(N · log(N)).
 
