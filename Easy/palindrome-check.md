@@ -154,6 +154,8 @@ function isPalindrome(string) {
 
 - Time Complexity: O(N), where N is the length of the string.
 
+  The while loop loops up to N/2 times, which converges to O(N).
+
 - Space Complexity: O(1).
 
 #
@@ -183,3 +185,9 @@ Given N as the length of the string.
 - Time Complexity: O(N).
 
 - Space Complexity: O(N).
+
+#
+
+### Approach 4: Two Pointers + Tail Recursion
+
+We can also rewrite the iterative solution above recursively.
