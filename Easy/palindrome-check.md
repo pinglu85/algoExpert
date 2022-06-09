@@ -188,6 +188,53 @@ Given N as the length of the string.
 
 #
 
-### Approach 4: Two Pointers + Tail Recursion
+### Approach 5: Two Pointers (Tail-recursive)
 
-We can also rewrite the iterative solution above recursively.
+The above solution takes O(N) space due to the recursive calls on the call stack. The function needs to keep track of the logical AND operation before the calls complete. If we run `isPalindrome('raccar')`, the stack would look as follows:
+
+<!--prettier-ignore-->
+```js
+isPalindrome('raccar', 0)
+true && isPalindrome('raccar', 1)
+true && (true && isPalindrome('raccar', 2))
+true && (true && (true && isPalindrome('raccar', 3)))
+true && (true && (true && true))
+true && (true && true)
+true && true 
+true
+```
+
+We can optimize the memory usage by converting it to a tail recursion, which is a specific form of recursion where the recursive call is at the very end of a function. Some programming languages, such as C++ and JavaScript, have tail-call optimization, where the compiler/interpreter is able to avoid allocating a new stack frame for each recursive call by reusing the same one. As a result, the recursive calls will take constant space.
+
+The call stack for the tail-recursive version would look as follows:
+
+<!--prettier-ignore-->
+```js
+isPalindrome('raccar', 0)
+isPalindrome('raccar', 1)
+isPalindrome('raccar', 2)
+isPalindrome('raccar', 3)
+true
+```
+
+### Implementation
+
+```js
+function isPalindrome(string, leftIdx = 0) {
+  const rightIdx = string.length - 1 - leftIdx;
+
+  if (leftIdx >= rightIdx) return true;
+
+  if (string[leftIdx] !== string[rightIdx]) return false;
+
+  return isPalindrome(string, leftIdx + 1);
+}
+```
+
+### Complexity Analysis
+
+Given N as the length of the string.
+
+- Time Complexity: O(N).
+
+- Space Complexity: O(1) or O(N), depending on whether tail call optimization is supported.
