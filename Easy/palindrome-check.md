@@ -237,4 +237,4 @@ Given N as the length of the string.
 
 - Time Complexity: O(N).
 
-- Space Complexity: O(1) or O(N), depending on whether tail call optimization is supported.
+- Space Complexity: O(1) or O(N), depending on whether tail-call optimization is supported.
