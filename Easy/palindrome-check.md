@@ -204,7 +204,7 @@ true && true
 true
 ```
 
-We can optimize the memory usage by converting it to a tail recursion, which is a specific form of recursion where the recursive call is at the very end of a function. Some programming languages, such as C++ and JavaScript, have tail-call optimization, where the compiler/interpreter is able to avoid allocating a new stack frame for each recursive call by reusing the same one. As a result, the recursive calls will take constant space.
+We can optimize the memory usage by converting it to a tail recursion, where the recursive call is at the very end of a function. Some programming languages, such as C++ and JavaScript, have tail-call optimization, where the compiler/interpreter is able to avoid allocating a new stack frame for each recursive call by reusing the same one. As a result, the recursive calls will take constant space.
 
 The call stack for the tail-recursive version would look as follows:
 
