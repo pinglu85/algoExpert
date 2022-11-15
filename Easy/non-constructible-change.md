@@ -8,9 +8,15 @@ We are given an array of positive integers, which represent the values of coins 
 
 ### Approach 1: Brute Force
 
-Iterate from 1 to the maximum amount of change that I can create, which is the value that all of the coins in the input array sum up to. At each iteration, find out if we can sum up to the current value using our coins; if we can't then the minimum amount of change is found. If we get out of the loop without returning the result, return maximum amount of change + 1.
+Iterate from `1` to the maximum amount of change that we can create, which is the value that all of the coins in the input array sum up to. At each iteration, find out if we can sum up to the current value using our coins. If we can't, then the minimum amount of change is found. If we get out of the loop without returning the result, return `maximum amount of change + 1`.
 
-To find out if there is a subset in the input array that adds up to a target value, I can first sort the array in ascending order, then iterate through every integer in the sorted array, starting from the last one; for each integer, compare it with the target value, if the integer is equal to the target value, then the subset is found; if the integer is smaller than the target value, subtract it from the target value and update the target value to the result, move to the next integer. If the very beginning of the input array is reached and the target value is still larger than 0, then I find the value that no subset can add up to.
+To find out if there is a subset in the input array that adds up to a target value, we can first sort the array in ascending order, then iterate backwards through every integer in the sorted array. For each integer, we compare it with the target value:
+
+- If it is equal to the target value, then the subset is found.
+
+- If it is smaller than the target value, subtract it from the target value and update the target value to the result, move on to the next integer.
+
+If we reach the very beginning of the input array and the target value is still greater than `0`, then we find the value that no subset can add up to.
 
 ### Implementation
 
@@ -21,19 +27,16 @@ function nonConstructibleChange(coins) {
 
   for (let sum = 1; sum < maximumSum; sum++) {
     let currentSum = sum;
+
     for (let i = coins.length - 1; i >= 0; i--) {
       const currentValue = coins[i];
-      if (currentValue <= currentSum) {
-        currentSum -= currentValue;
-      }
-      if (currentSum === 0) {
-        break;
-      }
+
+      if (currentValue <= currentSum) currentSum -= currentValue;
+
+      if (currentSum === 0) break;
     }
 
-    if (currentSum > 0) {
-      return sum;
-    }
+    if (currentSum > 0) return sum;
   }
 
   return maximumSum + 1;
